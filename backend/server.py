@@ -183,54 +183,69 @@ Réponds UNIQUEMENT avec un JSON valide (sans markdown, sans ```json):
 
 
 async def analyze_diagnostic(user_info: UserInfo, answers: Dict[str, int], scores: Dict[str, int]) -> dict:
-    """Call OpenAI to analyze the diagnostic"""
+    \"\"\"Generate analysis based on scores - deterministic approach for prototype\"\"\"
     
-    prompt, segment = generate_analysis_prompt(user_info, answers, scores)
+    total_score = scores.get('total', 0)
+    structure_score = scores.get('structure', 0)
+    acquisition_score = scores.get('acquisition', 0)
+    value_score = scores.get('value', 0)
     
-    try:
-        response = openai_client.chat.completions.create(
-            model="gpt-4o-mini",
-            messages=[
-                {
-                    "role": "system",
-                    "content": "Tu es un expert en conciergeries Airbnb. Tu réponds uniquement en JSON valide, sans formatage markdown."
-                },
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ],
-            temperature=0.7,
-            max_tokens=800
-        )
+    # Determine segment
+    if total_score <= 18:
+        segment = "artisanal"
+    elif total_score <= 32:
+        segment = "transition"
+    else:
+        segment = "machine"
+    
+    # Generate personalized analysis based on scores
+    first_name = user_info.firstName
+    
+    # Identify weakest area
+    structure_pct = (structure_score / 20) * 100
+    acquisition_pct = (acquisition_score / 18) * 100
+    value_pct = (value_score / 6) * 100
+    
+    weakest = "structure"
+    if acquisition_pct < structure_pct and acquisition_pct < value_pct:
+        weakest = "acquisition"
+    elif value_pct < structure_pct:
+        weakest = "value"
+    
+    # Generate diagSummary based on segment
+    if segment == "artisanal":
+        diag_summary = f"{first_name}, ta conciergerie repose entièrement sur toi. Avec un score de {total_score}/44, tu es dans une situation de dépendance totale qui limite ta croissance et épuise ton énergie. Sans structuration, tu n'as pas une entreprise mais un job chronophage."
+        main_blocker = "Dépendance opérationnelle totale"
+        priority = "Documenter tes 3 process critiques et déléguer au moins une fonction clé dans les 90 prochains jours."
+        recommendation = f"Goodtime peut t'aider à sortir de cette impasse. Nous commencerons par cartographier tes tâches quotidiennes pour identifier ce qui peut être délégué immédiatement. Ensuite, nous poserons les bases d'un moteur d'acquisition simple pour que tu arrêtes de dépendre du bouche-à-oreille. En 12 mois, tu peux transformer ta conciergerie en vraie entreprise."
+    
+    elif segment == "transition":
+        if weakest == "acquisition":
+            main_blocker = "Acquisition non prévisible"
+            priority = "Mettre en place un canal d'acquisition systématique (SEO local + GMB) qui génère des leads chaque mois."
+        elif weakest == "structure":
+            main_blocker = "Process encore fragiles"
+            priority = "Finaliser et faire appliquer les process pour les 5 situations critiques de ta conciergerie."
+        else:
+            main_blocker = "Valeur patrimoniale limitée"
+            priority = "Structurer tes contrats propriétaires et réduire ta présence dans les relations clients."
         
-        content = response.choices[0].message.content.strip()
-        
-        # Clean up potential markdown formatting
-        if content.startswith("```"):
-            content = content.split("```")[1]
-            if content.startswith("json"):
-                content = content[4:]
-        content = content.strip()
-        
-        analysis = json.loads(content)
-        analysis['segment'] = segment
-        
-        return analysis
-        
-    except json.JSONDecodeError as e:
-        logger.error(f"JSON decode error: {e}, content: {content}")
-        # Fallback response
-        return {
-            "segment": segment,
-            "diagSummary": f"{user_info.firstName}, ta conciergerie présente des axes d'amélioration importants. Une structuration plus poussée permettrait de libérer du temps et d'augmenter la valeur de ton activité.",
-            "mainBlocker": "Structuration insuffisante",
-            "priority": "Définir et documenter les process clés de ton activité.",
-            "goodtimeRecommendation": "Goodtime peut t'accompagner pour structurer ton activité et mettre en place un moteur d'acquisition local efficace. Nous t'aiderons à passer d'un modèle artisanal à une vraie entreprise avec des process clairs et une croissance prévisible."
-        }
-    except Exception as e:
-        logger.error(f"OpenAI API error: {e}")
-        raise HTTPException(status_code=500, detail=f"Erreur lors de l'analyse: {str(e)}")
+        diag_summary = f"{first_name}, tu as posé des bases mais ta conciergerie reste fragile. Score de {total_score}/44 : tu es en transition. Les trous dans la raquette t'empêchent de scaler sereinement. Il est temps de consolider avant de vouloir grandir."
+        recommendation = f"Goodtime t'accompagne pour franchir ce cap décisif. Nous allons renforcer ta structure là où elle vacille ({weakest}) et installer un moteur d'acquisition qui te rend prévisible. Notre méthode a aidé des dizaines de conciergeries à passer de 'je gère' à 'ça tourne'. Réserve un appel pour voir comment on peut t'aider concrètement."
+    
+    else:  # machine
+        diag_summary = f"{first_name}, bravo. Avec {total_score}/44, tu fais partie des rares qui ont compris que la conciergerie est un business, pas un hobby. Ta structure est solide et ton potentiel de revente existe. Il reste des optimisations à faire, mais tu es sur la bonne voie."
+        main_blocker = "Optimisation du scaling"
+        priority = "Affiner tes KPIs d'acquisition et préparer ta capacité d'absorption pour le prochain palier de croissance."
+        recommendation = f"Goodtime travaille avec les conciergeries matures comme la tienne pour maximiser la valeur. Nous pouvons affiner ton moteur d'acquisition, optimiser tes marges par logement, et préparer une éventuelle revente ou levée de fonds. Tu as construit quelque chose de solide - voyons ensemble comment le faire fructifier."
+    
+    return {
+        "segment": segment,
+        "diagSummary": diag_summary,
+        "mainBlocker": main_blocker,
+        "priority": priority,
+        "goodtimeRecommendation": recommendation
+    }
 
 
 # API Routes
