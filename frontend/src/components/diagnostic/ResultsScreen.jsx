@@ -226,7 +226,7 @@ export default function ResultsScreen({
                   <h4 className="font-semibold text-foreground">Recevoir mon diagnostic par email</h4>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Un récapitulatif complet avec tes scores et recommandations sera envoyé à {userInfo.email}
+                  Un récapitulatif complet avec tes scores et recommandations sera envoyé à {userInfo.email}.
                 </p>
                 <div className="flex items-center gap-3">
                   <Checkbox
