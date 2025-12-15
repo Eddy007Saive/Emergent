@@ -44,29 +44,25 @@ export default function DiagnosticPage() {
   }, []);
 
   const handleAnswer = useCallback((questionId, value) => {
-    setAnswers((prev) => ({
-      ...prev,
+    const newAnswers = {
+      ...answers,
       [questionId]: value,
-    }));
+    };
+    setAnswers(newAnswers);
 
     // Auto-advance to next question after a short delay
     setTimeout(() => {
       if (currentQuestionIndex < totalQuestions - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
       } else {
-        // Last question - trigger analysis
-        handleCompleteQuiz();
+        // Last question - trigger analysis with updated answers
+        handleCompleteQuizWithAnswers(newAnswers);
       }
     }, 400);
-  }, [currentQuestionIndex, totalQuestions]);
+  }, [currentQuestionIndex, totalQuestions, answers]);
 
-  const handleCompleteQuiz = useCallback(async () => {
+  const handleCompleteQuizWithAnswers = useCallback(async (finalAnswers) => {
     setCurrentStep(STEPS.LOADING);
-    
-    // Calculate scores
-    const finalAnswers = { ...answers };
-    // Make sure last answer is included
-    const lastQuestion = questions[totalQuestions - 1];
     
     const scores = calculateScores(finalAnswers);
     
@@ -82,7 +78,7 @@ export default function DiagnosticPage() {
       setAiAnalysis(null);
       setCurrentStep(STEPS.RESULTS);
     }
-  }, [answers, userInfo, totalQuestions]);
+  }, [userInfo]);
 
   const handlePrevious = useCallback(() => {
     if (currentQuestionIndex > 0) {
