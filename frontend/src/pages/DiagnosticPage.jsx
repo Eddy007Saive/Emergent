@@ -137,12 +137,12 @@ export default function DiagnosticPage() {
           />
         )}
 
-        {currentStep === STEPS.QUESTIONS && (
+        {currentStep === STEPS.QUESTIONS && currentQuestionIndex < questions.length && (
           <QuestionScreen
             question={questions[currentQuestionIndex]}
             questionNumber={currentQuestionIndex + 1}
             totalQuestions={totalQuestions}
-            selectedAnswer={answers[questions[currentQuestionIndex].id]}
+            selectedAnswer={answers[questions[currentQuestionIndex]?.id]}
             onAnswer={handleAnswer}
             onPrevious={handlePrevious}
             canGoPrevious={true}
