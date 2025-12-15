@@ -199,12 +199,12 @@ export default function ResultsScreen({
               Prochaine étape
             </h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Goodtime accompagne les conciergeries à passer d'un modèle artisanal à une 
-              entreprise structurée avec un moteur d'acquisition local qui fait tomber des 
+              Goodtime accompagne les conciergeries à passer d&apos;un modèle artisanal à une 
+              entreprise structurée avec un moteur d&apos;acquisition local qui fait tomber des 
               lits chaque mois.
             </p>
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Si tu veux qu'on regarde ensemble, à partir de tes résultats, ce qu'il faut 
+              Si tu veux qu&apos;on regarde ensemble, à partir de tes résultats, ce qu&apos;il faut 
               structurer en priorité et à quoi pourrait ressembler ton système idéal sur 
               12 mois, tu peux réserver un créneau ici :
             </p>
