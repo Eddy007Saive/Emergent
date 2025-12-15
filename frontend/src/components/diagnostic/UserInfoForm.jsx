@@ -4,7 +4,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { ArrowLeft, ArrowRight, User, Mail, MapPin, Home } from 'lucide-react';
+import { ArrowLeft, ArrowRight, User, Mail, MapPin, Home, Phone } from 'lucide-react';
 import { toast } from 'sonner';
 
 const LOGEMENTS_OPTIONS = [
@@ -24,6 +24,11 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   };
 
+  const validatePhone = (phone) => {
+    // French phone format or international
+    return /^[+]?[0-9\s-]{10,}$/.test(phone.replace(/\s/g, ''));
+  };
+
   const handleChange = (field, value) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
     if (errors[field]) {
@@ -38,10 +43,18 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
     if (!formData.prenom.trim()) {
       newErrors.prenom = 'Le prénom est requis';
     }
+    if (!formData.nom.trim()) {
+      newErrors.nom = 'Le nom est requis';
+    }
     if (!formData.email.trim()) {
       newErrors.email = 'L\'email est requis';
     } else if (!validateEmail(formData.email)) {
       newErrors.email = 'Email invalide';
+    }
+    if (!formData.telephone.trim()) {
+      newErrors.telephone = 'Le téléphone est requis';
+    } else if (!validatePhone(formData.telephone)) {
+      newErrors.telephone = 'Numéro de téléphone invalide';
     }
     if (!formData.ville.trim()) {
       newErrors.ville = 'La ville est requise';
@@ -73,23 +86,41 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
           </CardHeader>
           
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Prénom */}
-              <div className="space-y-2">
-                <Label htmlFor="prenom" className="flex items-center gap-2 text-foreground">
-                  <User className="w-4 h-4 text-muted-foreground" />
-                  Prénom
-                </Label>
-                <Input
-                  id="prenom"
-                  placeholder="Ton prénom"
-                  value={formData.prenom}
-                  onChange={(e) => handleChange('prenom', e.target.value)}
-                  className={errors.prenom ? 'border-destructive' : ''}
-                />
-                {errors.prenom && (
-                  <p className="text-sm text-destructive">{errors.prenom}</p>
-                )}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Prénom & Nom - Row */}
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="prenom" className="flex items-center gap-2 text-foreground">
+                    <User className="w-4 h-4 text-muted-foreground" />
+                    Prénom
+                  </Label>
+                  <Input
+                    id="prenom"
+                    placeholder="Ton prénom"
+                    value={formData.prenom}
+                    onChange={(e) => handleChange('prenom', e.target.value)}
+                    className={errors.prenom ? 'border-destructive' : ''}
+                  />
+                  {errors.prenom && (
+                    <p className="text-xs text-destructive">{errors.prenom}</p>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="nom" className="text-foreground">
+                    Nom
+                  </Label>
+                  <Input
+                    id="nom"
+                    placeholder="Ton nom"
+                    value={formData.nom}
+                    onChange={(e) => handleChange('nom', e.target.value)}
+                    className={errors.nom ? 'border-destructive' : ''}
+                  />
+                  {errors.nom && (
+                    <p className="text-xs text-destructive">{errors.nom}</p>
+                  )}
+                </div>
               </div>
 
               {/* Email */}
@@ -107,7 +138,26 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
                   className={errors.email ? 'border-destructive' : ''}
                 />
                 {errors.email && (
-                  <p className="text-sm text-destructive">{errors.email}</p>
+                  <p className="text-xs text-destructive">{errors.email}</p>
+                )}
+              </div>
+
+              {/* Téléphone */}
+              <div className="space-y-2">
+                <Label htmlFor="telephone" className="flex items-center gap-2 text-foreground">
+                  <Phone className="w-4 h-4 text-muted-foreground" />
+                  Téléphone
+                </Label>
+                <Input
+                  id="telephone"
+                  type="tel"
+                  placeholder="06 12 34 56 78"
+                  value={formData.telephone}
+                  onChange={(e) => handleChange('telephone', e.target.value)}
+                  className={errors.telephone ? 'border-destructive' : ''}
+                />
+                {errors.telephone && (
+                  <p className="text-xs text-destructive">{errors.telephone}</p>
                 )}
               </div>
 
@@ -125,7 +175,7 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
                   className={errors.ville ? 'border-destructive' : ''}
                 />
                 {errors.ville && (
-                  <p className="text-sm text-destructive">{errors.ville}</p>
+                  <p className="text-xs text-destructive">{errors.ville}</p>
                 )}
               </div>
 
@@ -154,7 +204,7 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
                   </SelectContent>
                 </Select>
                 {errors.nombreLogements && (
-                  <p className="text-sm text-destructive">{errors.nombreLogements}</p>
+                  <p className="text-xs text-destructive">{errors.nombreLogements}</p>
                 )}
               </div>
 
