@@ -256,7 +256,7 @@ export default function ResultsScreen({
 
         {/* RGPD Footer */}
         <p className="text-xs text-muted-foreground text-center mt-8">
-          En validant ce diagnostic, j'accepte que Goodtime me contacte à propos de ce sujet. 
+          En validant ce diagnostic, j&apos;accepte que Goodtime me contacte à propos de ce sujet. 
           Mes données ne seront jamais revendues.
         </p>
       </div>
