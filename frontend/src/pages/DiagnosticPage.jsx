@@ -237,7 +237,7 @@ function LoadingScreen() {
       <div className="max-w-md mx-auto text-center">
         <div className="mb-8">
           <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-light flex items-center justify-center">
-            <div className="w-8 h-8 border-3 border-primary border-t-transparent rounded-full animate-spin" />
+            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
           </div>
           <h2 className="text-2xl font-bold text-foreground mb-3">
             Analyse en cours...
