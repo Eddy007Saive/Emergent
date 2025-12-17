@@ -183,7 +183,7 @@ Réponds UNIQUEMENT avec un JSON valide (sans markdown, sans ```json):
 
 
 async def analyze_diagnostic(user_info: UserInfo, answers: Dict[str, int], scores: Dict[str, int]) -> dict:
-    \"\"\"Generate analysis based on scores - deterministic approach for prototype\"\"\"
+    """Generate analysis based on scores - deterministic approach for prototype"""
     
     total_score = scores.get('total', 0)
     structure_score = scores.get('structure', 0)
