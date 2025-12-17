@@ -70,6 +70,10 @@ export default function DiagnosticPage() {
       // Call AI analysis API
       const analysis = await analyzeDiagnostic(userInfo, finalAnswers, scores);
       setAiAnalysis(analysis);
+      
+      // Send data to webhook
+      await sendToWebhook(userInfo, finalAnswers, scores, analysis);
+      
       setCurrentStep(STEPS.RESULTS);
     } catch (error) {
       console.error('Analysis error:', error);
@@ -79,6 +83,50 @@ export default function DiagnosticPage() {
       setCurrentStep(STEPS.RESULTS);
     }
   }, [userInfo]);
+
+  // Send diagnostic data to webhook
+  const sendToWebhook = async (userInfo, answers, scores, analysis) => {
+    const webhookUrl = 'https://n8n.srv903010.hstgr.cloud/webhook/emergent';
+    
+    const payload = {
+      firstName: userInfo.prenom,
+      lastName: userInfo.nom,
+      email: userInfo.email,
+      phone: userInfo.telephone,
+      city: userInfo.ville,
+      units: userInfo.nombreLogements,
+      segment: analysis?.segment || getSegment(scores.total).id,
+      score: scores.total,
+      structureScore: scores.structure,
+      acquisitionScore: scores.acquisition,
+      valueScore: scores.value,
+      diagSummary: analysis?.diagSummary || '',
+      mainBlocker: analysis?.mainBlocker || '',
+      priority: analysis?.priority || '',
+      goodtimeRecommendation: analysis?.goodtimeRecommendation || '',
+      answers: answers,
+      timestamp: new Date().toISOString(),
+    };
+    
+    try {
+      const response = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+      
+      if (!response.ok) {
+        console.warn('Webhook response not OK:', response.status);
+      } else {
+        console.log('Data sent to webhook successfully');
+      }
+    } catch (error) {
+      // Don't block the user experience if webhook fails
+      console.error('Webhook error:', error);
+    }
+  };
 
   const handlePrevious = useCallback(() => {
     if (currentQuestionIndex > 0) {
