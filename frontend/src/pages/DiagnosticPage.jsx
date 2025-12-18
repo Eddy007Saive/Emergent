@@ -20,7 +20,8 @@ const STEPS = {
   RESULTS: 'results',
 };
 
-const WEBHOOK_URL = 'https://n8n.srv903010.hstgr.cloud/webhook/emergent';
+const WEBHOOK_URL = process.env.REACT_APP_WEBHOOK_URL;
+
 
 export default function DiagnosticPage() {
   const [currentStep, setCurrentStep] = useState(STEPS.WELCOME);

@@ -257,21 +257,6 @@ export default function ResultsScreen({
           </CardContent>
         </Card>
 
-        {/* JSON Export - For debugging/integration */}
-        {aiAnalysis && (
-          <Card className="mb-8 shadow-card animate-fade-in bg-muted/30" style={{ animationDelay: '550ms' }}>
-            <CardContent className="p-4">
-              <details className="text-sm">
-                <summary className="cursor-pointer text-muted-foreground hover:text-foreground font-medium">
-                  Voir le JSON complet du diagnostic
-                </summary>
-                <pre className="mt-4 p-4 bg-card rounded-lg overflow-x-auto text-xs">
-                  {JSON.stringify(aiAnalysis, null, 2)}
-                </pre>
-              </details>
-            </CardContent>
-          </Card>
-        )}
 
         {/* Restart */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
