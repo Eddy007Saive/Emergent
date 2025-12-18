@@ -3,18 +3,8 @@ import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
-import { ArrowLeft, ArrowRight, User, Mail, MapPin, Home, Phone } from 'lucide-react';
+import { ArrowLeft, ArrowRight, User, Mail, MapPin, Phone } from 'lucide-react';
 import { toast } from 'sonner';
-
-const LOGEMENTS_OPTIONS = [
-  { value: '1-5', label: '1 à 5 logements' },
-  { value: '6-15', label: '6 à 15 logements' },
-  { value: '16-30', label: '16 à 30 logements' },
-  { value: '31-50', label: '31 à 50 logements' },
-  { value: '51-100', label: '51 à 100 logements' },
-  { value: '100+', label: 'Plus de 100 logements' },
-];
 
 export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
   const [formData, setFormData] = useState(initialValues);
@@ -59,9 +49,6 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
     if (!formData.ville.trim()) {
       newErrors.ville = 'La ville est requise';
     }
-    if (!formData.nombreLogements) {
-      newErrors.nombreLogements = 'Le nombre de logements est requis';
-    }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -78,7 +65,7 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
         <Card className="shadow-card border-border animate-fade-in">
           <CardHeader className="text-center pb-2">
             <CardTitle className="text-2xl font-bold text-foreground">
-              Avant de commencer
+              Commençons par te connaître
             </CardTitle>
             <CardDescription className="text-muted-foreground">
               Ces informations nous permettent de personnaliser ton diagnostic
@@ -176,35 +163,6 @@ export default function UserInfoForm({ initialValues, onSubmit, onBack }) {
                 />
                 {errors.ville && (
                   <p className="text-xs text-destructive">{errors.ville}</p>
-                )}
-              </div>
-
-              {/* Nombre de logements */}
-              <div className="space-y-2">
-                <Label htmlFor="nombreLogements" className="flex items-center gap-2 text-foreground">
-                  <Home className="w-4 h-4 text-muted-foreground" />
-                  Nombre de logements gérés
-                </Label>
-                <Select
-                  value={formData.nombreLogements}
-                  onValueChange={(value) => handleChange('nombreLogements', value)}
-                >
-                  <SelectTrigger 
-                    id="nombreLogements"
-                    className={errors.nombreLogements ? 'border-destructive' : ''}
-                  >
-                    <SelectValue placeholder="Sélectionne une tranche" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LOGEMENTS_OPTIONS.map((option) => (
-                      <SelectItem key={option.value} value={option.value}>
-                        {option.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-                {errors.nombreLogements && (
-                  <p className="text-xs text-destructive">{errors.nombreLogements}</p>
                 )}
               </div>
 

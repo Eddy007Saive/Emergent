@@ -2,7 +2,9 @@ import React, { useState, useCallback } from 'react';
 import Header from '../components/diagnostic/Header';
 import WelcomeScreen from '../components/diagnostic/WelcomeScreen';
 import UserInfoForm from '../components/diagnostic/UserInfoForm';
+import QualificationForm from '../components/diagnostic/QualificationForm';
 import QuestionScreen from '../components/diagnostic/QuestionScreen';
+import ValidationScreen from '../components/diagnostic/ValidationScreen';
 import ResultsScreen from '../components/diagnostic/ResultsScreen';
 import ProgressBar from '../components/diagnostic/ProgressBar';
 import { questions, calculateScores, getSegment } from '../data/questions';
@@ -12,10 +14,13 @@ import { toast } from 'sonner';
 const STEPS = {
   WELCOME: 'welcome',
   USER_INFO: 'userInfo',
+  QUALIFICATION: 'qualification',
   QUESTIONS: 'questions',
-  LOADING: 'loading',
+  VALIDATION: 'validation',
   RESULTS: 'results',
 };
+
+const WEBHOOK_URL = 'https://n8n.srv903010.hstgr.cloud/webhook/emergent';
 
 export default function DiagnosticPage() {
   const [currentStep, setCurrentStep] = useState(STEPS.WELCOME);
@@ -25,12 +30,22 @@ export default function DiagnosticPage() {
     email: '',
     telephone: '',
     ville: '',
-    nombreLogements: '',
+  });
+  const [qualification, setQualification] = useState({
+    logementsActuels: '',
+    objectif12Mois: '',
+    commissionMoyenne: '',
+    delaiReponse: '',
+    budgetMensuel: '',
+    googleBusiness: '',
+    closing: '',
+    engagement12Mois: '',
   });
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState({});
   const [sendEmail, setSendEmail] = useState(true);
   const [aiAnalysis, setAiAnalysis] = useState(null);
+  const [isValidating, setIsValidating] = useState(false);
 
   const totalQuestions = questions.length;
 
@@ -40,6 +55,11 @@ export default function DiagnosticPage() {
 
   const handleUserInfoSubmit = useCallback((info) => {
     setUserInfo(info);
+    setCurrentStep(STEPS.QUALIFICATION);
+  }, []);
+
+  const handleQualificationSubmit = useCallback((data) => {
+    setQualification(data);
     setCurrentStep(STEPS.QUESTIONS);
   }, []);
 
@@ -55,86 +75,108 @@ export default function DiagnosticPage() {
       if (currentQuestionIndex < totalQuestions - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
       } else {
-        // Last question - trigger analysis with updated answers
-        handleCompleteQuizWithAnswers(newAnswers);
+        // Last question - go to validation screen
+        setCurrentStep(STEPS.VALIDATION);
       }
     }, 400);
   }, [currentQuestionIndex, totalQuestions, answers]);
 
-  const handleCompleteQuizWithAnswers = useCallback(async (finalAnswers) => {
-    setCurrentStep(STEPS.LOADING);
+  // Send data to webhook during validation
+  const handleValidation = useCallback(async () => {
+    setIsValidating(true);
     
-    const scores = calculateScores(finalAnswers);
+    const scores = calculateScores(answers);
     
     try {
-      // Call AI analysis API
-      const analysis = await analyzeDiagnostic(userInfo, finalAnswers, scores);
+      // Get AI analysis from backend
+      const analysis = await analyzeDiagnostic(
+        { ...userInfo, nombreLogements: qualification.logementsActuels },
+        answers,
+        scores
+      );
       setAiAnalysis(analysis);
       
-      // Send data to webhook
-      await sendToWebhook(userInfo, finalAnswers, scores, analysis);
+      // Prepare webhook payload
+      const webhookPayload = {
+        // User info
+        firstName: userInfo.prenom,
+        lastName: userInfo.nom,
+        email: userInfo.email,
+        phone: userInfo.telephone,
+        city: userInfo.ville,
+        
+        // Qualification data
+        units: qualification.logementsActuels,
+        objectif12Mois: qualification.objectif12Mois,
+        commissionMoyenne: qualification.commissionMoyenne,
+        delaiReponse: qualification.delaiReponse,
+        budgetMensuel: qualification.budgetMensuel,
+        googleBusiness: qualification.googleBusiness,
+        closing: qualification.closing,
+        engagement12Mois: qualification.engagement12Mois,
+        
+        // Scores
+        segment: analysis?.segment || getSegment(scores.total).id,
+        score: scores.total,
+        structureScore: scores.structure,
+        acquisitionScore: scores.acquisition,
+        valueScore: scores.value,
+        
+        // Analysis
+        diagSummary: analysis?.diagSummary || '',
+        mainBlocker: analysis?.mainBlocker || '',
+        priority: analysis?.priority || '',
+        goodtimeRecommendation: analysis?.goodtimeRecommendation || '',
+        
+        // Raw answers
+        answers: answers,
+        
+        // Metadata
+        timestamp: new Date().toISOString(),
+      };
       
-      setCurrentStep(STEPS.RESULTS);
-    } catch (error) {
-      console.error('Analysis error:', error);
-      toast.error('Erreur lors de l\'analyse. Affichage des résultats standards.');
-      // Fall back to standard results without AI analysis
-      setAiAnalysis(null);
-      setCurrentStep(STEPS.RESULTS);
-    }
-  }, [userInfo]);
-
-  // Send diagnostic data to webhook
-  const sendToWebhook = async (userInfo, answers, scores, analysis) => {
-    const webhookUrl = 'https://n8n.srv903010.hstgr.cloud/webhook/emergent';
-    
-    const payload = {
-      firstName: userInfo.prenom,
-      lastName: userInfo.nom,
-      email: userInfo.email,
-      phone: userInfo.telephone,
-      city: userInfo.ville,
-      units: userInfo.nombreLogements,
-      segment: analysis?.segment || getSegment(scores.total).id,
-      score: scores.total,
-      structureScore: scores.structure,
-      acquisitionScore: scores.acquisition,
-      valueScore: scores.value,
-      diagSummary: analysis?.diagSummary || '',
-      mainBlocker: analysis?.mainBlocker || '',
-      priority: analysis?.priority || '',
-      goodtimeRecommendation: analysis?.goodtimeRecommendation || '',
-      answers: answers,
-      timestamp: new Date().toISOString(),
-    };
-    
-    try {
-      const response = await fetch(webhookUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-      
-      if (!response.ok) {
-        console.warn('Webhook response not OK:', response.status);
-      } else {
-        console.log('Data sent to webhook successfully');
+      // Send to webhook
+      try {
+        const response = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(webhookPayload),
+        });
+        
+        if (response.ok) {
+          console.log('Webhook: Data sent successfully');
+        } else {
+          console.warn('Webhook: Response not OK', response.status);
+        }
+      } catch (webhookError) {
+        console.error('Webhook error:', webhookError);
+        // Don't block the user if webhook fails
       }
+      
+      setCurrentStep(STEPS.RESULTS);
+      
     } catch (error) {
-      // Don't block the user experience if webhook fails
-      console.error('Webhook error:', error);
+      console.error('Validation error:', error);
+      toast.error('Erreur lors de l\'analyse. Réessaie.');
+    } finally {
+      setIsValidating(false);
     }
-  };
+  }, [userInfo, qualification, answers]);
 
   const handlePrevious = useCallback(() => {
     if (currentQuestionIndex > 0) {
       setCurrentQuestionIndex((prev) => prev - 1);
     } else {
-      setCurrentStep(STEPS.USER_INFO);
+      setCurrentStep(STEPS.QUALIFICATION);
     }
   }, [currentQuestionIndex]);
+
+  const handleBackFromValidation = useCallback(() => {
+    setCurrentQuestionIndex(totalQuestions - 1);
+    setCurrentStep(STEPS.QUESTIONS);
+  }, [totalQuestions]);
 
   const handleRestartDiagnostic = useCallback(() => {
     setCurrentStep(STEPS.WELCOME);
@@ -147,17 +189,27 @@ export default function DiagnosticPage() {
       email: '',
       telephone: '',
       ville: '',
-      nombreLogements: '',
+    });
+    setQualification({
+      logementsActuels: '',
+      objectif12Mois: '',
+      commissionMoyenne: '',
+      delaiReponse: '',
+      budgetMensuel: '',
+      googleBusiness: '',
+      closing: '',
+      engagement12Mois: '',
     });
   }, []);
 
   const getProgress = () => {
     if (currentStep === STEPS.WELCOME) return 0;
-    if (currentStep === STEPS.USER_INFO) return 5;
+    if (currentStep === STEPS.USER_INFO) return 3;
+    if (currentStep === STEPS.QUALIFICATION) return 8;
     if (currentStep === STEPS.QUESTIONS) {
-      return 5 + ((currentQuestionIndex + 1) / totalQuestions) * 90;
+      return 10 + ((currentQuestionIndex + 1) / totalQuestions) * 80;
     }
-    if (currentStep === STEPS.LOADING) return 98;
+    if (currentStep === STEPS.VALIDATION) return 95;
     return 100;
   };
 
@@ -185,6 +237,14 @@ export default function DiagnosticPage() {
           />
         )}
 
+        {currentStep === STEPS.QUALIFICATION && (
+          <QualificationForm
+            initialValues={qualification}
+            onSubmit={handleQualificationSubmit}
+            onBack={() => setCurrentStep(STEPS.USER_INFO)}
+          />
+        )}
+
         {currentStep === STEPS.QUESTIONS && currentQuestionIndex < questions.length && (
           <QuestionScreen
             question={questions[currentQuestionIndex]}
@@ -197,8 +257,15 @@ export default function DiagnosticPage() {
           />
         )}
 
-        {currentStep === STEPS.LOADING && (
-          <LoadingScreen />
+        {currentStep === STEPS.VALIDATION && (
+          <ValidationScreen
+            userInfo={userInfo}
+            qualification={qualification}
+            scores={scores}
+            onValidate={handleValidation}
+            onBack={handleBackFromValidation}
+            isLoading={isValidating}
+          />
         )}
 
         {currentStep === STEPS.RESULTS && (
@@ -216,7 +283,7 @@ export default function DiagnosticPage() {
       </main>
 
       {/* Footer RGPD */}
-      {currentStep !== STEPS.RESULTS && currentStep !== STEPS.LOADING && (
+      {currentStep !== STEPS.RESULTS && currentStep !== STEPS.VALIDATION && (
         <footer className="fixed bottom-0 left-0 right-0 bg-card border-t border-border py-3">
           <div className="container mx-auto px-4">
             <p className="text-xs text-muted-foreground text-center">
@@ -226,55 +293,6 @@ export default function DiagnosticPage() {
           </div>
         </footer>
       )}
-    </div>
-  );
-}
-
-// Loading Screen Component
-function LoadingScreen() {
-  return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="max-w-md mx-auto text-center">
-        <div className="mb-8">
-          <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary-light flex items-center justify-center">
-            <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-          </div>
-          <h2 className="text-2xl font-bold text-foreground mb-3">
-            Analyse en cours...
-          </h2>
-          <p className="text-muted-foreground">
-            Notre IA analyse tes réponses pour te fournir des recommandations personnalisées.
-          </p>
-        </div>
-        
-        <div className="space-y-3">
-          <LoadingStep text="Calcul des scores" done />
-          <LoadingStep text="Analyse des points forts" done />
-          <LoadingStep text="Identification des axes d'amélioration" loading />
-          <LoadingStep text="Génération des recommandations" />
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LoadingStep({ text, done, loading }) {
-  return (
-    <div className="flex items-center gap-3 justify-center">
-      {done ? (
-        <div className="w-5 h-5 rounded-full bg-primary flex items-center justify-center">
-          <svg className="w-3 h-3 text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-      ) : loading ? (
-        <div className="w-5 h-5 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-      ) : (
-        <div className="w-5 h-5 rounded-full bg-muted" />
-      )}
-      <span className={done ? 'text-foreground' : loading ? 'text-foreground' : 'text-muted-foreground'}>
-        {text}
-      </span>
     </div>
   );
 }
