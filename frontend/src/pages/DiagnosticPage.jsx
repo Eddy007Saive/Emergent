@@ -96,6 +96,20 @@ export default function DiagnosticPage() {
       );
       setAiAnalysis(analysis);
       
+      // Build questions with answers for webhook
+      const questionsWithAnswers = questions.map((q) => {
+        const selectedValue = answers[q.id];
+        const selectedOption = q.options.find(opt => opt.value === selectedValue);
+        return {
+          questionId: q.id,
+          block: q.block,
+          question: q.title,
+          subtitle: q.subtitle || null,
+          selectedValue: selectedValue,
+          selectedAnswer: selectedOption ? selectedOption.label : null,
+        };
+      });
+      
       // Prepare webhook payload
       const webhookPayload = {
         // User info
@@ -128,8 +142,8 @@ export default function DiagnosticPage() {
         priority: analysis?.priority || '',
         goodtimeRecommendation: analysis?.goodtimeRecommendation || '',
         
-        // Raw answers
-        answers: answers,
+        // Questions with full text and answers
+        questionsAndAnswers: questionsWithAnswers,
         
         // Metadata
         timestamp: new Date().toISOString(),
