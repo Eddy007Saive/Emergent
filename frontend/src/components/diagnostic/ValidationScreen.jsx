@@ -42,26 +42,13 @@ export default function ValidationScreen({
   };
 
   const getLogementsLabel = (value) => {
-    const labels = {
-      '1-5': '1 à 5 logements',
-      '6-15': '6 à 15 logements',
-      '16-30': '16 à 30 logements',
-      '31-50': '31 à 50 logements',
-      '51-100': '51 à 100 logements',
-      '100+': 'Plus de 100 logements',
-    };
-    return labels[value] || value;
+    // Now it's a direct number
+    return `${value} logements`;
   };
 
   const getObjectifLabel = (value) => {
-    const labels = {
-      'stable': 'Maintenir le portefeuille',
-      '+5-10': '+5 à 10 logements',
-      '+10-20': '+10 à 20 logements',
-      '+20-50': '+20 à 50 logements',
-      '+50': '+50 logements ou plus',
-    };
-    return labels[value] || value;
+    // Now it's a direct number
+    return `${value} logements`;
   };
 
   const getCommissionLabel = (value) => {
@@ -90,10 +77,10 @@ export default function ValidationScreen({
   const getBudgetLabel = (value) => {
     const labels = {
       '0': '0 € - Pas d\'investissement',
-      '100-300': '100 € à 300 € / mois',
-      '300-500': '300 € à 500 € / mois',
-      '500-1000': '500 € à 1 000 € / mois',
-      '>1000': 'Plus de 1 000 € / mois',
+      '500-1000': 'De 500 € à 1 000 €',
+      '1000-3000': 'De 1 000 € à 3 000 €',
+      '3000-5000': 'De 3 000 € à 5 000 €',
+      '>5000': '+ de 5 000 €',
     };
     return labels[value] || value;
   };

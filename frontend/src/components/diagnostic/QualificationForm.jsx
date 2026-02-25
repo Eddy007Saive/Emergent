@@ -5,25 +5,8 @@ import { Label } from '../ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { ArrowLeft, ArrowRight, Target, Euro, Clock, TrendingUp, MapPin, Users, Calendar } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Target, Euro, Clock, TrendingUp, MapPin, Users, Calendar, Home } from 'lucide-react';
 import { toast } from 'sonner';
-
-const LOGEMENTS_ACTUELS_OPTIONS = [
-  { value: '1-5', label: '1 à 5 logements' },
-  { value: '6-15', label: '6 à 15 logements' },
-  { value: '16-30', label: '16 à 30 logements' },
-  { value: '31-50', label: '31 à 50 logements' },
-  { value: '51-100', label: '51 à 100 logements' },
-  { value: '100+', label: 'Plus de 100 logements' },
-];
-
-const OBJECTIF_12_MOIS_OPTIONS = [
-  { value: 'stable', label: 'Maintenir mon portefeuille actuel' },
-  { value: '+5-10', label: '+5 à 10 logements' },
-  { value: '+10-20', label: '+10 à 20 logements' },
-  { value: '+20-50', label: '+20 à 50 logements' },
-  { value: '+50', label: '+50 logements ou plus' },
-];
 
 const COMMISSION_OPTIONS = [
   { value: '<1500', label: 'Moins de 1 500 €' },
@@ -44,10 +27,10 @@ const DELAI_REPONSE_OPTIONS = [
 
 const BUDGET_OPTIONS = [
   { value: '0', label: '0 € - Je ne veux pas investir' },
-  { value: '100-300', label: '100 € à 300 € / mois' },
-  { value: '300-500', label: '300 € à 500 € / mois' },
-  { value: '500-1000', label: '500 € à 1 000 € / mois' },
-  { value: '>1000', label: 'Plus de 1 000 € / mois' },
+  { value: '500-1000', label: 'De 500 € à 1 000 €' },
+  { value: '1000-3000', label: 'De 1 000 € à 3 000 €' },
+  { value: '3000-5000', label: 'De 3 000 € à 5 000 €' },
+  { value: '>5000', label: '+ de 5 000 €' },
 ];
 
 const GMB_OPTIONS = [
@@ -80,11 +63,11 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
     e.preventDefault();
     const newErrors = {};
 
-    if (!formData.logementsActuels) {
-      newErrors.logementsActuels = 'Ce champ est requis';
+    if (!formData.logementsActuels || formData.logementsActuels < 1) {
+      newErrors.logementsActuels = 'Nombre de logements requis (minimum 1)';
     }
-    if (!formData.objectif12Mois) {
-      newErrors.objectif12Mois = 'Ce champ est requis';
+    if (!formData.objectif12Mois || formData.objectif12Mois < 0) {
+      newErrors.objectif12Mois = 'Objectif requis (0 ou plus)';
     }
     if (!formData.commissionMoyenne) {
       newErrors.commissionMoyenne = 'Ce champ est requis';
@@ -133,24 +116,17 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label className="flex items-center gap-2 text-foreground">
-                    <MapPin className="w-4 h-4 text-muted-foreground" />
-                    Logements actuels
+                    <Home className="w-4 h-4 text-muted-foreground" />
+                    Nombre de logements actuels
                   </Label>
-                  <Select
+                  <Input
+                    type="number"
+                    min="1"
+                    placeholder="Ex: 25"
                     value={formData.logementsActuels}
-                    onValueChange={(value) => handleChange('logementsActuels', value)}
-                  >
-                    <SelectTrigger className={errors.logementsActuels ? 'border-destructive' : ''}>
-                      <SelectValue placeholder="Sélectionne" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {LOGEMENTS_ACTUELS_OPTIONS.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onChange={(e) => handleChange('logementsActuels', e.target.value)}
+                    className={errors.logementsActuels ? 'border-destructive' : ''}
+                  />
                   {errors.logementsActuels && (
                     <p className="text-xs text-destructive">{errors.logementsActuels}</p>
                   )}
@@ -159,23 +135,16 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
                 <div className="space-y-2">
                   <Label className="flex items-center gap-2 text-foreground">
                     <Target className="w-4 h-4 text-muted-foreground" />
-                    Objectif à 12 mois
+                    Objectif à 12 mois (nb logements)
                   </Label>
-                  <Select
+                  <Input
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 40"
                     value={formData.objectif12Mois}
-                    onValueChange={(value) => handleChange('objectif12Mois', value)}
-                  >
-                    <SelectTrigger className={errors.objectif12Mois ? 'border-destructive' : ''}>
-                      <SelectValue placeholder="Sélectionne" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {OBJECTIF_12_MOIS_OPTIONS.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onChange={(e) => handleChange('objectif12Mois', e.target.value)}
+                    className={errors.objectif12Mois ? 'border-destructive' : ''}
+                  />
                   {errors.objectif12Mois && (
                     <p className="text-xs text-destructive">{errors.objectif12Mois}</p>
                   )}
