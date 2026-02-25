@@ -760,7 +760,12 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         diagSummary=analysis['diagSummary'],
         mainBlocker=analysis['mainBlocker'],
         priority=analysis['priority'],
-        goodtimeRecommendation=analysis['goodtimeRecommendation']
+        goodtimeRecommendation=analysis['goodtimeRecommendation'],
+        structureAnalysis=analysis.get('structureAnalysis'),
+        acquisitionAnalysis=analysis.get('acquisitionAnalysis'),
+        valueAnalysis=analysis.get('valueAnalysis'),
+        valorisation=analysis.get('valorisation'),
+        roadmap=analysis.get('roadmap')
     )
     
     # Save to database
