@@ -63,11 +63,11 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
     e.preventDefault();
     const newErrors = {};
 
-    if (!formData.logementsActuels) {
-      newErrors.logementsActuels = 'Ce champ est requis';
+    if (!formData.logementsActuels || formData.logementsActuels < 1) {
+      newErrors.logementsActuels = 'Nombre de logements requis (minimum 1)';
     }
-    if (!formData.objectif12Mois) {
-      newErrors.objectif12Mois = 'Ce champ est requis';
+    if (!formData.objectif12Mois || formData.objectif12Mois < 0) {
+      newErrors.objectif12Mois = 'Objectif requis (0 ou plus)';
     }
     if (!formData.commissionMoyenne) {
       newErrors.commissionMoyenne = 'Ce champ est requis';
