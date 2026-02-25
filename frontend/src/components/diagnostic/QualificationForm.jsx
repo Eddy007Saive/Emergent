@@ -116,24 +116,17 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label className="flex items-center gap-2 text-foreground">
-                    <MapPin className="w-4 h-4 text-muted-foreground" />
-                    Logements actuels
+                    <Home className="w-4 h-4 text-muted-foreground" />
+                    Nombre de logements actuels
                   </Label>
-                  <Select
+                  <Input
+                    type="number"
+                    min="1"
+                    placeholder="Ex: 25"
                     value={formData.logementsActuels}
-                    onValueChange={(value) => handleChange('logementsActuels', value)}
-                  >
-                    <SelectTrigger className={errors.logementsActuels ? 'border-destructive' : ''}>
-                      <SelectValue placeholder="Sélectionne" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {LOGEMENTS_ACTUELS_OPTIONS.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onChange={(e) => handleChange('logementsActuels', e.target.value)}
+                    className={errors.logementsActuels ? 'border-destructive' : ''}
+                  />
                   {errors.logementsActuels && (
                     <p className="text-xs text-destructive">{errors.logementsActuels}</p>
                   )}
@@ -142,23 +135,16 @@ export default function QualificationForm({ initialValues, onSubmit, onBack }) {
                 <div className="space-y-2">
                   <Label className="flex items-center gap-2 text-foreground">
                     <Target className="w-4 h-4 text-muted-foreground" />
-                    Objectif à 12 mois
+                    Objectif à 12 mois (nb logements)
                   </Label>
-                  <Select
+                  <Input
+                    type="number"
+                    min="0"
+                    placeholder="Ex: 40"
                     value={formData.objectif12Mois}
-                    onValueChange={(value) => handleChange('objectif12Mois', value)}
-                  >
-                    <SelectTrigger className={errors.objectif12Mois ? 'border-destructive' : ''}>
-                      <SelectValue placeholder="Sélectionne" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {OBJECTIF_12_MOIS_OPTIONS.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
-                          {option.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                    onChange={(e) => handleChange('objectif12Mois', e.target.value)}
+                    className={errors.objectif12Mois ? 'border-destructive' : ''}
+                  />
                   {errors.objectif12Mois && (
                     <p className="text-xs text-destructive">{errors.objectif12Mois}</p>
                   )}
