@@ -44,10 +44,10 @@ const DELAI_REPONSE_OPTIONS = [
 
 const BUDGET_OPTIONS = [
   { value: '0', label: '0 € - Je ne veux pas investir' },
-  { value: '100-300', label: '100 € à 300 € / mois' },
-  { value: '300-500', label: '300 € à 500 € / mois' },
-  { value: '500-1000', label: '500 € à 1 000 € / mois' },
-  { value: '>1000', label: 'Plus de 1 000 € / mois' },
+  { value: '500-1000', label: 'De 500 € à 1 000 €' },
+  { value: '1000-3000', label: 'De 1 000 € à 3 000 €' },
+  { value: '3000-5000', label: 'De 3 000 € à 5 000 €' },
+  { value: '>5000', label: '+ de 5 000 €' },
 ];
 
 const GMB_OPTIONS = [
