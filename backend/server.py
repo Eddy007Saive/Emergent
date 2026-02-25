@@ -512,7 +512,7 @@ La bonne nouvelle : tu as les bases. En 6-12 mois de travail ciblé, tu peux mul
                     "actions": [
                         f"Audit complet de ta {weakest} actuelle",
                         "Plan d'action ciblé sur les 3 quick wins prioritaires",
-                        "Mise en place des outils manquants"
+                        "Mise en place d'un système opérationnel structuré"
                     ]
                 },
                 {
