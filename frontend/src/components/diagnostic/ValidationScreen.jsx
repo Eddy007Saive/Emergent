@@ -77,10 +77,10 @@ export default function ValidationScreen({
   const getBudgetLabel = (value) => {
     const labels = {
       '0': '0 € - Pas d\'investissement',
-      '100-300': '100 € à 300 € / mois',
-      '300-500': '300 € à 500 € / mois',
-      '500-1000': '500 € à 1 000 € / mois',
-      '>1000': 'Plus de 1 000 € / mois',
+      '500-1000': 'De 500 € à 1 000 €',
+      '1000-3000': 'De 1 000 € à 3 000 €',
+      '3000-5000': 'De 3 000 € à 5 000 €',
+      '>5000': '+ de 5 000 €',
     };
     return labels[value] || value;
   };
