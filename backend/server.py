@@ -76,6 +76,14 @@ class DiagnosticResponse(BaseModel):
     mainBlocker: str
     priority: str
     goodtimeRecommendation: str
+    structureAnalysis: Optional[dict] = None
+    acquisitionAnalysis: Optional[dict] = None
+    valueAnalysis: Optional[dict] = None
+    valorisation: Optional[dict] = None
+    roadmap: Optional[dict] = None
+    mainBlocker: str
+    priority: str
+    goodtimeRecommendation: str
 
 
 # Questions data for context
