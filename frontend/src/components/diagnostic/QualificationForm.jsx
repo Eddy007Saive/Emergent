@@ -5,7 +5,7 @@ import { Label } from '../ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
-import { ArrowLeft, ArrowRight, Target, Euro, Clock, TrendingUp, MapPin, Users, Calendar } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Target, Euro, Clock, TrendingUp, MapPin, Users, Calendar, Home } from 'lucide-react';
 import { toast } from 'sonner';
 
 const LOGEMENTS_ACTUELS_OPTIONS = [
