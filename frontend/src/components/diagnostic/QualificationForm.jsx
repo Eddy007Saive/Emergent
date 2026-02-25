@@ -8,23 +8,6 @@ import { RadioGroup, RadioGroupItem } from '../ui/radio-group';
 import { ArrowLeft, ArrowRight, Target, Euro, Clock, TrendingUp, MapPin, Users, Calendar, Home } from 'lucide-react';
 import { toast } from 'sonner';
 
-const LOGEMENTS_ACTUELS_OPTIONS = [
-  { value: '1-5', label: '1 à 5 logements' },
-  { value: '6-15', label: '6 à 15 logements' },
-  { value: '16-30', label: '16 à 30 logements' },
-  { value: '31-50', label: '31 à 50 logements' },
-  { value: '51-100', label: '51 à 100 logements' },
-  { value: '100+', label: 'Plus de 100 logements' },
-];
-
-const OBJECTIF_12_MOIS_OPTIONS = [
-  { value: 'stable', label: 'Maintenir mon portefeuille actuel' },
-  { value: '+5-10', label: '+5 à 10 logements' },
-  { value: '+10-20', label: '+10 à 20 logements' },
-  { value: '+20-50', label: '+20 à 50 logements' },
-  { value: '+50', label: '+50 logements ou plus' },
-];
-
 const COMMISSION_OPTIONS = [
   { value: '<1500', label: 'Moins de 1 500 €' },
   { value: '1500-2500', label: '1 500 € à 2 500 €' },
