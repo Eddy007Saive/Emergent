@@ -80,9 +80,6 @@ class DiagnosticResponse(BaseModel):
     valueAnalysis: Optional[dict] = None
     valorisation: Optional[dict] = None
     roadmap: Optional[dict] = None
-    mainBlocker: str
-    priority: str
-    goodtimeRecommendation: str
 
 
 # Questions data for context
