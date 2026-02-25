@@ -332,7 +332,7 @@ Compare avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
                     "periode": "Mois 4-6 : Structuration",
                     "objectif": "Créer une vraie organisation",
                     "actions": [
-                        "Mettre en place un outil de gestion des tâches centralisé",
+                        "Mettre en place un système centralisé de gestion des tâches",
                         "Définir des rôles clairs (même si tu cumules plusieurs casquettes)",
                         "Créer un tableau de bord avec tes KPIs clés (CA/logement, taux d'occupation, marge)"
                     ]
