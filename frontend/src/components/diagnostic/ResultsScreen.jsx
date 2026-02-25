@@ -1,9 +1,10 @@
 import React from 'react';
 import { Button } from '../ui/button';
-import { Card, CardContent } from '../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Checkbox } from '../ui/checkbox';
 import { Label } from '../ui/label';
 import { Separator } from '../ui/separator';
+import { Badge } from '../ui/badge';
 import {
   Calendar,
   Mail,
@@ -16,6 +17,13 @@ import {
   ExternalLink,
   AlertCircle,
   Zap,
+  CheckCircle2,
+  ChevronRight,
+  Euro,
+  Clock,
+  ArrowUpRight,
+  BarChart3,
+  Rocket,
 } from 'lucide-react';
 import { BLOCKS } from '../../data/questions';
 import { cn } from '../../lib/utils';
@@ -39,13 +47,12 @@ export default function ResultsScreen({
   };
 
   const handleBookCall = () => {
-    // In production, this would redirect to the calendar link
     toast.info('Redirection vers le calendrier...', {
       description: 'Le lien du calendrier sera configuré par le client.',
     });
   };
 
-  // Use AI analysis if available, otherwise fall back to static segment data
+  // Use AI analysis if available
   const displaySegment = aiAnalysis?.segment || segment.id;
   const displayScore = aiAnalysis?.score || scores.total;
   
@@ -58,6 +65,7 @@ export default function ResultsScreen({
         text: 'text-accent',
         icon: AlertTriangle,
         name: 'Conciergerie artisanale fragile',
+        color: 'accent',
       };
     }
     if (seg === 'transition') {
@@ -67,31 +75,36 @@ export default function ResultsScreen({
         text: 'text-foreground',
         icon: TrendingUp,
         name: 'Entreprise en transition',
+        color: 'warning',
       };
     }
-    // machine
     return {
       bg: 'bg-primary-light',
       border: 'border-primary/30',
       text: 'text-primary',
       icon: Target,
       name: 'Machine en devenir',
+      color: 'success',
     };
   };
 
   const segmentStyles = getSegmentStyles();
   const SegmentIcon = segmentStyles.icon;
 
-  // Get analysis content - prefer AI, fall back to static
+  // Get analysis content
   const diagSummary = aiAnalysis?.diagSummary || segment.message;
   const mainBlocker = aiAnalysis?.mainBlocker || 'Structuration insuffisante';
   const priority = aiAnalysis?.priority || segment.axis;
-  const goodtimeRecommendation = aiAnalysis?.goodtimeRecommendation || 
-    `Goodtime accompagne les conciergeries à passer d'un modèle artisanal à une entreprise structurée avec un moteur d'acquisition local qui fait tomber des lits chaque mois. Si tu veux qu'on regarde ensemble ce qu'il faut structurer en priorité, réserve un créneau.`;
+  const goodtimeRecommendation = aiAnalysis?.goodtimeRecommendation || '';
+  const structureAnalysis = aiAnalysis?.structureAnalysis;
+  const acquisitionAnalysis = aiAnalysis?.acquisitionAnalysis;
+  const valueAnalysis = aiAnalysis?.valueAnalysis;
+  const valorisation = aiAnalysis?.valorisation;
+  const roadmap = aiAnalysis?.roadmap;
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12 pb-8">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10 animate-fade-in">
           <p className="text-muted-foreground mb-2">Résultats pour</p>
@@ -99,7 +112,7 @@ export default function ResultsScreen({
             {userInfo.prenom} {userInfo.nom}
           </h1>
           <p className="text-muted-foreground">
-            {userInfo.ville} • {userInfo.nombreLogements} logements
+            {userInfo.ville} • {userInfo.nombreLogements || aiAnalysis?.units} logements
           </p>
         </div>
 
@@ -109,135 +122,242 @@ export default function ResultsScreen({
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               {/* Score */}
               <div className="flex-shrink-0 text-center md:text-left">
-                <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-card shadow-card">
+                <div className="inline-flex items-center justify-center w-28 h-28 rounded-full bg-card shadow-card">
                   <div>
-                    <span className={cn('text-3xl font-bold', segmentStyles.text)}>
+                    <span className={cn('text-4xl font-bold', segmentStyles.text)}>
                       {displayScore}
                     </span>
-                    <span className="text-muted-foreground text-lg">/44</span>
+                    <span className="text-muted-foreground text-xl">/44</span>
                   </div>
                 </div>
               </div>
 
               {/* Segment Info */}
               <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <SegmentIcon className={cn('w-5 h-5', segmentStyles.text)} />
-                  <span className={cn('font-semibold text-lg', segmentStyles.text)}>
+                <div className="flex items-center gap-2 mb-3">
+                  <SegmentIcon className={cn('w-6 h-6', segmentStyles.text)} />
+                  <span className={cn('font-bold text-xl', segmentStyles.text)}>
                     {segmentStyles.name}
                   </span>
                 </div>
-                <p className="text-foreground leading-relaxed">
-                  {diagSummary}
+                <div className="flex gap-4 text-sm text-muted-foreground">
+                  <span>Structure: <strong className="text-foreground">{scores.structure}/20</strong></span>
+                  <span>Acquisition: <strong className="text-foreground">{scores.acquisition}/18</strong></span>
+                  <span>Valeur: <strong className="text-foreground">{scores.value}/6</strong></span>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Diagnostic Summary */}
+        <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '100ms' }}>
+          <CardContent className="p-6 md:p-8">
+            <div className="prose prose-sm max-w-none text-foreground">
+              {diagSummary.split('\n\n').map((paragraph, idx) => (
+                <p key={idx} className="mb-4 last:mb-0 leading-relaxed text-base">
+                  {paragraph}
                 </p>
-              </div>
+              ))}
             </div>
           </CardContent>
         </Card>
 
-        {/* Score Breakdown */}
-        <div className="grid md:grid-cols-3 gap-4 mb-8">
-          <ScoreCard
-            icon={Building2}
-            title="Structure"
-            score={aiAnalysis?.structureScore || scores.structure}
-            maxScore={BLOCKS.STRUCTURE.maxScore}
-            badgeClass="block-badge-structure"
-            delay="0ms"
-          />
-          <ScoreCard
-            icon={TrendingUp}
-            title="Acquisition"
-            score={aiAnalysis?.acquisitionScore || scores.acquisition}
-            maxScore={BLOCKS.ACQUISITION.maxScore}
-            badgeClass="block-badge-acquisition"
-            delay="100ms"
-          />
-          <ScoreCard
-            icon={Target}
-            title="Valeur"
-            score={aiAnalysis?.valueScore || scores.value}
-            maxScore={BLOCKS.VALUE.maxScore}
-            badgeClass="block-badge-value"
-            delay="200ms"
-          />
-        </div>
-
-        {/* Main Blocker - NEW */}
-        <Card className="mb-6 border-2 border-accent/20 bg-accent-light animate-fade-in" style={{ animationDelay: '250ms' }}>
-          <CardContent className="p-5">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Principal blocage identifié</h4>
-                <p className="text-lg font-medium text-accent">{mainBlocker}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Priority - NEW */}
-        <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '300ms' }}>
-          <CardContent className="p-5">
-            <div className="flex items-start gap-3">
-              <Zap className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-              <div>
-                <h4 className="font-semibold text-foreground mb-1">Priorité n°1 sur 90 jours</h4>
-                <p className="text-muted-foreground leading-relaxed">{priority}</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Detailed Analysis - Only show if no AI analysis (fallback) */}
-        {!aiAnalysis && (
-          <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '350ms' }}>
-            <CardContent className="p-6 md:p-8">
-              <div className="flex items-start gap-3 mb-4">
-                <Lightbulb className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                <h3 className="font-semibold text-lg text-foreground">Analyse détaillée</h3>
-              </div>
-              <div className="prose prose-sm max-w-none text-muted-foreground">
-                {segment.detailedAnalysis.split('\n\n').map((paragraph, idx) => (
-                  <p key={idx} className="mb-4 last:mb-0 leading-relaxed">
-                    {paragraph}
-                  </p>
-                ))}
+        {/* Main Blocker & Priority */}
+        <div className="grid md:grid-cols-2 gap-4 mb-8">
+          <Card className="border-2 border-accent/20 bg-accent-light animate-fade-in" style={{ animationDelay: '150ms' }}>
+            <CardContent className="p-5">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-6 h-6 text-accent flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1 text-sm uppercase tracking-wide">Principal blocage</h4>
+                  <p className="text-lg font-bold text-accent">{mainBlocker}</p>
+                </div>
               </div>
             </CardContent>
           </Card>
+
+          <Card className="border-2 border-primary/20 bg-primary-light animate-fade-in" style={{ animationDelay: '200ms' }}>
+            <CardContent className="p-5">
+              <div className="flex items-start gap-3">
+                <Zap className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-semibold text-foreground mb-1 text-sm uppercase tracking-wide">Priorité n°1 (90 jours)</h4>
+                  <p className="text-foreground leading-relaxed">{priority}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <Separator className="my-10" />
+
+        {/* Detailed Analysis by Block */}
+        <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+          <BarChart3 className="w-6 h-6 text-primary" />
+          Analyse détaillée par domaine
+        </h2>
+
+        {/* Structure Analysis */}
+        {structureAnalysis && (
+          <AnalysisBlock
+            icon={Building2}
+            title="Structure interne"
+            score={structureAnalysis.score}
+            percentage={structureAnalysis.percentage}
+            status={structureAnalysis.status}
+            diagnostic={structureAnalysis.diagnostic}
+            quickWins={structureAnalysis.quickWins}
+            color="primary"
+            delay="250ms"
+          />
         )}
 
-        <Separator className="my-8" />
+        {/* Acquisition Analysis */}
+        {acquisitionAnalysis && (
+          <AnalysisBlock
+            icon={TrendingUp}
+            title="Moteur d'acquisition"
+            score={acquisitionAnalysis.score}
+            percentage={acquisitionAnalysis.percentage}
+            status={acquisitionAnalysis.status}
+            diagnostic={acquisitionAnalysis.diagnostic}
+            quickWins={acquisitionAnalysis.quickWins}
+            color="accent"
+            delay="300ms"
+          />
+        )}
+
+        {/* Value Analysis */}
+        {valueAnalysis && (
+          <AnalysisBlock
+            icon={Target}
+            title="Valeur & revendabilité"
+            score={valueAnalysis.score}
+            percentage={valueAnalysis.percentage}
+            status={valueAnalysis.status}
+            diagnostic={valueAnalysis.diagnostic}
+            quickWins={valueAnalysis.quickWins}
+            color="warm"
+            delay="350ms"
+          />
+        )}
+
+        <Separator className="my-10" />
+
+        {/* Valorisation Section */}
+        {valorisation && (
+          <>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <Euro className="w-6 h-6 text-primary" />
+              Estimation de valorisation
+            </h2>
+
+            <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '400ms' }}>
+              <CardContent className="p-6 md:p-8">
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div className="p-4 rounded-lg bg-muted/50">
+                    <p className="text-sm text-muted-foreground mb-1">Valorisation actuelle estimée</p>
+                    <p className="text-2xl font-bold text-foreground">{valorisation.actuelle}</p>
+                  </div>
+                  <div className="p-4 rounded-lg bg-primary-light border-2 border-primary/20">
+                    <p className="text-sm text-muted-foreground mb-1">Valorisation potentielle</p>
+                    <p className="text-2xl font-bold text-primary">{valorisation.potentielle}</p>
+                  </div>
+                </div>
+                
+                <div className="p-4 rounded-lg bg-accent-light border border-accent/20 mb-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <ArrowUpRight className="w-5 h-5 text-accent" />
+                    <span className="font-semibold text-accent">{valorisation.ecart}</span>
+                  </div>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed">
+                  {valorisation.explication}
+                </p>
+              </CardContent>
+            </Card>
+          </>
+        )}
+
+        {/* Roadmap Section */}
+        {roadmap && (
+          <>
+            <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <Rocket className="w-6 h-6 text-primary" />
+              {roadmap.titre}
+            </h2>
+
+            <div className="space-y-4 mb-10">
+              {roadmap.phases.map((phase, idx) => (
+                <Card 
+                  key={idx} 
+                  className="shadow-card animate-fade-in" 
+                  style={{ animationDelay: `${450 + idx * 50}ms` }}
+                >
+                  <CardContent className="p-5">
+                    <div className="flex items-start gap-4">
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold">
+                        {idx + 1}
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 mb-2">
+                          <h4 className="font-bold text-foreground">{phase.periode}</h4>
+                          <Badge variant="secondary" className="w-fit">{phase.objectif}</Badge>
+                        </div>
+                        <ul className="space-y-2">
+                          {phase.actions.map((action, actionIdx) => (
+                            <li key={actionIdx} className="flex items-start gap-2 text-sm text-muted-foreground">
+                              <ChevronRight className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                              <span>{action}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </>
+        )}
+
+        <Separator className="my-10" />
 
         {/* CTA Section - Goodtime */}
-        <Card className="mb-8 border-2 border-primary/20 bg-primary-light shadow-primary animate-fade-in" style={{ animationDelay: '400ms' }}>
+        <Card className="mb-8 border-2 border-primary shadow-primary animate-fade-in bg-gradient-to-br from-primary-light to-card" style={{ animationDelay: '600ms' }}>
           <CardContent className="p-6 md:p-8">
-            <h3 className="font-bold text-xl text-foreground mb-4">
-              Prochaine étape
+            <h3 className="font-bold text-2xl text-foreground mb-4 flex items-center gap-2">
+              <Lightbulb className="w-6 h-6 text-primary" />
+              Comment Goodtime peut t&apos;aider
             </h3>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              {goodtimeRecommendation}
-            </p>
+            <div className="prose prose-sm max-w-none text-muted-foreground mb-6">
+              {goodtimeRecommendation.split('\n\n').map((paragraph, idx) => (
+                <p key={idx} className="mb-4 last:mb-0 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
             <Button size="lg" onClick={handleBookCall} className="w-full sm:w-auto">
               <Calendar className="w-5 h-5 mr-2" />
-              Réserver un créneau
+              Réserver un appel stratégique
               <ExternalLink className="w-4 h-4 ml-2" />
             </Button>
           </CardContent>
         </Card>
 
         {/* Email Option */}
-        <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '500ms' }}>
+        <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '650ms' }}>
           <CardContent className="p-6">
             <div className="flex items-start gap-4">
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <Mail className="w-5 h-5 text-primary" />
-                  <h4 className="font-semibold text-foreground">Recevoir mon diagnostic par email</h4>
+                  <h4 className="font-semibold text-foreground">Recevoir mon diagnostic complet par email</h4>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Un récapitulatif complet avec tes scores et recommandations sera envoyé à {userInfo.email}.
+                  Un récapitulatif détaillé avec toutes tes analyses et recommandations sera envoyé à {userInfo.email}.
                 </p>
                 <div className="flex items-center gap-3">
                   <Checkbox
@@ -257,24 +377,8 @@ export default function ResultsScreen({
           </CardContent>
         </Card>
 
-        {/* JSON Export - For debugging/integration */}
-        {aiAnalysis && (
-          <Card className="mb-8 shadow-card animate-fade-in bg-muted/30" style={{ animationDelay: '550ms' }}>
-            <CardContent className="p-4">
-              <details className="text-sm">
-                <summary className="cursor-pointer text-muted-foreground hover:text-foreground font-medium">
-                  Voir le JSON complet du diagnostic
-                </summary>
-                <pre className="mt-4 p-4 bg-card rounded-lg overflow-x-auto text-xs">
-                  {JSON.stringify(aiAnalysis, null, 2)}
-                </pre>
-              </details>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Restart */}
-        <div className="text-center animate-fade-in" style={{ animationDelay: '600ms' }}>
+        <div className="text-center animate-fade-in" style={{ animationDelay: '700ms' }}>
           <Button variant="ghost" onClick={onRestart}>
             <RefreshCw className="w-4 h-4 mr-2" />
             Refaire le diagnostic
@@ -291,31 +395,62 @@ export default function ResultsScreen({
   );
 }
 
-function ScoreCard({ icon: Icon, title, score, maxScore, badgeClass, delay }) {
-  const percentage = (score / maxScore) * 100;
-  
+// Analysis Block Component
+function AnalysisBlock({ icon: Icon, title, score, percentage, status, diagnostic, quickWins, color, delay }) {
+  const getStatusBadge = () => {
+    if (percentage >= 70) return { variant: 'default', className: 'bg-green-100 text-green-800 border-green-200' };
+    if (percentage >= 50) return { variant: 'default', className: 'bg-yellow-100 text-yellow-800 border-yellow-200' };
+    return { variant: 'default', className: 'bg-red-100 text-red-800 border-red-200' };
+  };
+
+  const badgeStyle = getStatusBadge();
+
   return (
-    <Card 
-      className="shadow-card animate-fade-in" 
-      style={{ animationDelay: delay }}
-    >
-      <CardContent className="p-5">
-        <div className="flex items-center justify-between mb-3">
-          <span className={cn('block-badge', badgeClass)}>
-            <Icon className="w-3.5 h-3.5" />
+    <Card className="mb-6 shadow-card animate-fade-in" style={{ animationDelay: delay }}>
+      <CardHeader className="pb-2">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <CardTitle className="flex items-center gap-2 text-lg">
+            <Icon className="w-5 h-5 text-primary" />
             {title}
-          </span>
+          </CardTitle>
+          <div className="flex items-center gap-3">
+            <Badge className={badgeStyle.className}>{status}</Badge>
+            <span className="text-lg font-bold text-foreground">{score}</span>
+          </div>
         </div>
-        <div className="flex items-end gap-1 mb-2">
-          <span className="text-2xl font-bold text-foreground">{score}</span>
-          <span className="text-muted-foreground mb-0.5">/{maxScore}</span>
-        </div>
-        <div className="progress-goodtime">
-          <div
-            className="progress-goodtime-indicator"
+        {/* Progress bar */}
+        <div className="w-full h-2 bg-muted rounded-full mt-3">
+          <div 
+            className="h-full bg-primary rounded-full transition-all duration-500"
             style={{ width: `${percentage}%` }}
           />
         </div>
+      </CardHeader>
+      <CardContent className="pt-4">
+        <div className="prose prose-sm max-w-none text-muted-foreground mb-6">
+          {diagnostic.split('\n\n').map((paragraph, idx) => (
+            <p key={idx} className="mb-3 last:mb-0 leading-relaxed">
+              {paragraph}
+            </p>
+          ))}
+        </div>
+
+        {quickWins && quickWins.length > 0 && (
+          <div className="p-4 rounded-lg bg-primary-light border border-primary/20">
+            <h5 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Zap className="w-4 h-4 text-primary" />
+              Quick wins à activer cette semaine
+            </h5>
+            <ul className="space-y-2">
+              {quickWins.map((win, idx) => (
+                <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
+                  <CheckCircle2 className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                  <span>{win}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </CardContent>
     </Card>
   );
