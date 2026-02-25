@@ -363,7 +363,7 @@ Compare avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
 Notre méthode en 4 piliers :
 
 1. STRUCTURATION OPÉRATIONNELLE
-On t'aide à documenter tes process, mettre en place les bons outils, et surtout à DÉLÉGUER pour que tu arrêtes d'être le pompier de service.
+On t'aide à documenter tes process, implémenter un système qui tourne sans toi, et surtout à DÉLÉGUER pour que tu arrêtes d'être le pompier de service.
 
 2. MOTEUR D'ACQUISITION LOCAL  
 On installe un système qui génère des leads propriétaires chaque mois : SEO local, Google Business optimisé, stratégie de contenu ciblée.
