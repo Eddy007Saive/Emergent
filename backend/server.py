@@ -736,12 +736,68 @@ async def root():
 async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
     """Analyze diagnostic answers and generate personalized recommendations"""
     
-    # Get AI analysis
-    analysis = await analyze_diagnostic(
+    # Generate prompt and get segment
+    prompt, segment = generate_analysis_prompt(
         request.userInfo,
         request.answers,
         request.scores
     )
+    
+    # Call OpenAI GPT for personalized analysis
+    try:
+        logger.info(f"Calling OpenAI API for analysis...")
+        completion = openai_client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "Tu es un expert en structuration de conciergeries Airbnb. Tu fournis des analyses business directes et professionnelles en français."},
+                {"role": "user", "content": prompt}
+            ],
+            temperature=0.7,
+            max_tokens=1000
+        )
+        
+        # Parse GPT response
+        gpt_response = completion.choices[0].message.content.strip()
+        logger.info(f"GPT Response received: {gpt_response[:200]}...")
+        
+        # Clean the response if it contains markdown code blocks
+        if gpt_response.startswith("```"):
+            gpt_response = gpt_response.split("```")[1]
+            if gpt_response.startswith("json"):
+                gpt_response = gpt_response[4:]
+        gpt_response = gpt_response.strip()
+        
+        gpt_analysis = json.loads(gpt_response)
+        
+        # Get detailed analysis from deterministic function for structure
+        detailed_analysis = await analyze_diagnostic(
+            request.userInfo,
+            request.answers,
+            request.scores
+        )
+        
+        # Merge GPT personalized text with detailed structure
+        analysis = {
+            'segment': segment,
+            'diagSummary': gpt_analysis.get('diagSummary', detailed_analysis['diagSummary']),
+            'mainBlocker': gpt_analysis.get('mainBlocker', detailed_analysis['mainBlocker']),
+            'priority': gpt_analysis.get('priority', detailed_analysis['priority']),
+            'goodtimeRecommendation': gpt_analysis.get('goodtimeRecommendation', detailed_analysis['goodtimeRecommendation']),
+            'structureAnalysis': detailed_analysis.get('structureAnalysis'),
+            'acquisitionAnalysis': detailed_analysis.get('acquisitionAnalysis'),
+            'valueAnalysis': detailed_analysis.get('valueAnalysis'),
+            'valorisation': detailed_analysis.get('valorisation'),
+            'roadmap': detailed_analysis.get('roadmap')
+        }
+        
+    except Exception as e:
+        logger.error(f"OpenAI API error: {e}")
+        # Fallback to deterministic analysis
+        analysis = await analyze_diagnostic(
+            request.userInfo,
+            request.answers,
+            request.scores
+        )
     
     # Build response
     response = DiagnosticResponse(
