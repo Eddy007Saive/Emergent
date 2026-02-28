@@ -889,25 +889,38 @@ Ton ambition définit ton budget. Tu veux doubler ? Investis en conséquence. Tu
 
 {first_name}, tu fais partie de l'élite. Tu as construit quelque chose qui a de la valeur. Maintenant, la question est : comment maximiser ce potentiel ?
 
-On accompagne les conciergeries matures comme la tienne sur des enjeux de scale massif et de valorisation. Pas du coaching généraliste. Un partenariat stratégique pour aller chercher le maximum.
+On accompagne les conciergeries matures comme la tienne sur des enjeux de scale massif et de valorisation. Pas du coaching généraliste. Un partenariat stratégique et opérationnel pour aller chercher le maximum.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔍 AUDIT STRATÉGIQUE COMPLET
+🎯 DÉLÉGUER POUR ACCÉLÉRER
 
-On passe ta conciergerie au crible :
-• Analyse de ta rentabilité réelle par logement (surprises garanties)
-• Audit de ton organisation et identification des derniers points de friction
-• Évaluation précise de ta capacité d'absorption de croissance
-• Benchmark avec les meilleures conciergeries du marché
+Même à ton niveau, il y a probablement des fonctions que tu portes encore et qui te freinent. L'acquisition, le marketing, certaines fonctions support...
 
-Tu repars avec une vision claire de tes forces, tes faiblesses, et tes leviers de croissance.
+Les conciergeries qui doublent ou triplent leur nombre de logements en 18 mois ont compris une chose : elles investissent massivement dans l'acquisition. Pas 500€/mois. Un budget cohérent avec leur ambition.
+
+Et surtout : elles DÉLÈGUENT l'exécution pour se concentrer sur leur ZONE DE GÉNIE - la stratégie, les relations clés, le développement haut niveau.
+
+C'est exactement ce qu'on propose : prendre en charge les fonctions que tu dois déléguer pour que tu puisses te concentrer sur ce qui crée vraiment de la valeur.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 MOTEUR D'ACQUISITION ULTRA-PERFORMANT
+🔧 IMPLÉMENTATION DU SYSTÈME GOODTIME
 
-Tu as la structure pour absorber la croissance. On va construire le moteur qui va l'alimenter :
+On n'est pas des consultants qui te donnent des conseils. On est des PARTENAIRES OPÉRATIONNELS.
+
+On implémente et on opère pour toi :
+• Notre système d'acquisition complet (on peut le gérer entièrement si tu veux)
+• Nos outils de gestion et de pilotage éprouvés sur des dizaines de conciergeries
+• Notre équipe : acquisition, back-office, support - les fonctions que tu veux déléguer
+
+Tu gardes le contrôle stratégique. On exécute.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 MOTEUR D'ACQUISITION HAUTE PERFORMANCE
+
+Tu as la structure pour absorber la croissance. On va construire ET OPÉRER le moteur qui va l'alimenter :
 
 • SEO local avancé avec stratégie multi-villes si expansion
 • Campagnes publicitaires haute performance (Google, Facebook, LinkedIn)
@@ -915,44 +928,32 @@ Tu as la structure pour absorber la croissance. On va construire le moteur qui v
 • Stratégie de contenu qui te positionne comme leader de ton marché
 • Process de conversion optimisé pour maximiser ton taux de signature
 
-Les conciergeries qui passent de 50 à 150 logements ne comptent pas sur le bouche-à-oreille. Elles ont un système d'acquisition qui tourne à plein régime.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-💰 OPTIMISATION ET VALORISATION
-
-On travaille sur ce qui compte vraiment :
-• Optimisation de ta marge nette par logement
-• Renégociation de tes contrats prestataires
-• Structuration juridique et contractuelle optimale
-• Préparation d'un data room complet pour investisseurs ou acquéreurs
-
-Que tu veuilles scaler, revendre, ou lever des fonds : on te prépare.
+Les conciergeries qui doublent ou triplent leurs logements ne comptent pas sur le bouche-à-oreille. Elles ont un système d'acquisition qui tourne à plein régime - et souvent, elles le délèguent à des experts.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📅 NOTRE PROCESS PREMIUM
 
 1️⃣ APPEL STRATÉGIQUE (45 min)
-Une vraie discussion de CEO à CEO. On analyse ta situation, tes objectifs, et on détermine si on peut vraiment t'aider à les atteindre.
+Une vraie discussion de CEO à CEO. On analyse ta situation, tes objectifs, et on détermine ce qu'on peut prendre en charge pour toi.
 
 2️⃣ AUDIT APPROFONDI (1-2 semaines)
-On passe tout au crible. Tu repars avec un rapport complet et actionnable.
+On passe tout au crible. Tu repars avec un rapport complet et un plan de ce qu'il faut déléguer.
 
 3️⃣ PLAN STRATÉGIQUE 12 MOIS
-Des objectifs ambitieux mais réalistes. Des jalons clairs. Des KPIs précis.
+Des objectifs ambitieux. Des jalons clairs. Et surtout : QUI fait QUOI (toi vs notre équipe).
 
-4️⃣ ACCOMPAGNEMENT HIGH-TOUCH
-Pas du suivi mensuel basique. Un accompagnement rapproché avec accès direct à notre équipe.
+4️⃣ IMPLÉMENTATION ET OPÉRATION
+On déploie nos outils, notre équipe prend en charge les fonctions déléguées, et on pilote ensemble la croissance.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 💎 OÙ TU SERAS DANS 12 MOIS
 
 Avec l'ambition et les moyens nécessaires :
-✅ +50% à +150% de croissance selon tes objectifs
-✅ Un moteur d'acquisition qui génère 20, 30, 50+ leads qualifiés par mois
-✅ Une marge nette optimisée
+✅ Une croissance massive alignée avec tes objectifs
+✅ Un moteur d'acquisition qui génère des leads qualifiés chaque mois
+✅ Du temps libéré pour te concentrer sur ta zone de génie
 ✅ Une structure prête pour une levée de fonds ou une revente
 ✅ Une position de leader sur ton marché local
 
@@ -961,11 +962,11 @@ Avec l'ambition et les moyens nécessaires :
 ⚡ LA DIFFÉRENCE ENTRE CEUX QUI STAGNENT ET CEUX QUI EXPLOSENT
 
 À ton niveau, la différence ne se fait plus sur le talent ou le travail. Elle se fait sur la capacité à :
-• Investir massivement dans l'acquisition
-• S'entourer des bonnes personnes
-• Exécuter avec discipline sur 12 mois
+• Investir massivement dans l'acquisition (ton ambition définit ton budget)
+• Déléguer les bonnes fonctions aux bonnes personnes
+• Se concentrer sur sa zone de génie
 
-Les conciergeries qui dominent leur marché ne sont pas arrivées là par hasard. Elles ont fait le choix d'investir et de s'entourer.
+Les conciergeries qui dominent leur marché ne sont pas arrivées là par hasard. Elles ont fait le choix d'investir, de s'entourer, et de déléguer.
 
 Tu as construit une base exceptionnelle. La question maintenant : est-ce que tu veux rester un bon acteur local, ou devenir LE leader de ton marché ?
 
