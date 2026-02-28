@@ -381,18 +381,32 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
 
 {first_name}, soyons clairs : tu n'as pas besoin d'une formation de plus, d'un énième PDF ou d'un coach qui te dit quoi faire sans mettre les mains dans le cambouis.
 
-Ce dont tu as besoin, c'est d'un PARTENAIRE qui va construire AVEC toi les fondations d'une vraie entreprise.
+Ce dont tu as besoin, c'est d'un PARTENAIRE qui va construire AVEC toi les fondations d'une vraie entreprise. Et surtout, qui va t'aider à DÉLÉGUER pour que tu puisses enfin te concentrer sur ta zone de génie.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🔧 STRUCTURATION OPÉRATIONNELLE COMPLÈTE
+🎯 L'IMPORTANCE DE DÉLÉGUER POUR GRANDIR
 
-On ne te donne pas juste des templates. On CONSTRUIT avec toi :
-• Tes process métier documentés et opérationnels (ménage, check-in, incidents, onboarding...)
-• Un système de gestion centralisé qui te fait gagner 10h+ par semaine
-• Une organisation claire où chacun sait exactement quoi faire, même quand tu n'es pas là
+Dans une conciergerie, tu dois être multi-casquette : commercial, opérationnel, RH, comptable, service client... Tu es partout, donc nulle part vraiment.
 
-Résultat : tu passes de pompier de service à chef d'entreprise qui pilote.
+Le problème : tant que tu restes indispensable sur TOUT, tu ne peux pas grandir. C'est mathématique.
+
+La solution : déléguer intelligemment pour te recentrer sur ta ZONE DE GÉNIE - ce que TOI SEUL peux faire et qui crée vraiment de la valeur. Le reste ? Il faut le confier à des systèmes et des personnes compétentes.
+
+C'est exactement ce qu'on fait chez Goodtime : on t'aide à identifier ce que tu dois garder et ce que tu dois déléguer. Et on t'accompagne dans cette transition.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 IMPLÉMENTATION DU SYSTÈME GOODTIME
+
+On n'est pas des consultants qui te donnent des conseils et te laissent te débrouiller. On est des PARTENAIRES OPÉRATIONNELS.
+
+Concrètement, on IMPLÉMENTE dans ta conciergerie :
+• Nos outils éprouvés : process documentés, templates, systèmes de gestion
+• Notre équipe : on peut prendre en charge certaines fonctions pour toi (acquisition, back-office, support)
+• Nos méthodes : testées sur des dizaines de conciergeries
+
+Tu n'es plus seul. Tu as une équipe Goodtime qui travaille AVEC toi, pas juste qui te dit quoi faire.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -400,23 +414,14 @@ Résultat : tu passes de pompier de service à chef d'entreprise qui pilote.
 
 C'est notre spécialité absolue. On ne te vend pas des leads génériques.
 
-On CONSTRUIT pour toi un système d'acquisition adapté à TA zone, TON positionnement, TES ambitions :
+On CONSTRUIT et on OPÈRE pour toi un système d'acquisition adapté à TA zone :
 • Site web optimisé SEO local qui capte les propriétaires de ta ville
 • Fiche Google Business qui génère des appels entrants chaque semaine
 • Stratégie de contenu qui te positionne comme LA référence locale
 • Campagnes publicitaires ciblées propriétaires (quand tu seras prêt)
 • Process de conversion qui transforme les leads en contrats signés
 
-Ce système T'APPARTIENT. Il continue de générer des leads même si tu arrêtes de travailler avec nous.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📊 PILOTAGE ET PERFORMANCE
-
-Fini les décisions au doigt mouillé :
-• Tableau de bord avec tes KPIs clés en temps réel
-• Suivi de rentabilité par logement (tu vas avoir des surprises...)
-• Rituels de pilotage hebdomadaires pour garder le cap
+Ce système T'APPARTIENT. Mais on peut aussi l'OPÉRER pour toi si tu préfères déléguer cette partie.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -431,8 +436,8 @@ Si on décide d'avancer ensemble, on fait un audit complet de ta conciergerie : 
 3️⃣ PLAN D'ACTION PERSONNALISÉ
 On définit ensemble ton plan sur 3 - 6 - 9 - 12 mois avec des objectifs clairs et mesurables.
 
-4️⃣ ACCOMPAGNEMENT TERRAIN
-On ne te laisse pas seul avec un plan. On t'accompagne dans l'exécution, semaine après semaine.
+4️⃣ IMPLÉMENTATION ET ACCOMPAGNEMENT
+On ne te laisse pas seul avec un plan. On IMPLÉMENTE les outils, on forme ton équipe (ou on intervient directement), et on t'accompagne semaine après semaine.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -442,8 +447,8 @@ En mettant les moyens et l'engagement nécessaires :
 ✅ Une conciergerie qui tourne SANS que tu sois au four et au moulin
 ✅ Des leads propriétaires prévisibles chaque mois (pas du hasard)
 ✅ Une croissance saine et maîtrisée
+✅ Du temps retrouvé pour te concentrer sur ta zone de génie
 ✅ Un vrai actif que tu pourrais revendre ou faire financer
-✅ Du temps retrouvé pour toi, ta famille, ou tes autres projets
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -454,11 +459,11 @@ Chaque mois qui passe, c'est :
 • De l'épuisement qui s'accumule
 • Une conciergerie qui stagne au lieu de se valoriser
 
-Le marché de la location courte durée explose. Les propriétaires cherchent des conciergeries sérieuses. La question n'est pas SI tu dois te structurer, mais QUAND.
+Le marché de la location courte durée explose. Les propriétaires cherchent des conciergeries sérieuses. La question n'est pas SI tu dois te structurer et déléguer, mais QUAND.
 
 Et la réponse, c'est maintenant.
 
-Réserve ton appel stratégique. C'est gratuit, sans engagement, et tu repartiras au minimum avec une vision claire de tes priorités."""
+Réserve ton appel stratégique. C'est gratuit, sans engagement, et tu repartiras au minimum avec une vision claire de tes priorités et de ce que tu dois déléguer."""
 
     elif segment == "transition":
         # --- SEGMENT TRANSITION (19-32 points) ---
