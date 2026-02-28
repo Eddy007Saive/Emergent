@@ -377,28 +377,88 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
             ]
         }
         
-        recommendation = f"""Goodtime existe pour une seule raison : transformer les conciergeries artisanales en entreprises structurées qui génèrent des revenus prévisibles.
+        recommendation = f"""🎯 CE QUE GOODTIME VA CHANGER POUR TOI
 
-Notre mission avec toi :
+{first_name}, soyons clairs : tu n'as pas besoin d'une formation de plus, d'un énième PDF ou d'un coach qui te dit quoi faire sans mettre les mains dans le cambouis.
 
-1. STRUCTURATION OPÉRATIONNELLE
-On met en place les process et systèmes qui te permettent de sortir de l'opérationnel. Fini d'être le pompier de service 24h/24.
+Ce dont tu as besoin, c'est d'un PARTENAIRE qui va construire AVEC toi les fondations d'une vraie entreprise.
 
-2. CONSTRUCTION D'UN MOTEUR D'ACQUISITION SUR MESURE
-On ne te vend pas des leads. On CONSTRUIT avec toi un système d'acquisition qui t'appartient et qui génère des propriétaires qualifiés chaque mois. SEO local, Google Business, stratégie de contenu, publicité ciblée - on active les bons leviers pour ta zone.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-3. TRANSFORMATION EN ACTIF VALORISABLE
-Une conciergerie qui dépend de toi ne vaut rien. Une conciergerie structurée avec une acquisition prévisible, c'est un actif que tu peux revendre, financer, ou faire tourner sans toi.
+🔧 STRUCTURATION OPÉRATIONNELLE COMPLÈTE
 
-Lors de notre entretien, nous évaluerons en détail le niveau de maturité de ton entreprise et nous définirons ensemble un plan d'action précis sur 3 - 6 - 9 - 12 mois.
+On ne te donne pas juste des templates. On CONSTRUIT avec toi :
+• Tes process métier documentés et opérationnels (ménage, check-in, incidents, onboarding...)
+• Un système de gestion centralisé qui te fait gagner 10h+ par semaine
+• Une organisation claire où chacun sait exactement quoi faire, même quand tu n'es pas là
 
-À l'issue des 12 mois, en mettant les moyens nécessaires et en te donnant les moyens de réussir, tu auras :
-• Une entreprise qui tourne toute seule
-• Des leads prévisibles chaque mois
-• Une croissance saine et pilotée
-• Un vrai actif valorisable
+Résultat : tu passes de pompier de service à chef d'entreprise qui pilote.
 
-Fini le bricolage. Il est temps de passer à l'action et d'investir dans ta réussite."""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 TON MOTEUR D'ACQUISITION SUR MESURE
+
+C'est notre spécialité absolue. On ne te vend pas des leads génériques.
+
+On CONSTRUIT pour toi un système d'acquisition adapté à TA zone, TON positionnement, TES ambitions :
+• Site web optimisé SEO local qui capte les propriétaires de ta ville
+• Fiche Google Business qui génère des appels entrants chaque semaine
+• Stratégie de contenu qui te positionne comme LA référence locale
+• Campagnes publicitaires ciblées propriétaires (quand tu seras prêt)
+• Process de conversion qui transforme les leads en contrats signés
+
+Ce système T'APPARTIENT. Il continue de générer des leads même si tu arrêtes de travailler avec nous.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 PILOTAGE ET PERFORMANCE
+
+Fini les décisions au doigt mouillé :
+• Tableau de bord avec tes KPIs clés en temps réel
+• Suivi de rentabilité par logement (tu vas avoir des surprises...)
+• Rituels de pilotage hebdomadaires pour garder le cap
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 COMMENT ÇA SE PASSE CONCRÈTEMENT ?
+
+1️⃣ APPEL STRATÉGIQUE (30 min)
+On analyse ensemble ton diagnostic, on identifie tes priorités et on vérifie qu'on peut vraiment t'aider.
+
+2️⃣ AUDIT APPROFONDI
+Si on décide d'avancer ensemble, on fait un audit complet de ta conciergerie : process, acquisition, chiffres, organisation.
+
+3️⃣ PLAN D'ACTION PERSONNALISÉ
+On définit ensemble ton plan sur 3 - 6 - 9 - 12 mois avec des objectifs clairs et mesurables.
+
+4️⃣ ACCOMPAGNEMENT TERRAIN
+On ne te laisse pas seul avec un plan. On t'accompagne dans l'exécution, semaine après semaine.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💎 CE QUE TU AURAS DANS 12 MOIS
+
+En mettant les moyens et l'engagement nécessaires :
+✅ Une conciergerie qui tourne SANS que tu sois au four et au moulin
+✅ Des leads propriétaires prévisibles chaque mois (pas du hasard)
+✅ Une croissance saine et maîtrisée
+✅ Un vrai actif que tu pourrais revendre ou faire financer
+✅ Du temps retrouvé pour toi, ta famille, ou tes autres projets
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ POURQUOI AGIR MAINTENANT ?
+
+Chaque mois qui passe, c'est :
+• Des propriétaires qui signent chez tes concurrents
+• De l'épuisement qui s'accumule
+• Une conciergerie qui stagne au lieu de se valoriser
+
+Le marché de la location courte durée explose. Les propriétaires cherchent des conciergeries sérieuses. La question n'est pas SI tu dois te structurer, mais QUAND.
+
+Et la réponse, c'est maintenant.
+
+Réserve ton appel stratégique. C'est gratuit, sans engagement, et tu repartiras au minimum avec une vision claire de tes priorités."""
 
     elif segment == "transition":
         # --- SEGMENT TRANSITION (19-32 points) ---
