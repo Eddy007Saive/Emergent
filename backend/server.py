@@ -220,6 +220,253 @@ async def analyze_diagnostic(user_info: UserInfo, answers: Dict[str, int], score
     strongest = max(scores_map, key=scores_map.get)
     
     # ============================================
+    # GÉNÉRATION DE LA RECOMMANDATION PERSONNALISÉE
+    # ============================================
+    
+    def generate_personalized_recommendation():
+        """Génère une recommandation 100% personnalisée basée sur les scores réels"""
+        
+        sections = []
+        
+        # INTRO personnalisée selon le profil
+        if structure_pct >= 70 and acquisition_pct >= 70:
+            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+
+{first_name}, tu as déjà fait un excellent travail de structuration. Avec {structure_score}/20 en structure et {acquisition_score}/18 en acquisition, tu fais partie des conciergeries les mieux organisées du marché.
+
+La question maintenant : comment optimiser et accélérer ? Comment passer de "ça tourne bien" à "ça cartonne" ?
+
+On accompagne les conciergeries matures comme la tienne pour maximiser leur potentiel et accélérer leur croissance."""
+        
+        elif structure_pct >= 60 and acquisition_pct < 50:
+            intro = f"""🎯 CE QUE GOODTIME VA DÉBLOQUER POUR TOI
+
+{first_name}, ta structure est solide ({structure_score}/20). Tu as fait le travail d'organisation, tu n'es plus dans le chaos opérationnel.
+
+Mais ton acquisition ({acquisition_score}/18) est clairement ton point faible. C'est là que tu perds de la croissance. Les propriétaires sont là, ils cherchent des conciergeries - mais ils ne te trouvent pas.
+
+C'est exactement notre spécialité : construire des moteurs d'acquisition qui génèrent des leads prévisibles."""
+        
+        elif structure_pct < 50 and acquisition_pct >= 60:
+            intro = f"""🎯 CE QUE GOODTIME VA CHANGER POUR TOI
+
+{first_name}, tu sais attirer des propriétaires ({acquisition_score}/18 en acquisition). C'est une vraie force.
+
+Mais ta structure ({structure_score}/20) ne suit pas. Tu risques de te noyer si tu grandis trop vite avec une organisation fragile.
+
+On va consolider tes fondations pour que tu puisses absorber la croissance sans exploser."""
+        
+        elif structure_pct < 40:
+            intro = f"""🎯 CE QUE GOODTIME VA CHANGER POUR TOI
+
+{first_name}, soyons directs : avec {structure_score}/20 en structure, tu es encore trop dans l'opérationnel. Tu passes ton temps à éteindre des feux au lieu de développer ton business.
+
+Ce dont tu as besoin, c'est d'un PARTENAIRE qui va construire AVEC toi les fondations d'une vraie entreprise. Pas des conseils théoriques - une vraie transformation opérationnelle."""
+        
+        else:
+            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+
+{first_name}, ton diagnostic révèle un profil intéressant : {structure_score}/20 en structure, {acquisition_score}/18 en acquisition, {value_score}/6 en valeur.
+
+On travaille avec des conciergeries exactement comme la tienne. On sait identifier les leviers de croissance et les activer."""
+        
+        sections.append(intro)
+        
+        # SECTION STRUCTURE - seulement si pertinent
+        if structure_pct < 60:
+            structure_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 SORTIR DE L'OPÉRATIONNEL
+
+Avec {structure_score}/20 en structure, tu es encore trop présent dans le quotidien. Tu dois reprendre ta place de GÉRANT et te concentrer sur ta zone de génie.
+
+Ce qu'on met en place avec toi :
+• Des process clairs et documentés que ton équipe/prestataires peuvent suivre sans toi
+• Un système de gestion centralisé qui te fait gagner des heures chaque semaine
+• Une organisation où tu n'es plus le point de passage obligé pour tout
+
+Notre équipe peut aussi prendre en charge certaines fonctions (back-office, support) pour accélérer ta sortie de l'opérationnel."""
+            sections.append(structure_section)
+        
+        elif structure_pct >= 60 and structure_pct < 80:
+            structure_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 OPTIMISATION DE TA STRUCTURE
+
+Ta structure est correcte ({structure_score}/20) mais il reste des optimisations à faire :
+• Identifier et éliminer les derniers points de friction
+• Automatiser ce qui peut encore l'être
+• Préparer ton organisation à absorber plus de volume
+
+On t'aide à passer de "ça fonctionne" à "c'est une machine bien huilée"."""
+            sections.append(structure_section)
+        
+        elif structure_pct >= 80:
+            structure_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ TA STRUCTURE EST SOLIDE
+
+Avec {structure_score}/20, ta structure est au top. Tu as fait le travail.
+
+On va se concentrer sur les autres leviers de croissance plutôt que de réinventer ce qui marche déjà."""
+            sections.append(structure_section)
+        
+        # SECTION ACQUISITION - toujours présente mais adaptée
+        if acquisition_pct < 40:
+            acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 CONSTRUIRE TON MOTEUR D'ACQUISITION (PRIORITÉ ABSOLUE)
+
+Avec {acquisition_score}/18, ton acquisition est ton plus gros frein. Tu vis au rythme du hasard et du bouche-à-oreille.
+
+C'est notre spécialité absolue. On va CONSTRUIRE et OPÉRER pour toi :
+• Un site web optimisé SEO local qui capte les propriétaires de {user_info.city}
+• Une fiche Google Business qui génère des appels entrants réguliers
+• Une stratégie de contenu qui te positionne comme LA référence locale
+• Un process de conversion pour transformer les leads en contrats signés
+
+Ce système T'APPARTIENT. Et si tu veux, on peut l'opérer pour toi."""
+            sections.append(acquisition_section)
+        
+        elif acquisition_pct < 60:
+            acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 BOOSTER TON ACQUISITION
+
+Avec {acquisition_score}/18, ton acquisition existe mais n'est pas encore prévisible. Tu ne sais pas combien de leads tu auras le mois prochain.
+
+On va structurer et amplifier ce qui fonctionne :
+• Optimiser tes canaux actuels (SEO, Google Business, réseaux)
+• Mettre en place un vrai pipeline de suivi des leads
+• Activer de nouveaux canaux adaptés à {user_info.city}
+• Créer de la prévisibilité dans ton acquisition"""
+            sections.append(acquisition_section)
+        
+        elif acquisition_pct < 80:
+            acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 ACCÉLÉRER TON ACQUISITION
+
+Ton acquisition fonctionne ({acquisition_score}/18). La question : comment passer à l'échelle supérieure ?
+
+On peut activer des leviers plus puissants :
+• Campagnes publicitaires ciblées propriétaires
+• Partenariats stratégiques (agents immobiliers, notaires)
+• Expansion géographique si tu veux sortir de {user_info.city}
+• Automatisation de ton nurturing pour convertir plus"""
+            sections.append(acquisition_section)
+        
+        else:
+            acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ TON ACQUISITION EST PERFORMANTE
+
+Avec {acquisition_score}/18, ton moteur d'acquisition tourne bien. 
+
+On peut t'aider à l'optimiser (réduire le coût par lead, améliorer la conversion) ou à le dupliquer si tu veux t'étendre géographiquement."""
+            sections.append(acquisition_section)
+        
+        # SECTION VALEUR - si pertinent
+        if value_pct < 50:
+            value_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💎 CONSTRUIRE UN ACTIF VALORISABLE
+
+Avec {value_score}/6 en valeur, ta conciergerie dépend encore trop de toi. Un acheteur potentiel verrait un risque, pas une opportunité.
+
+On travaille sur :
+• La formalisation de tous tes contrats propriétaires (au nom de ta structure)
+• La réduction de ta dépendance personnelle dans les relations clients
+• La documentation de ton modèle pour qu'il soit reproductible"""
+            sections.append(value_section)
+        
+        # SECTION SYSTÈME GOODTIME
+        systeme_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 LE SYSTÈME GOODTIME
+
+On n'est pas des consultants qui donnent des conseils et disparaissent. On est des PARTENAIRES OPÉRATIONNELS.
+
+Concrètement, on implémente chez toi :
+• Nos outils éprouvés (process, templates, systèmes de gestion)
+• Notre équipe si tu veux déléguer certaines fonctions
+• Nos méthodes testées sur des dizaines de conciergeries
+
+Tu n'es plus seul. Tu as une équipe Goodtime qui travaille AVEC toi."""
+        sections.append(systeme_section)
+        
+        # SECTION PROCESS
+        process_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 COMMENT ÇA SE PASSE ?
+
+1️⃣ APPEL STRATÉGIQUE (30 min)
+On analyse ton diagnostic ensemble et on identifie les priorités pour TA situation.
+
+2️⃣ AUDIT APPROFONDI
+On passe ta conciergerie au crible : {("structure, " if structure_pct < 70 else "")}{"acquisition, " if acquisition_pct < 70 else ""}organisation, rentabilité.
+
+3️⃣ PLAN D'ACTION SUR MESURE
+Un plan adapté à TON profil avec des jalons à 3 - 6 - 9 - 12 mois.
+
+4️⃣ IMPLÉMENTATION
+On déploie les outils, on forme (ou on opère), on t'accompagne."""
+        sections.append(process_section)
+        
+        # SECTION RÉSULTATS - personnalisée
+        if structure_pct < 50:
+            resultats = """✅ Une conciergerie qui tourne SANS que tu sois au four et au moulin
+✅ Du temps retrouvé pour te concentrer sur ce qui compte vraiment"""
+        else:
+            resultats = """✅ Une organisation optimisée et scalable
+✅ Plus de temps pour le développement stratégique"""
+        
+        if acquisition_pct < 60:
+            resultats += """
+✅ Des leads propriétaires prévisibles chaque mois
+✅ Un moteur d'acquisition qui tourne en continu"""
+        else:
+            resultats += """
+✅ Une acquisition amplifiée et optimisée
+✅ Un coût par lead réduit"""
+        
+        resultats += """
+✅ Une croissance saine et maîtrisée
+✅ Un vrai actif valorisable"""
+        
+        resultats_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💎 CE QUE TU AURAS DANS 12 MOIS
+
+En mettant les moyens et l'engagement nécessaires :
+{resultats}"""
+        sections.append(resultats_section)
+        
+        # SECTION CTA - personnalisée
+        if weakest == "acquisition":
+            urgence = "Chaque mois sans acquisition structurée, c'est des propriétaires qui signent chez tes concurrents."
+        elif weakest == "structure":
+            urgence = "Chaque mois dans l'opérationnel, c'est de l'énergie perdue et une croissance bridée."
+        else:
+            urgence = "Chaque mois qui passe, c'est de la valeur que tu ne construis pas."
+        
+        cta_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ POURQUOI AGIR MAINTENANT ?
+
+{urgence}
+
+Le marché de la location courte durée explose. Les propriétaires cherchent des conciergeries professionnelles à {user_info.city} et ailleurs. Ils vont signer quelque part.
+
+Réserve ton appel stratégique. C'est gratuit, sans engagement, et tu repartiras avec une vision claire de tes priorités."""
+        sections.append(cta_section)
+        
+        return "\n\n".join(sections)
+    
+    # Générer la recommandation personnalisée
+    recommendation = generate_personalized_recommendation()
+    
+    # ============================================
     # ANALYSE DÉTAILLÉE PAR SEGMENT
     # ============================================
     
