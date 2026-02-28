@@ -377,23 +377,28 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
             ]
         }
         
-        recommendation = f"""Goodtime accompagne les gérants comme toi à transformer leur conciergerie artisanale en vraie entreprise structurée.
+        recommendation = f"""Goodtime existe pour une seule raison : transformer les conciergeries artisanales en entreprises structurées qui génèrent des revenus prévisibles.
 
-Notre méthode en 4 piliers :
+Notre mission avec toi :
 
 1. STRUCTURATION OPÉRATIONNELLE
-On t'aide à documenter tes process, implémenter un système qui tourne sans toi, et surtout à DÉLÉGUER pour que tu arrêtes d'être le pompier de service.
+On met en place les process et systèmes qui te permettent de sortir de l'opérationnel. Fini d'être le pompier de service 24h/24.
 
-2. MOTEUR D'ACQUISITION LOCAL  
-On installe un système qui génère des leads propriétaires chaque mois : SEO local, Google Business optimisé, stratégie de contenu ciblée.
+2. CONSTRUCTION D'UN MOTEUR D'ACQUISITION SUR MESURE
+On ne te vend pas des leads. On CONSTRUIT avec toi un système d'acquisition qui t'appartient et qui génère des propriétaires qualifiés chaque mois. SEO local, Google Business, stratégie de contenu, publicité ciblée - on active les bons leviers pour ta zone.
 
-3. PILOTAGE PAR LES CHIFFRES
-On met en place les tableaux de bord qui te permettent de savoir exactement où tu en es et où tu vas.
+3. TRANSFORMATION EN ACTIF VALORISABLE
+Une conciergerie qui dépend de toi ne vaut rien. Une conciergerie structurée avec une acquisition prévisible, c'est un actif que tu peux revendre, financer, ou faire tourner sans toi.
 
-4. VALORISATION PATRIMONIALE
-On structure ton activité pour qu'elle devienne un actif vendable, finançable, et qui peut tourner sans toi.
+Lors de notre entretien, nous évaluerons en détail le niveau de maturité de ton entreprise et nous définirons ensemble un plan d'action précis sur 3 - 6 - 9 - 12 mois.
 
-Résultat : en 12 mois, tu passes d'un job qui te bouffe à une entreprise qui te rapporte et que tu pourrais revendre."""
+À l'issue des 12 mois, en mettant les moyens nécessaires et en te donnant les moyens de réussir, tu auras :
+• Une entreprise qui tourne toute seule
+• Des leads prévisibles chaque mois
+• Une croissance saine et pilotée
+• Un vrai actif valorisable
+
+Fini le bricolage. Il est temps de passer à l'action et d'investir dans ta réussite."""
 
     elif segment == "transition":
         # --- SEGMENT TRANSITION (19-32 points) ---
