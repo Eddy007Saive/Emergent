@@ -860,7 +860,7 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
             'structureAnalysis': detailed_analysis.get('structureAnalysis'),
             'acquisitionAnalysis': detailed_analysis.get('acquisitionAnalysis'),
             'valueAnalysis': detailed_analysis.get('valueAnalysis'),
-            'valorisation': detailed_analysis.get('valorisation'),
+            'investmentLesson': detailed_analysis.get('investmentLesson'),
             'roadmap': detailed_analysis.get('roadmap')
         }
         
