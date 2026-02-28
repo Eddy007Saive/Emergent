@@ -893,7 +893,7 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         structureAnalysis=analysis.get('structureAnalysis'),
         acquisitionAnalysis=analysis.get('acquisitionAnalysis'),
         valueAnalysis=analysis.get('valueAnalysis'),
-        valorisation=analysis.get('valorisation'),
+        investmentLesson=analysis.get('investmentLesson'),
         roadmap=analysis.get('roadmap')
     )
     
