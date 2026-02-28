@@ -589,25 +589,30 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
             ]
         }
         
-        recommendation = f"""Goodtime travaille avec les conciergeries en transition comme la tienne pour franchir le cap décisif.
+        recommendation = f"""Goodtime accompagne les conciergeries en transition comme la tienne pour franchir définitivement ce plafond de verre.
 
-Tu as déjà les bases - maintenant il faut structurer pour scaler.
+Tu as les bases. Ce qu'il te manque, c'est un système structuré et un moteur d'acquisition qui tourne.
 
-Notre accompagnement pour ton profil :
+Ce qu'on fait avec toi :
 
-1. DIAGNOSTIC APPROFONDI
-On identifie précisément ce qui bloque ta croissance et on priorise les chantiers.
+1. CONSOLIDATION DE TA STRUCTURE
+On identifie et on corrige les failles qui te font replonger dans l'opérationnel. On construit des process solides qui tiennent même quand tu n'es pas là.
 
-2. CONSOLIDATION CIBLÉE
-On renforce ton point faible ({weakest}) avec des méthodes éprouvées sur des dizaines de conciergeries.
+2. CONSTRUCTION D'UN MOTEUR D'ACQUISITION SUR MESURE
+C'est notre spécialité. On ne te donne pas des leads génériques. On CONSTRUIT avec toi un système d'acquisition adapté à ta zone, à ton positionnement, à tes ambitions. Un système qui t'appartient et qui génère des propriétaires qualifiés mois après mois.
 
-3. MOTEUR D'ACQUISITION
-On installe ou on optimise ton système d'acquisition pour que tu aies des leads prévisibles chaque mois.
+3. TRANSFORMATION EN ENTREPRISE PILOTÉE
+Fini le bricolage et les décisions au doigt mouillé. On met en place les indicateurs et les rituels qui te permettent de piloter ta croissance sereinement.
 
-4. PRÉPARATION AU SCALE
-On structure ton organisation pour qu'elle absorbe la croissance sans que tu replonges dans l'opérationnel.
+Lors de notre entretien, nous évaluerons en détail le niveau de maturité de ton entreprise et nous définirons ensemble un plan d'action précis sur 3 - 6 - 9 - 12 mois.
 
-Résultat : en 12 mois, tu passes du plafond de verre à une croissance maîtrisée, avec une valorisation qui double."""
+À l'issue des 12 mois, en mettant les moyens nécessaires :
+• Une entreprise qui tourne sans que tu sois au four et au moulin
+• Un flux de leads prévisible et régulier  
+• Une croissance maîtrisée et saine
+• Un vrai actif valorisable
+
+C'est le moment d'investir dans ta réussite. Le marché est là, les propriétaires cherchent des conciergeries sérieuses. La question est : est-ce qu'ils vont te trouver, ou aller chez la concurrence ?"""
 
     else:
         # --- SEGMENT MACHINE (33-44 points) ---
