@@ -84,16 +84,25 @@ export default function DiagnosticPage() {
   // Send data to webhook during validation
   const handleValidation = useCallback(async () => {
     setIsValidating(true);
+    console.log('=== VALIDATION STARTED ===');
     
     const scores = calculateScores(answers);
+    console.log('Scores calculated:', scores);
     
     try {
       // Get AI analysis from backend
+      console.log('Calling API with userInfo:', userInfo);
+      console.log('Qualification:', qualification);
+      
       const analysis = await analyzeDiagnostic(
         { ...userInfo, nombreLogements: qualification.logementsActuels },
         answers,
         scores
       );
+      
+      console.log('=== API RESPONSE RECEIVED ===');
+      console.log('Analysis:', analysis);
+      
       setAiAnalysis(analysis);
       
       // Build questions with answers for webhook
