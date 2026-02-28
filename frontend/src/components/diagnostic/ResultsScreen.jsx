@@ -378,6 +378,33 @@ export default function ResultsScreen({
           </CardContent>
         </Card>
 
+        {/* CTA - Réserver un appel */}
+        <Card className="mb-8 shadow-card border-2 border-primary bg-gradient-to-br from-primary/5 to-primary/10 animate-fade-in" style={{ animationDelay: '650ms' }}>
+          <CardContent className="p-6 md:p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+              <Calendar className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              Prêt à passer à l'action ?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              Si tu n'as pas encore réservé ton appel découverte, c'est le moment ! 
+              30 minutes gratuites pour échanger sur ta situation et définir tes priorités.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-white px-8"
+              onClick={() => window.open('https://calendly.com/goodtime', '_blank')}
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Réserver mon appel découverte
+            </Button>
+            <p className="text-xs text-muted-foreground mt-4">
+              Gratuit • Sans engagement • 30 minutes
+            </p>
+          </CardContent>
+        </Card>
+
         {/* Restart */}
         <div className="text-center animate-fade-in" style={{ animationDelay: '700ms' }}>
           <Button variant="ghost" onClick={onRestart}>
