@@ -178,12 +178,17 @@ export default function DiagnosticPage() {
         // Don't block the user if webhook fails
       }
       
+      console.log('=== MOVING TO RESULTS ===');
       setCurrentStep(STEPS.RESULTS);
       
     } catch (error) {
-      console.error('Validation error:', error);
+      console.error('=== VALIDATION ERROR ===');
+      console.error('Error details:', error);
+      console.error('Error response:', error.response?.data);
+      console.error('Error message:', error.message);
       toast.error('Erreur lors de l\'analyse. Réessaie.');
     } finally {
+      console.log('=== VALIDATION COMPLETE ===');
       setIsValidating(false);
     }
   }, [userInfo, qualification, answers]);
