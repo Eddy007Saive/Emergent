@@ -518,12 +518,32 @@ La bonne nouvelle : tu as les bases. En 6-12 mois de travail ciblé, tu peux mul
             ]
         }
         
-        # Estimation valorisation
-        valorisation = {
-            "actuelle": "1.5x à 2.5x le CA annuel",
-            "potentielle": "3x à 5x le CA annuel avec optimisation",
-            "ecart": f"Potentiel d'augmentation de 50% à 100% de la valorisation",
-            "explication": "Tu as dépassé le stade artisanal mais tu n'as pas encore atteint le niveau 'machine'. C'est la zone où le travail de structuration a le plus d'impact sur la valorisation."
+        # Leçon business sur l'investissement
+        investment_lesson = {
+            "titre": "Ce qui sépare les conciergeries qui stagnent de celles qui explosent",
+            "message": f"""{first_name}, tu es à un tournant.
+
+Tu as posé des bases, tu as une activité qui fonctionne. Mais tu ressens ce plafond de verre. Et je vais te dire pourquoi tu n'arrives pas à le franchir.
+
+95% des gérants de conciergerie font la même erreur : ils considèrent l'investissement en acquisition comme une dépense optionnelle. "Quand j'aurai plus de trésorerie, j'investirai dans la com." C'est exactement l'inverse qu'il faut faire.
+
+La conciergerie est un business de RÉCURRENT. Chaque propriétaire signé te rapporte des commissions pendant des mois, voire des années. Un propriétaire acquis pour 200€ peut te rapporter 5 000€, 10 000€ ou plus sur sa durée de vie.
+
+Le ROI de l'acquisition en conciergerie est parmi les plus élevés de tous les secteurs. Mais tu hésites à investir 1 000€/mois pour construire un moteur qui te rapportera 10x, 20x plus ?
+
+Voici la vérité : ton ambition définit ton budget.
+• Tu veux rester à ton niveau actuel ? Continue comme ça.
+• Tu veux doubler, tripler ? Il faut investir proportionnellement.
+
+Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. Ce n'est pas un choix, c'est une loi du business.
+
+La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris que l'investissement en acquisition est un ACTIF, pas une charge. Plus tu construis un moteur d'acquisition puissant, plus tu vas chercher de nouveaux leads, plus ton entreprise prend de la valeur.""",
+            "keyPoints": [
+                "L'acquisition est un actif qui s'apprécie, pas une dépense qui disparaît",
+                "Ton ambition définit ton budget d'investissement",
+                "Le récurrent de la conciergerie rend le ROI de l'acquisition exceptionnel",
+                "Pas de franchissement du plafond de verre sans investissement structuré"
+            ]
         }
         
         # Roadmap 12 mois
