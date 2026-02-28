@@ -1123,13 +1123,14 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         )
         
         # Merge GPT personalized text with detailed structure
-        # Note: We always use our detailed goodtimeRecommendation, not GPT's short version
+        # IMPORTANT: mainBlocker et priority sont TOUJOURS calculés de façon déterministe
+        # GPT ne génère que le diagSummary pour le style - pas les données critiques
         analysis = {
             'segment': segment,
             'diagSummary': gpt_analysis.get('diagSummary', detailed_analysis['diagSummary']),
-            'mainBlocker': gpt_analysis.get('mainBlocker', detailed_analysis['mainBlocker']),
-            'priority': gpt_analysis.get('priority', detailed_analysis['priority']),
-            'goodtimeRecommendation': detailed_analysis['goodtimeRecommendation'],  # Always use our detailed version
+            'mainBlocker': detailed_analysis['mainBlocker'],  # TOUJOURS déterministe
+            'priority': detailed_analysis['priority'],  # TOUJOURS déterministe
+            'goodtimeRecommendation': detailed_analysis['goodtimeRecommendation'],
             'structureAnalysis': detailed_analysis.get('structureAnalysis'),
             'acquisitionAnalysis': detailed_analysis.get('acquisitionAnalysis'),
             'valueAnalysis': detailed_analysis.get('valueAnalysis'),
