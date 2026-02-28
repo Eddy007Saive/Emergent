@@ -382,6 +382,38 @@ On travaille sur :
 • La documentation de ton modèle pour qu'il soit solide dans la durée"""
             sections.append(value_section)
         
+        # SECTION OPTIMISATION DES COÛTS - adaptée au profil
+        if structure_pct >= 60:
+            # Profil avancé - optimisation fine
+            costs_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 OPTIMISATION DE TES COÛTS
+
+Avec une structure déjà en place, on peut travailler sur l'optimisation de ta rentabilité :
+• Audit de tes coûts prestataires (ménage, linge, maintenance) et renégociation
+• Mutualisation des ressources pour réduire le coût par logement
+• Automatisation des tâches répétitives pour gagner en efficacité
+• Accès à notre réseau de prestataires partenaires à tarifs négociés
+
+Nos clients constatent en moyenne 15-25% d'économies sur leurs coûts opérationnels."""
+            sections.append(costs_section)
+        else:
+            # Profil en développement - structurer pour économiser
+            costs_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💰 OPTIMISER TES COÛTS DÈS LE DÉPART
+
+Bonne nouvelle : en structurant ton activité, tu vas aussi réduire tes coûts.
+
+Ce qu'on met en place :
+• Des process efficaces qui évitent les erreurs coûteuses
+• Une meilleure négociation avec tes prestataires grâce à notre expertise
+• Accès à notre réseau de partenaires à tarifs préférentiels
+• Des outils qui te font gagner du temps (= de l'argent)
+
+Structurer ne coûte pas plus cher - ça permet de dépenser plus intelligemment."""
+            sections.append(costs_section)
+        
         # SECTION SYSTÈME GOODTIME
         systeme_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -393,6 +425,7 @@ Concrètement, on implémente chez toi :
 • Nos outils éprouvés (process, templates, systèmes de gestion)
 • Notre équipe si tu veux déléguer certaines fonctions
 • Nos méthodes testées sur des dizaines de conciergeries
+• Notre réseau de prestataires partenaires à tarifs négociés
 
 Tu n'es plus seul. Tu as une équipe qui travaille AVEC toi."""
         sections.append(systeme_section)
