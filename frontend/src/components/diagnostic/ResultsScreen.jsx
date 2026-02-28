@@ -99,7 +99,7 @@ export default function ResultsScreen({
   const structureAnalysis = aiAnalysis?.structureAnalysis;
   const acquisitionAnalysis = aiAnalysis?.acquisitionAnalysis;
   const valueAnalysis = aiAnalysis?.valueAnalysis;
-  const valorisation = aiAnalysis?.valorisation;
+  const investmentLesson = aiAnalysis?.investmentLesson;
   const roadmap = aiAnalysis?.roadmap;
 
   return (
