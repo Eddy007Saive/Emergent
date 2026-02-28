@@ -19,9 +19,7 @@ import {
   Zap,
   CheckCircle2,
   ChevronRight,
-  Euro,
   Clock,
-  ArrowUpRight,
   BarChart3,
   Rocket,
 } from 'lucide-react';
