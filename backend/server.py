@@ -691,12 +691,31 @@ Pour maximiser ta valorisation :
             ]
         }
         
-        # Estimation valorisation
-        valorisation = {
-            "actuelle": "3x à 5x le CA annuel (ou 5-8x l'EBITDA)",
-            "potentielle": "5x à 8x le CA annuel avec optimisation",
-            "ecart": "Potentiel d'augmentation de 30% à 60% avec les bons leviers",
-            "explication": "À ton niveau, la valorisation dépend surtout de la qualité de ton EBITDA, de la prévisibilité de ta croissance, et de la solidité de tes contrats. Chaque point d'optimisation compte."
+        # Leçon business sur l'investissement
+        investment_lesson = {
+            "titre": "Le levier que même les meilleurs sous-exploitent",
+            "message": f"""{first_name}, tu fais partie de l'élite. Mais même à ton niveau, il y a un levier que tu sous-exploites probablement.
+
+Tu as structuré, tu as délégué, tu as des process. Mais est-ce que ton moteur d'acquisition est vraiment à la hauteur de tes ambitions ?
+
+La plupart des conciergeries matures comme la tienne font une erreur : elles se reposent sur leur réputation et leur bouche-à-oreille. Ça fonctionne, mais ça ne scale pas.
+
+Voici ce que font les conciergeries qui passent de 50 à 150 logements en 18 mois : elles investissent MASSIVEMENT dans l'acquisition. Pas 500€/mois. 3 000€, 5 000€, 10 000€/mois.
+
+Pourquoi ? Parce qu'elles ont compris le calcul :
+• Coût d'acquisition d'un propriétaire : 150-400€
+• Valeur vie client : 10 000 - 30 000€
+• ROI : x25 à x75
+
+À ton niveau, chaque euro investi en acquisition a un effet de levier considérable. Tu as la structure pour absorber la croissance. Tu as les process. Ce qui te manque peut-être, c'est un moteur d'acquisition qui tourne à plein régime.
+
+L'ambition définit le budget. Si tu veux doubler en 12 mois, il faut investir en conséquence. C'est mathématique.""",
+            "keyPoints": [
+                "À ton niveau, l'acquisition est le principal levier de croissance",
+                "Les conciergeries qui explosent investissent massivement et structurellement",
+                "Le ROI de l'acquisition à ton stade est exceptionnel grâce à ta structure",
+                "L'ambition définit le budget : viser haut implique d'investir haut"
+            ]
         }
         
         # Roadmap 12 mois
