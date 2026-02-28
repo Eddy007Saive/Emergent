@@ -649,30 +649,87 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
             ]
         }
         
-        recommendation = f"""Goodtime accompagne les conciergeries en transition comme la tienne pour franchir définitivement ce plafond de verre.
+        recommendation = f"""🎯 CE QUE GOODTIME VA DÉBLOQUER POUR TOI
 
-Tu as les bases. Ce qu'il te manque, c'est un système structuré et un moteur d'acquisition qui tourne.
+{first_name}, tu as fait le plus dur : poser les bases. Tu n'es pas un débutant, tu as une vraie activité qui fonctionne.
 
-Ce qu'on fait avec toi :
+Mais tu le sens : tu es à un carrefour. Soit tu continues comme ça et tu plafonnes. Soit tu structures pour passer au niveau supérieur.
 
-1. CONSOLIDATION DE TA STRUCTURE
-On identifie et on corrige les failles qui te font replonger dans l'opérationnel. On construit des process solides qui tiennent même quand tu n'es pas là.
+On travaille avec des conciergeries exactement comme la tienne. Des gérants qui ont du potentiel mais qui sont bloqués par des trous dans la raquette.
 
-2. CONSTRUCTION D'UN MOTEUR D'ACQUISITION SUR MESURE
-C'est notre spécialité. On ne te donne pas des leads génériques. On CONSTRUIT avec toi un système d'acquisition adapté à ta zone, à ton positionnement, à tes ambitions. Un système qui t'appartient et qui génère des propriétaires qualifiés mois après mois.
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-3. TRANSFORMATION EN ENTREPRISE PILOTÉE
-Fini le bricolage et les décisions au doigt mouillé. On met en place les indicateurs et les rituels qui te permettent de piloter ta croissance sereinement.
+🔧 CONSOLIDATION DE TES FONDATIONS
 
-Lors de notre entretien, nous évaluerons en détail le niveau de maturité de ton entreprise et nous définirons ensemble un plan d'action précis sur 3 - 6 - 9 - 12 mois.
+Tu as des process, mais sont-ils vraiment solides ? On va :
+• Auditer et renforcer tes process critiques pour qu'ils tiennent sous pression
+• Identifier les points de fragilité qui te font replonger dans l'opérationnel
+• Créer une organisation qui absorbe la croissance sans que tu exploses
 
-À l'issue des 12 mois, en mettant les moyens nécessaires :
-• Une entreprise qui tourne sans que tu sois au four et au moulin
-• Un flux de leads prévisible et régulier  
-• Une croissance maîtrisée et saine
-• Un vrai actif valorisable
+Objectif : une structure qui tient même si tu t'absentes 3 semaines.
 
-C'est le moment d'investir dans ta réussite. Le marché est là, les propriétaires cherchent des conciergeries sérieuses. La question est : est-ce qu'ils vont te trouver, ou aller chez la concurrence ?"""
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 TON MOTEUR D'ACQUISITION HAUTE PERFORMANCE
+
+C'est probablement ton plus gros levier de croissance. On va construire :
+• Un système SEO local qui te positionne en première page sur ta zone
+• Une fiche Google Business optimisée qui génère des appels chaque semaine
+• Une stratégie de contenu qui fait de toi LA référence pour les propriétaires
+• Un process de nurturing pour convertir les "pas maintenant" en "oui"
+• Des campagnes publicitaires ciblées quand tu seras prêt à accélérer
+
+Ce moteur T'APPARTIENT. C'est ton actif, pas le nôtre.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 PILOTAGE PROFESSIONNEL
+
+Tu vas piloter ta conciergerie comme un vrai CEO :
+• Dashboard en temps réel de tes KPIs (CA, marge, occupation, acquisition)
+• Suivi de rentabilité par logement (certains te coûtent peut-être de l'argent...)
+• Rituels hebdo pour garder le cap et ajuster rapidement
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 LE PROCESS GOODTIME
+
+1️⃣ APPEL STRATÉGIQUE GRATUIT (30 min)
+On analyse ton diagnostic ensemble et on identifie si on peut vraiment t'aider à atteindre tes objectifs.
+
+2️⃣ AUDIT COMPLET DE TA CONCIERGERIE
+On passe tout au crible : organisation, process, acquisition, rentabilité, équipe.
+
+3️⃣ PLAN D'ACTION SUR 12 MOIS
+Un plan concret avec des jalons à 3 - 6 - 9 - 12 mois. Pas de blabla, des actions.
+
+4️⃣ ACCOMPAGNEMENT DANS L'EXÉCUTION
+On ne te laisse pas seul. On est là chaque semaine pour s'assurer que tu avances.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💎 TA CONCIERGERIE DANS 12 MOIS
+
+Avec l'engagement et les moyens nécessaires :
+✅ Tu auras franchi ton plafond de verre
+✅ Des leads propriétaires prévisibles chaque mois
+✅ Une croissance maîtrisée (+30%, +50%, +100% selon tes ambitions)
+✅ Du temps libéré pour piloter au lieu de tout faire
+✅ Un actif qui a pris de la valeur
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⚡ LA VRAIE QUESTION
+
+Tu es à un moment charnière. Tu peux :
+• Continuer seul et rester bloqué au même niveau
+• Investir dans ta croissance et franchir un cap décisif
+
+Les conciergeries qui réussissent ne sont pas celles qui ont le plus de talent. Ce sont celles qui ont compris qu'il fallait s'entourer et investir pour grandir.
+
+Le marché est en pleine explosion. Les propriétaires cherchent des conciergeries professionnelles. Ils vont signer quelque part. La question est : chez toi ou chez ton concurrent ?
+
+Réserve ton appel stratégique maintenant. 30 minutes qui peuvent changer la trajectoire de ton business."""
 
     else:
         # --- SEGMENT MACHINE (33-44 points) ---
