@@ -1029,12 +1029,13 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         )
         
         # Merge GPT personalized text with detailed structure
+        # Note: We always use our detailed goodtimeRecommendation, not GPT's short version
         analysis = {
             'segment': segment,
             'diagSummary': gpt_analysis.get('diagSummary', detailed_analysis['diagSummary']),
             'mainBlocker': gpt_analysis.get('mainBlocker', detailed_analysis['mainBlocker']),
             'priority': gpt_analysis.get('priority', detailed_analysis['priority']),
-            'goodtimeRecommendation': gpt_analysis.get('goodtimeRecommendation', detailed_analysis['goodtimeRecommendation']),
+            'goodtimeRecommendation': detailed_analysis['goodtimeRecommendation'],  # Always use our detailed version
             'structureAnalysis': detailed_analysis.get('structureAnalysis'),
             'acquisitionAnalysis': detailed_analysis.get('acquisitionAnalysis'),
             'valueAnalysis': detailed_analysis.get('valueAnalysis'),
