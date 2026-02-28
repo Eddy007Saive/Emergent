@@ -658,58 +658,65 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
 
 {first_name}, tu as fait le plus dur : poser les bases. Tu n'es pas un débutant, tu as une vraie activité qui fonctionne.
 
-Mais tu le sens : tu es à un carrefour. Soit tu continues comme ça et tu plafonnes. Soit tu structures pour passer au niveau supérieur.
+Mais tu le sens : tu es à un carrefour. Soit tu continues comme ça et tu plafonnes. Soit tu structures et tu délègues pour passer au niveau supérieur.
 
-On travaille avec des conciergeries exactement comme la tienne. Des gérants qui ont du potentiel mais qui sont bloqués par des trous dans la raquette.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-🔧 CONSOLIDATION DE TES FONDATIONS
-
-Tu as des process, mais sont-ils vraiment solides ? On va :
-• Auditer et renforcer tes process critiques pour qu'ils tiennent sous pression
-• Identifier les points de fragilité qui te font replonger dans l'opérationnel
-• Créer une organisation qui absorbe la croissance sans que tu exploses
-
-Objectif : une structure qui tient même si tu t'absentes 3 semaines.
+On travaille avec des conciergeries exactement comme la tienne. Des gérants qui ont du potentiel mais qui sont bloqués parce qu'ils essaient de tout faire eux-mêmes.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 TON MOTEUR D'ACQUISITION HAUTE PERFORMANCE
+🎯 DÉLÉGUER POUR GRANDIR
 
-C'est probablement ton plus gros levier de croissance. On va construire :
+C'est le passage obligé que tu dois franchir. Dans une conciergerie, tu dois être multi-casquette : commercial, opérationnel, RH, comptable, service client...
+
+Le problème : tant que tu portes toutes ces casquettes, tu es BLOQUÉ. Tu n'as pas le temps de développer, tu n'as pas le temps de prospecter, tu n'as pas le temps de réfléchir à ta stratégie.
+
+La solution : DÉLÉGUER pour te recentrer sur ta ZONE DE GÉNIE.
+
+Ta zone de génie, c'est ce que TOI SEUL peux faire : la relation propriétaire, la stratégie, le développement commercial haut niveau. Le reste doit être délégué à des systèmes et des personnes compétentes.
+
+Et c'est exactement ce qu'on fait chez Goodtime.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔧 IMPLÉMENTATION DU SYSTÈME GOODTIME
+
+On n'est pas des consultants qui te donnent des conseils. On est des PARTENAIRES OPÉRATIONNELS qui implémentent notre système dans ta conciergerie.
+
+Concrètement, on déploie chez toi :
+• Nos outils éprouvés : process, templates, systèmes de gestion testés sur des dizaines de conciergeries
+• Notre équipe : on peut prendre en charge l'acquisition, le back-office, le support - les fonctions que tu dois déléguer
+• Nos méthodes : un accompagnement pas à pas pour que la transition soit fluide
+
+Tu n'es plus seul à tout porter. Tu as une équipe Goodtime qui travaille AVEC toi.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 TON MOTEUR D'ACQUISITION SUR MESURE
+
+C'est notre spécialité. On CONSTRUIT et on peut OPÉRER pour toi :
 • Un système SEO local qui te positionne en première page sur ta zone
 • Une fiche Google Business optimisée qui génère des appels chaque semaine
 • Une stratégie de contenu qui fait de toi LA référence pour les propriétaires
 • Un process de nurturing pour convertir les "pas maintenant" en "oui"
 • Des campagnes publicitaires ciblées quand tu seras prêt à accélérer
 
-Ce moteur T'APPARTIENT. C'est ton actif, pas le nôtre.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-📊 PILOTAGE PROFESSIONNEL
-
-Tu vas piloter ta conciergerie comme un vrai CEO :
-• Dashboard en temps réel de tes KPIs (CA, marge, occupation, acquisition)
-• Suivi de rentabilité par logement (certains te coûtent peut-être de l'argent...)
-• Rituels hebdo pour garder le cap et ajuster rapidement
+Ce moteur T'APPARTIENT. Mais si tu veux déléguer cette partie, on peut l'opérer pour toi.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 📅 LE PROCESS GOODTIME
 
 1️⃣ APPEL STRATÉGIQUE GRATUIT (30 min)
-On analyse ton diagnostic ensemble et on identifie si on peut vraiment t'aider à atteindre tes objectifs.
+On analyse ton diagnostic ensemble et on identifie ce que tu dois garder et ce que tu dois déléguer.
 
 2️⃣ AUDIT COMPLET DE TA CONCIERGERIE
 On passe tout au crible : organisation, process, acquisition, rentabilité, équipe.
 
 3️⃣ PLAN D'ACTION SUR 12 MOIS
-Un plan concret avec des jalons à 3 - 6 - 9 - 12 mois. Pas de blabla, des actions.
+Un plan concret avec des jalons à 3 - 6 - 9 - 12 mois. On identifie clairement ce qu'on implémente et ce qu'on prend en charge.
 
-4️⃣ ACCOMPAGNEMENT DANS L'EXÉCUTION
-On ne te laisse pas seul. On est là chaque semaine pour s'assurer que tu avances.
+4️⃣ IMPLÉMENTATION ET ACCOMPAGNEMENT
+On déploie nos outils, notre équipe intervient sur les fonctions à déléguer, et on t'accompagne semaine après semaine.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -718,8 +725,8 @@ On ne te laisse pas seul. On est là chaque semaine pour s'assurer que tu avance
 Avec l'engagement et les moyens nécessaires :
 ✅ Tu auras franchi ton plafond de verre
 ✅ Des leads propriétaires prévisibles chaque mois
-✅ Une croissance maîtrisée (+30%, +50%, +100% selon tes ambitions)
-✅ Du temps libéré pour piloter au lieu de tout faire
+✅ Une croissance maîtrisée (ton ambition définit le rythme)
+✅ Du temps libéré pour te concentrer sur ta zone de génie
 ✅ Un actif qui a pris de la valeur
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -727,10 +734,10 @@ Avec l'engagement et les moyens nécessaires :
 ⚡ LA VRAIE QUESTION
 
 Tu es à un moment charnière. Tu peux :
-• Continuer seul et rester bloqué au même niveau
-• Investir dans ta croissance et franchir un cap décisif
+• Continuer seul, tout porter, et rester bloqué au même niveau
+• Déléguer intelligemment, investir dans ta croissance, et franchir un cap décisif
 
-Les conciergeries qui réussissent ne sont pas celles qui ont le plus de talent. Ce sont celles qui ont compris qu'il fallait s'entourer et investir pour grandir.
+Les conciergeries qui réussissent ne sont pas celles qui ont le plus de talent. Ce sont celles qui ont compris qu'il fallait s'entourer, déléguer, et investir pour grandir.
 
 Le marché est en pleine explosion. Les propriétaires cherchent des conciergeries professionnelles. Ils vont signer quelque part. La question est : chez toi ou chez ton concurrent ?
 
