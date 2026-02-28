@@ -78,7 +78,7 @@ class DiagnosticResponse(BaseModel):
     structureAnalysis: Optional[dict] = None
     acquisitionAnalysis: Optional[dict] = None
     valueAnalysis: Optional[dict] = None
-    valorisation: Optional[dict] = None
+    investmentLesson: Optional[dict] = None
     roadmap: Optional[dict] = None
 
 
