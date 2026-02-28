@@ -467,6 +467,7 @@ On déploie les outils, on t'accompagne dans la mise en place, et on ajuste en c
         
         resultats += """
 ✅ Une activité solide et pérenne
+✅ Des coûts optimisés et une meilleure rentabilité
 ✅ La sérénité d'avoir les bonnes fondations"""
         
         resultats_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -480,13 +481,18 @@ En mettant en place les bonnes actions :
         # SECTION CTA - positive et encourageante
         cta_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-⚡ ET MAINTENANT ?
+⚡ PRÊT À PASSER À L'ACTION ?
 
 Le marché de la location courte durée est en pleine croissance. Les propriétaires à {user_info.city} et ailleurs cherchent des conciergeries professionnelles sur qui compter.
 
 Tu as déjà l'expertise terrain. Avec les bons outils et le bon accompagnement, tu peux vraiment passer au niveau supérieur.
 
-Réserve ton appel découverte. C'est gratuit, sans engagement, et tu repartiras avec des idées concrètes pour avancer."""
+👉 Si tu n'as pas encore réservé ton appel découverte, c'est le moment !
+
+C'est gratuit, sans engagement, et tu repartiras avec :
+• Une analyse détaillée de ta situation
+• Des recommandations concrètes adaptées à ton profil
+• Un plan d'action clair pour avancer"""
         sections.append(cta_section)
         
         return "\n\n".join(sections)
