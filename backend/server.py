@@ -761,25 +761,30 @@ L'ambition définit le budget. Si tu veux doubler en 12 mois, il faut investir e
             ]
         }
         
-        recommendation = f"""Goodtime travaille avec les conciergeries matures comme la tienne sur des sujets de scale et de valorisation.
+        recommendation = f"""Goodtime travaille avec les conciergeries matures comme la tienne pour passer au niveau supérieur.
 
-À ton niveau, on ne parle plus de "structurer" mais d'"optimiser" et de "maximiser".
+Tu as construit quelque chose de solide. La question maintenant : comment aller chercher le plein potentiel ?
 
-Notre accompagnement premium :
+Notre accompagnement pour les conciergeries de ton calibre :
 
-1. STRATÉGIE DE SORTIE
-On t'aide à clarifier ton objectif : scale massif, revente à un consolidateur, levée de fonds, ou optimisation patrimoniale.
+1. AUDIT STRATÉGIQUE APPROFONDI
+On analyse ta structure, ton acquisition, ta rentabilité. On identifie les leviers de croissance inexploités et les optimisations à fort impact.
 
-2. OPTIMISATION FINANCIÈRE
-On travaille sur ta marge, ta structure de coûts, et ta valorisation pour maximiser ce que tu extrais de ton business.
+2. CONSTRUCTION D'UN MOTEUR D'ACQUISITION HAUTE PERFORMANCE
+Tu as la structure pour absorber la croissance. On construit le moteur qui va l'alimenter. Acquisition payante, partenariats stratégiques, expansion géographique - on active les bons leviers au bon moment.
 
-3. SCALE ACCÉLÉRÉ
-Si tu veux grandir vite, on active les leviers : acquisition payante, partenariats, expansion géographique, rachats.
+3. OPTIMISATION ET SCALE
+On optimise ta marge, on structure pour le volume, on prépare ton entreprise à absorber une croissance forte et rapide.
 
-4. PRÉPARATION TRANSACTION
-Si tu vises une revente, on prépare ton dossier, on identifie les acheteurs, et on t'accompagne dans la négo.
+Lors de notre entretien, nous évaluerons en détail où tu en es et où tu veux aller. On définira ensemble un plan d'action précis sur 3 - 6 - 9 - 12 mois pour atteindre tes objectifs.
 
-Tu as construit quelque chose de solide. Voyons ensemble comment en tirer le maximum."""
+À l'issue des 12 mois, avec les moyens et l'engagement nécessaires :
+• Un moteur d'acquisition qui génère des dizaines de leads qualifiés par mois
+• Une croissance maîtrisée et prévisible
+• Une entreprise qui peut fonctionner sans toi
+• Un actif valorisable et attractif
+
+Tu as fait le plus dur : construire une base solide. Il est temps d'appuyer sur l'accélérateur."""
 
     return {
         "segment": segment,
