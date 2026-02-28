@@ -303,12 +303,35 @@ Compare avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
             ]
         }
         
-        # Estimation valorisation
-        valorisation = {
-            "actuelle": "0.5x à 1x le CA annuel (si vendable)",
-            "potentielle": "2.5x à 4x le CA annuel avec structuration",
-            "ecart": "Tu laisses potentiellement 2 à 3 années de CA sur la table",
-            "explication": "Une conciergerie artisanale se vend difficilement car l'acheteur achète un job, pas un actif. Une conciergerie structurée avec process et acquisition prévisible est un actif qui génère des revenus sans dépendre d'une seule personne."
+        # Leçon business sur l'investissement
+        investment_lesson = {
+            "titre": "La vérité que 95% des conciergeries refusent d'entendre",
+            "message": f"""{first_name}, il faut qu'on parle cash.
+
+Tu fais probablement partie des 95% de gérants de conciergerie qui considèrent l'investissement en communication et en acquisition comme une DÉPENSE. C'est l'erreur fatale qui condamne la majorité des conciergeries à rester des petites structures artisanales.
+
+Voici la réalité : l'investissement en acquisition n'est PAS une dépense. C'est un ACTIF.
+
+Pourquoi ? Parce que la conciergerie est un business de récurrent. Quand tu signes un propriétaire, tu ne le signes pas pour une prestation unique. Tu le signes pour des mois, voire des années de commissions récurrentes.
+
+Fais le calcul :
+• Un propriétaire te rapporte en moyenne 200-400€/mois de commission
+• Sur 12 mois, c'est 2 400 à 4 800€ de revenus récurrents
+• Sur 3 ans, c'est 7 200 à 14 400€
+
+Maintenant, combien ça coûte d'acquérir ce propriétaire ? Avec un système d'acquisition bien structuré : 100 à 300€ maximum.
+
+Le ROI est ÉNORME. Chaque euro investi en acquisition peut te rapporter 10, 20, voire 50 euros sur la durée de vie du client.
+
+Pourtant, tu hésites à investir 500€/mois en communication ? C'est comme refuser de mettre de l'essence dans une voiture qui pourrait te rapporter des milliers d'euros.
+
+Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C'est non négociable. Ce n'est pas une option, c'est une obligation si tu veux sortir du bricolage.""",
+            "keyPoints": [
+                "L'acquisition n'est pas une dépense, c'est un actif qui génère du récurrent",
+                "Le ROI de l'acquisition en conciergerie est parmi les plus élevés du marché",
+                "Ton ambition définit ton budget : plus tu veux grandir, plus tu dois investir",
+                "Pas de croissance saine et prévisible sans investissement structuré"
+            ]
         }
         
         # Roadmap 12 mois
