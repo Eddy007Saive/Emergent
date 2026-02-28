@@ -922,15 +922,9 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
 
     else:
         # --- SEGMENT MACHINE (33-44 points) ---
-        diag_summary = f"""{first_name}, félicitations. Avec {total_score}/44, tu fais partie du top 10% des gérants de conciergerie.
-
-Tu as compris que ce métier, c'est un business. Tu as structuré, tu as délégué, tu as mis en place des process. Ta conciergerie tourne même quand tu n'es pas là.
-
-Maintenant, la question c'est : que veux-tu en faire ? Scaler massivement ? Optimiser pour maximiser la marge ? Préparer une revente ? Lever des fonds ?"""
-
-        main_blocker = "Définir ta stratégie de sortie ou de scale"
-        
-        priority = "Clarifier ta vision à 3-5 ans et aligner ton organisation sur cet objectif."
+        diag_summary = generate_coherent_diag_summary()
+        main_blocker = calculated_blocker
+        priority = calculated_priority
         
         # Analyse Structure
         structure_analysis = {
