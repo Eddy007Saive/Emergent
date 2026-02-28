@@ -462,6 +462,129 @@ Réserve ton appel découverte. C'est gratuit, sans engagement, et tu repartiras
     recommendation = generate_personalized_recommendation()
     
     # ============================================
+    # CALCUL INTELLIGENT DU BLOCAGE ET PRIORITÉ
+    # (Basé uniquement sur les scores - pas d'hallucination)
+    # ============================================
+    
+    def calculate_main_blocker_and_priority():
+        """Calcule le blocage principal et la priorité basés sur les scores réels"""
+        
+        # Cas 1: Scores excellents partout (>= 80% sur tout)
+        if structure_pct >= 80 and acquisition_pct >= 80 and value_pct >= 80:
+            return (
+                "Aucun blocage majeur identifié",
+                "Optimisation des coûts, expansion géographique, ou préparation à la valorisation/revente."
+            )
+        
+        # Cas 2: Scores très bons (>= 70% sur tout)
+        if structure_pct >= 70 and acquisition_pct >= 70 and value_pct >= 70:
+            # Trouver le moins bon pour optimisation
+            if acquisition_pct <= structure_pct and acquisition_pct <= value_pct:
+                return (
+                    "Optimisation du système d'acquisition",
+                    "Amplifier et automatiser ton acquisition pour accélérer la croissance."
+                )
+            elif structure_pct <= acquisition_pct and structure_pct <= value_pct:
+                return (
+                    "Optimisation des process internes",
+                    "Affiner et automatiser tes process pour gagner en efficacité."
+                )
+            else:
+                return (
+                    "Renforcement de la valorisation",
+                    "Formaliser les éléments qui rendent ton entreprise autonome et valorisable."
+                )
+        
+        # Cas 3: Un ou plusieurs domaines à améliorer - identifier le plus faible
+        weakest_score = min(structure_pct, acquisition_pct, value_pct)
+        
+        if acquisition_pct == weakest_score and acquisition_pct < 60:
+            return (
+                "Développer un système d'acquisition prévisible",
+                f"Mettre en place un moteur d'acquisition structuré pour générer des leads réguliers à {user_info.city}."
+            )
+        elif structure_pct == weakest_score and structure_pct < 60:
+            return (
+                "Structurer l'organisation interne",
+                "Documenter les process clés et mettre en place des systèmes pour libérer du temps."
+            )
+        elif value_pct == weakest_score and value_pct < 60:
+            return (
+                "Construire une entreprise autonome",
+                "Réduire la dépendance au gérant et formaliser les contrats pour créer un actif pérenne."
+            )
+        
+        # Cas par défaut - prioriser l'acquisition (ton conseil)
+        if acquisition_pct < 70:
+            return (
+                "Amplifier l'acquisition",
+                "Structurer et accélérer ton système d'acquisition pour une croissance prévisible."
+            )
+        elif structure_pct < 70:
+            return (
+                "Optimiser l'organisation",
+                "Renforcer les process pour absorber plus de volume sereinement."
+            )
+        else:
+            return (
+                "Préparer la valorisation",
+                "Formaliser les éléments qui rendent ton entreprise autonome et attractive."
+            )
+    
+    # Calculer mainBlocker et priority de façon cohérente
+    calculated_blocker, calculated_priority = calculate_main_blocker_and_priority()
+    
+    # ============================================
+    # GÉNÉRATION DU DIAGNOSTIC SUMMARY COHÉRENT
+    # ============================================
+    
+    def generate_coherent_diag_summary():
+        """Génère un résumé de diagnostic cohérent avec les scores"""
+        
+        # Cas 1: Excellence (>= 80% partout)
+        if structure_pct >= 80 and acquisition_pct >= 80 and value_pct >= 80:
+            return f"""{first_name}, félicitations ! Avec {total_score}/44, tu fais partie des conciergeries les plus structurées du marché.
+
+Tu as mis en place une vraie organisation ({structure_score}/20), un système d'acquisition qui fonctionne ({acquisition_score}/18), et une entreprise qui peut tourner de façon autonome ({value_score}/6).
+
+À ce stade, les opportunités sont l'optimisation des coûts, l'expansion géographique, ou la préparation d'une valorisation/revente si c'est dans tes projets."""
+        
+        # Cas 2: Très bon niveau (>= 70% partout)
+        if structure_pct >= 70 and acquisition_pct >= 70:
+            return f"""{first_name}, avec {total_score}/44, tu as construit une conciergerie solide.
+
+Ton organisation est en place ({structure_score}/20), ton acquisition fonctionne ({acquisition_score}/18). Tu fais clairement partie des conciergeries au-dessus de la moyenne.
+
+L'opportunité maintenant : optimiser ce qui existe et accélérer ta croissance sur des bases saines."""
+        
+        # Cas 3: Bon niveau structure, acquisition à développer
+        if structure_pct >= 60 and acquisition_pct < 50:
+            return f"""{first_name}, avec {total_score}/44, tu as une base organisationnelle solide ({structure_score}/20).
+
+Le principal levier de croissance pour toi est l'acquisition ({acquisition_score}/18). Tu as la structure pour absorber plus de volume - il s'agit maintenant de mettre en place un système pour attirer des propriétaires de façon régulière."""
+        
+        # Cas 4: Bonne acquisition, structure à renforcer
+        if acquisition_pct >= 60 and structure_pct < 50:
+            return f"""{first_name}, avec {total_score}/44, tu as une vraie force : tu sais attirer des propriétaires ({acquisition_score}/18).
+
+Pour capitaliser sur cette force, l'étape suivante est de renforcer ton organisation ({structure_score}/20). Ça te permettra d'absorber ta croissance sereinement et de libérer du temps pour le développement."""
+        
+        # Cas 5: Les deux à développer
+        if structure_pct < 50 and acquisition_pct < 50:
+            return f"""{first_name}, avec {total_score}/44, tu es au début de la structuration de ta conciergerie.
+
+C'est une étape normale dans le développement d'une activité. Les deux leviers principaux pour toi sont l'organisation interne ({structure_score}/20) et l'acquisition ({acquisition_score}/18).
+
+La bonne nouvelle : avec les bonnes méthodes, tu peux progresser rapidement sur ces deux axes."""
+        
+        # Cas par défaut
+        return f"""{first_name}, avec {total_score}/44, ta conciergerie a des bases sur lesquelles construire.
+
+Structure : {structure_score}/20 | Acquisition : {acquisition_score}/18 | Valeur : {value_score}/6
+
+On va identifier ensemble les leviers les plus impactants pour ta situation."""
+    
+    # ============================================
     # ANALYSE DÉTAILLÉE PAR SEGMENT
     # ============================================
     
