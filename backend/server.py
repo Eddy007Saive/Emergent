@@ -590,13 +590,9 @@ On va identifier ensemble les leviers les plus impactants pour ta situation."""
     
     if segment == "artisanal":
         # --- SEGMENT ARTISANAL (0-18 points) ---
-        diag_summary = f"""{first_name}, soyons francs : aujourd'hui, tu n'as pas une entreprise. Tu as un job que tu t'es créé, certes avec plus de flexibilité qu'un salarié, mais qui te bouffe ton temps, ton énergie, et qui ne vaut presque rien si tu décides de passer à autre chose demain.
-
-Avec un score de {total_score}/44, ta conciergerie repose entièrement sur toi. Si tu disparais 2 semaines, tout s'écroule. Ce n'est pas une entreprise, c'est une dépendance."""
-
-        main_blocker = "Tu ES le système au lieu de le piloter"
-        
-        priority = "Sortir de l'opérationnel en documentant tes 3 process critiques et en déléguant au moins une fonction clé dans les 90 prochains jours."
+        diag_summary = generate_coherent_diag_summary()
+        main_blocker = calculated_blocker
+        priority = calculated_priority
         
         # Analyse Structure
         structure_analysis = {
