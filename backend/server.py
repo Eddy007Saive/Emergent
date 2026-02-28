@@ -794,7 +794,7 @@ Tu as fait le plus dur : construire une base solide. Il est temps d'appuyer sur 
         "structureAnalysis": structure_analysis,
         "acquisitionAnalysis": acquisition_analysis,
         "valueAnalysis": value_analysis,
-        "valorisation": valorisation,
+        "investmentLesson": investment_lesson,
         "roadmap": roadmap,
         "goodtimeRecommendation": recommendation
     }
