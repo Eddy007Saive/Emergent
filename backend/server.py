@@ -743,21 +743,9 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
 
     elif segment == "transition":
         # --- SEGMENT TRANSITION (19-32 points) ---
-        diag_summary = f"""{first_name}, tu as compris quelque chose d'important : une conciergerie, c'est un business, pas juste une activité.
-
-Tu as commencé à mettre des choses en place. Score de {total_score}/44 : tu es clairement au-dessus de la moyenne du marché. Mais tu ressens probablement un plafond de verre.
-
-Tu voudrais scaler, prendre plus de logements, peut-être recruter... mais quelque chose bloque. Les trous dans la raquette t'empêchent d'avancer sereinement."""
-
-        # Determine main blocker based on weakest area
-        if weakest == "acquisition":
-            main_blocker = "Ton acquisition reste trop dépendante du hasard"
-        elif weakest == "structure":
-            main_blocker = "Ta structure n'est pas assez solide pour scaler"
-        else:
-            main_blocker = "Ta conciergerie dépend encore trop de toi"
-        
-        priority = f"Consolider ton point faible ({weakest}) avant de chercher à grandir, sinon tu vas exploser en vol."
+        diag_summary = generate_coherent_diag_summary()
+        main_blocker = calculated_blocker
+        priority = calculated_priority
         
         # Analyse Structure
         if structure_pct >= 50:
