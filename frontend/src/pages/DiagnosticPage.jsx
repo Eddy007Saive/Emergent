@@ -85,16 +85,25 @@ export default function DiagnosticPage() {
   // Send data to webhook during validation
   const handleValidation = useCallback(async () => {
     setIsValidating(true);
+    console.log('=== VALIDATION STARTED ===');
     
     const scores = calculateScores(answers);
+    console.log('Scores calculated:', scores);
     
     try {
       // Get AI analysis from backend
+      console.log('Calling API with userInfo:', userInfo);
+      console.log('Qualification:', qualification);
+      
       const analysis = await analyzeDiagnostic(
         { ...userInfo, nombreLogements: qualification.logementsActuels },
         answers,
         scores
       );
+      
+      console.log('=== API RESPONSE RECEIVED ===');
+      console.log('Analysis:', analysis);
+      
       setAiAnalysis(analysis);
       
       // Build questions with answers for webhook
@@ -170,12 +179,17 @@ export default function DiagnosticPage() {
         // Don't block the user if webhook fails
       }
       
+      console.log('=== MOVING TO RESULTS ===');
       setCurrentStep(STEPS.RESULTS);
       
     } catch (error) {
-      console.error('Validation error:', error);
+      console.error('=== VALIDATION ERROR ===');
+      console.error('Error details:', error);
+      console.error('Error response:', error.response?.data);
+      console.error('Error message:', error.message);
       toast.error('Erreur lors de l\'analyse. Réessaie.');
     } finally {
+      console.log('=== VALIDATION COMPLETE ===');
       setIsValidating(false);
     }
   }, [userInfo, qualification, answers]);

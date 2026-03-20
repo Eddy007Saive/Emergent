@@ -23,7 +23,9 @@ export const analyzeDiagnostic = async (userInfo, answers, scores) => {
   console.log('Sending to API:', API_URL, payload);
   
   try {
-    const response = await axios.post(`${API_URL}/api/diagnostic/analyze`, payload);
+    const response = await axios.post(`${API_URL}/api/diagnostic/analyze`, payload, {
+      timeout: 60000 // 60 seconds timeout
+    });
     console.log('API Response:', response.data);
     return response.data;
   } catch (error) {

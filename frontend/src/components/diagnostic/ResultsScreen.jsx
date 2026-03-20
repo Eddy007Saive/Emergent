@@ -19,9 +19,7 @@ import {
   Zap,
   CheckCircle2,
   ChevronRight,
-  Euro,
   Clock,
-  ArrowUpRight,
   BarChart3,
   Rocket,
 } from 'lucide-react';
@@ -99,7 +97,7 @@ export default function ResultsScreen({
   const structureAnalysis = aiAnalysis?.structureAnalysis;
   const acquisitionAnalysis = aiAnalysis?.acquisitionAnalysis;
   const valueAnalysis = aiAnalysis?.valueAnalysis;
-  const valorisation = aiAnalysis?.valorisation;
+  const investmentLesson = aiAnalysis?.investmentLesson;
   const roadmap = aiAnalysis?.roadmap;
 
   return (
@@ -245,37 +243,40 @@ export default function ResultsScreen({
 
         <Separator className="my-10" />
 
-        {/* Valorisation Section */}
-        {valorisation && (
+        {/* Investment Lesson Section */}
+        {investmentLesson && (
           <>
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-              <Euro className="w-6 h-6 text-primary" />
-              Estimation de valorisation
+              <AlertTriangle className="w-6 h-6 text-accent" />
+              {investmentLesson.titre}
             </h2>
 
-            <Card className="mb-8 shadow-card animate-fade-in" style={{ animationDelay: '400ms' }}>
+            <Card className="mb-8 shadow-card border-2 border-accent/30 bg-accent-light animate-fade-in" style={{ animationDelay: '400ms' }}>
               <CardContent className="p-6 md:p-8">
-                <div className="grid md:grid-cols-2 gap-6 mb-6">
-                  <div className="p-4 rounded-lg bg-muted/50">
-                    <p className="text-sm text-muted-foreground mb-1">Valorisation actuelle estimée</p>
-                    <p className="text-2xl font-bold text-foreground">{valorisation.actuelle}</p>
-                  </div>
-                  <div className="p-4 rounded-lg bg-primary-light border-2 border-primary/20">
-                    <p className="text-sm text-muted-foreground mb-1">Valorisation potentielle</p>
-                    <p className="text-2xl font-bold text-primary">{valorisation.potentielle}</p>
-                  </div>
+                <div className="prose prose-sm max-w-none text-foreground mb-6">
+                  {investmentLesson.message.split('\n\n').map((paragraph, idx) => (
+                    <p key={idx} className="mb-4 last:mb-0 leading-relaxed">
+                      {paragraph}
+                    </p>
+                  ))}
                 </div>
                 
-                <div className="p-4 rounded-lg bg-accent-light border border-accent/20 mb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <ArrowUpRight className="w-5 h-5 text-accent" />
-                    <span className="font-semibold text-accent">{valorisation.ecart}</span>
+                {investmentLesson.keyPoints && investmentLesson.keyPoints.length > 0 && (
+                  <div className="p-4 rounded-lg bg-card border border-accent/20">
+                    <h5 className="font-semibold text-foreground mb-3 flex items-center gap-2">
+                      <Lightbulb className="w-4 h-4 text-accent" />
+                      Les points clés à retenir
+                    </h5>
+                    <ul className="space-y-2">
+                      {investmentLesson.keyPoints.map((point, idx) => (
+                        <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
+                          <CheckCircle2 className="w-4 h-4 text-accent flex-shrink-0 mt-0.5" />
+                          <span>{point}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
-
-                <p className="text-muted-foreground leading-relaxed">
-                  {valorisation.explication}
-                </p>
+                )}
               </CardContent>
             </Card>
           </>
@@ -374,6 +375,33 @@ export default function ResultsScreen({
                 Envoyer
               </Button>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* CTA - Réserver un appel */}
+        <Card className="mb-8 shadow-card border-2 border-primary bg-gradient-to-br from-primary/5 to-primary/10 animate-fade-in" style={{ animationDelay: '650ms' }}>
+          <CardContent className="p-6 md:p-8 text-center">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+              <Calendar className="w-8 h-8 text-primary" />
+            </div>
+            <h3 className="text-xl font-bold text-foreground mb-3">
+              Prêt à passer à l'action ?
+            </h3>
+            <p className="text-muted-foreground mb-6 max-w-md mx-auto">
+              Si tu n'as pas encore réservé ton appel découverte, c'est le moment ! 
+              30 minutes gratuites pour échanger sur ta situation et définir tes priorités.
+            </p>
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-white px-8"
+              onClick={() => window.open('https://calendly.com/goodtime', '_blank')}
+            >
+              <Calendar className="w-5 h-5 mr-2" />
+              Réserver mon appel découverte
+            </Button>
+            <p className="text-xs text-muted-foreground mt-4">
+              Gratuit • Sans engagement • 30 minutes
+            </p>
           </CardContent>
         </Card>
 

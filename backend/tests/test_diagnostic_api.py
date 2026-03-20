@@ -1,6 +1,7 @@
 """
 Backend Tests for Goodtime Diagnostic API
 Tests: Root API, Diagnostic Analyze endpoint with OpenAI integration
+Updated: investmentLesson replaces valorisation
 """
 import pytest
 import requests
@@ -26,8 +27,8 @@ class TestDiagnosticAnalyze:
     """Test the /api/diagnostic/analyze endpoint with OpenAI integration"""
     
     @pytest.fixture
-    def valid_payload(self):
-        """Valid payload for diagnostic analysis"""
+    def artisanal_payload(self):
+        """Payload for artisanal segment (0-18 points)"""
         return {
             "userInfo": {
                 "firstName": "Test",
@@ -109,11 +110,11 @@ class TestDiagnosticAnalyze:
             }
         }
     
-    def test_analyze_diagnostic_artisanal_segment(self, valid_payload):
-        """Test diagnostic analysis for artisanal segment (0-18 points)"""
+    def test_analyze_diagnostic_artisanal_segment(self, artisanal_payload):
+        """Test diagnostic analysis for artisanal segment (0-18 points) - includes investmentLesson"""
         response = requests.post(
             f"{BASE_URL}/api/diagnostic/analyze",
-            json=valid_payload,
+            json=artisanal_payload,
             headers={"Content-Type": "application/json"},
             timeout=60  # OpenAI might take time
         )
@@ -149,13 +150,40 @@ class TestDiagnosticAnalyze:
         assert len(data["priority"]) > 0, "priority should not be empty"
         assert len(data["goodtimeRecommendation"]) > 50, "goodtimeRecommendation should be substantial"
         
+        # CRITICAL: Verify investmentLesson is present (NEW FEATURE)
+        assert "investmentLesson" in data, "investmentLesson should be present in response"
+        assert data["investmentLesson"] is not None, "investmentLesson should not be None"
+        
+        # Verify investmentLesson structure
+        investment = data["investmentLesson"]
+        assert "titre" in investment, "investmentLesson should have 'titre'"
+        assert "message" in investment, "investmentLesson should have 'message'"
+        assert "keyPoints" in investment, "investmentLesson should have 'keyPoints'"
+        
+        # Verify keyPoints is an array with 4 elements
+        assert isinstance(investment["keyPoints"], list), "keyPoints should be a list"
+        assert len(investment["keyPoints"]) == 4, f"keyPoints should have 4 elements, got {len(investment['keyPoints'])}"
+        
+        # Verify investmentLesson content is about investment being an ASSET not expense
+        assert len(investment["titre"]) > 10, "investmentLesson titre should be substantial"
+        assert len(investment["message"]) > 100, "investmentLesson message should be substantial"
+        
+        # CRITICAL: Verify 'valorisation' is NOT present (REMOVED)
+        assert "valorisation" not in data or data.get("valorisation") is None, "valorisation should NOT be in response anymore"
+        
+        # Verify roadmap is present
+        assert "roadmap" in data, "roadmap should be present"
+        assert data["roadmap"] is not None, "roadmap should not be None"
+        
         print(f"✓ Artisanal segment test passed:")
         print(f"  - Segment: {data['segment']}")
         print(f"  - Score: {data['score']}/44")
         print(f"  - Main Blocker: {data['mainBlocker'][:50]}...")
+        print(f"  - investmentLesson titre: {investment['titre'][:50]}...")
+        print(f"  - investmentLesson keyPoints count: {len(investment['keyPoints'])}")
     
     def test_analyze_diagnostic_transition_segment(self, transition_payload):
-        """Test diagnostic analysis for transition segment (19-32 points)"""
+        """Test diagnostic analysis for transition segment (19-32 points) - includes investmentLesson"""
         response = requests.post(
             f"{BASE_URL}/api/diagnostic/analyze",
             json=transition_payload,
@@ -178,7 +206,22 @@ class TestDiagnosticAnalyze:
         assert "structureAnalysis" in data
         assert "acquisitionAnalysis" in data
         assert "valueAnalysis" in data
-        assert "valorisation" in data
+        
+        # CRITICAL: Verify investmentLesson is present instead of valorisation
+        assert "investmentLesson" in data, "investmentLesson should be present in response"
+        assert data["investmentLesson"] is not None, "investmentLesson should not be None"
+        
+        # Verify investmentLesson structure for transition segment
+        investment = data["investmentLesson"]
+        assert "titre" in investment, "investmentLesson should have 'titre'"
+        assert "message" in investment, "investmentLesson should have 'message'"
+        assert "keyPoints" in investment, "investmentLesson should have 'keyPoints'"
+        assert len(investment["keyPoints"]) == 4, f"keyPoints should have 4 elements, got {len(investment['keyPoints'])}"
+        
+        # Verify 'valorisation' is NOT present
+        assert "valorisation" not in data or data.get("valorisation") is None, "valorisation should NOT be in response"
+        
+        # Verify roadmap is present
         assert "roadmap" in data
         
         # Verify structure analysis has expected fields
@@ -194,9 +237,10 @@ class TestDiagnosticAnalyze:
         print(f"  - Segment: {data['segment']}")
         print(f"  - Score: {data['score']}/44")
         print(f"  - Structure: {data['structureScore']}/20")
+        print(f"  - investmentLesson titre: {investment['titre'][:50]}...")
     
     def test_analyze_diagnostic_machine_segment(self, machine_payload):
-        """Test diagnostic analysis for machine segment (33-44 points)"""
+        """Test diagnostic analysis for machine segment (33-44 points) - includes investmentLesson"""
         response = requests.post(
             f"{BASE_URL}/api/diagnostic/analyze",
             json=machine_payload,
@@ -212,12 +256,22 @@ class TestDiagnosticAnalyze:
         assert data["segment"] == "machine", f"Expected 'machine', got '{data['segment']}'"
         assert data["score"] == 44
         
-        # Verify valorisation estimates
-        if data.get("valorisation"):
-            val = data["valorisation"]
-            assert "actuelle" in val
-            assert "potentielle" in val
-            assert "explication" in val
+        # CRITICAL: Verify investmentLesson is present instead of valorisation
+        assert "investmentLesson" in data, "investmentLesson should be present in response"
+        assert data["investmentLesson"] is not None, "investmentLesson should not be None"
+        
+        # Verify investmentLesson structure for machine segment
+        investment = data["investmentLesson"]
+        assert "titre" in investment, "investmentLesson should have 'titre'"
+        assert "message" in investment, "investmentLesson should have 'message'"
+        assert "keyPoints" in investment, "investmentLesson should have 'keyPoints'"
+        assert len(investment["keyPoints"]) == 4, f"keyPoints should have 4 elements, got {len(investment['keyPoints'])}"
+        
+        # Verify message contains content about investment being an asset
+        assert "actif" in investment["message"].lower() or "asset" in investment["message"].lower() or "investir" in investment["message"].lower(), "investmentLesson message should mention investment concept"
+        
+        # Verify 'valorisation' is NOT present  
+        assert "valorisation" not in data or data.get("valorisation") is None, "valorisation should NOT be in response"
         
         # Verify roadmap structure
         if data.get("roadmap"):
@@ -230,6 +284,7 @@ class TestDiagnosticAnalyze:
         print(f"  - Segment: {data['segment']}")
         print(f"  - Score: {data['score']}/44")
         print(f"  - User: {data['firstName']} {data['lastName']}")
+        print(f"  - investmentLesson titre: {investment['titre'][:50]}...")
     
     def test_analyze_diagnostic_missing_fields(self):
         """Test diagnostic analysis with missing required fields"""
@@ -265,6 +320,39 @@ class TestDiagnosticAnalyze:
         # Should return 422 validation error
         assert response.status_code == 422, f"Expected 422 for empty payload, got {response.status_code}"
         print(f"✓ Empty payload test passed: {response.status_code}")
+    
+    def test_investmentlesson_content_quality(self, artisanal_payload):
+        """Verify investmentLesson contains the key business message about investment as asset"""
+        response = requests.post(
+            f"{BASE_URL}/api/diagnostic/analyze",
+            json=artisanal_payload,
+            headers={"Content-Type": "application/json"},
+            timeout=60
+        )
+        
+        assert response.status_code == 200
+        data = response.json()
+        
+        investment = data.get("investmentLesson")
+        assert investment is not None, "investmentLesson should be present"
+        
+        message_lower = investment["message"].lower()
+        
+        # Verify message contains key concepts:
+        # 1. Investment is an ASSET (actif), not expense (dépense)
+        contains_asset_concept = any(word in message_lower for word in ["actif", "asset"])
+        contains_expense_concept = any(word in message_lower for word in ["dépense", "expense", "charge"])
+        
+        assert contains_asset_concept or contains_expense_concept, \
+            "investmentLesson message should discuss investment as asset vs expense concept"
+        
+        # Verify keyPoints quality
+        for idx, point in enumerate(investment["keyPoints"]):
+            assert len(point) > 20, f"keyPoint {idx} should be meaningful: '{point}'"
+        
+        print(f"✓ investmentLesson content quality test passed")
+        print(f"  - Message contains 'actif' concept: {contains_asset_concept}")
+        print(f"  - Message length: {len(investment['message'])} chars")
 
 
 class TestStatusEndpoint:
