@@ -11,6 +11,10 @@ import uuid
 from datetime import datetime, timezone
 from openai import OpenAI
 import json
+import httpx
+
+# Webhook URL for sending audit data
+WEBHOOK_AUDIT_URL = "https://n8n.srv903010.hstgr.cloud/webhook/leon_audit_done"
 
 
 ROOT_DIR = Path(__file__).parent
@@ -1209,6 +1213,46 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         investmentLesson=analysis.get('investmentLesson'),
         roadmap=analysis.get('roadmap')
     )
+    
+    # Send data to webhook
+    try:
+        webhook_data = {
+            "firstName": request.userInfo.firstName,
+            "lastName": request.userInfo.lastName,
+            "email": request.userInfo.email,
+            "phone": request.userInfo.phone,
+            "city": request.userInfo.city,
+            "units": request.userInfo.units,
+            "segment": analysis['segment'],
+            "score": request.scores.get('total', 0),
+            "structureScore": request.scores.get('structure', 0),
+            "acquisitionScore": request.scores.get('acquisition', 0),
+            "valueScore": request.scores.get('value', 0),
+            "diagSummary": analysis['diagSummary'],
+            "mainBlocker": analysis['mainBlocker'],
+            "priority": analysis['priority'],
+            "goodtimeRecommendation": analysis['goodtimeRecommendation'],
+            "structureAnalysis": analysis.get('structureAnalysis'),
+            "acquisitionAnalysis": analysis.get('acquisitionAnalysis'),
+            "valueAnalysis": analysis.get('valueAnalysis'),
+            "investmentLesson": analysis.get('investmentLesson'),
+            "roadmap": analysis.get('roadmap'),
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "source": "backend_api"
+        }
+        
+        async with httpx.AsyncClient() as client_http:
+            webhook_response = await client_http.post(
+                WEBHOOK_AUDIT_URL,
+                json=webhook_data,
+                timeout=10.0
+            )
+            if webhook_response.status_code == 200:
+                logger.info(f"Webhook sent successfully to {WEBHOOK_AUDIT_URL}")
+            else:
+                logger.warning(f"Webhook returned status {webhook_response.status_code}")
+    except Exception as e:
+        logger.warning(f"Failed to send webhook: {e}")
     
     # Save to database
     try:
