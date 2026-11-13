@@ -20,7 +20,8 @@ const STEPS = {
   RESULTS: 'results',
 };
 
-const WEBHOOK_URL = process.env.REACT_APP_WEBHOOK_URL || 'https://n8n.srv903010.hstgr.cloud/webhook/emergent';
+// The lead is sent to our backend, which forwards it to the GoHighLevel GT06 webhook
+const LEAD_URL = `${process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001'}/api/diagnostic/lead`;
 
 export default function DiagnosticPage() {
   const [currentStep, setCurrentStep] = useState(STEPS.WELCOME);
@@ -158,9 +159,9 @@ export default function DiagnosticPage() {
         timestamp: new Date().toISOString(),
       };
       
-      // Send to webhook
+      // Send to GT06 (via backend)
       try {
-        const response = await fetch(WEBHOOK_URL, {
+        const response = await fetch(LEAD_URL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

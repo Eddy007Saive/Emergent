@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException, Body
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -6,19 +6,18 @@ import os
 import logging
 from pathlib import Path
 from pydantic import BaseModel, Field, ConfigDict
-from typing import List, Dict, Optional
+from typing import Any, List, Dict, Optional
 import uuid
 from datetime import datetime, timezone
 from openai import OpenAI
 import json
 import httpx
 
-# Webhook URL for sending audit data
-WEBHOOK_AUDIT_URL = "https://n8n.srv903010.hstgr.cloud/webhook/leon_audit_done"
-
-
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
+
+# GoHighLevel inbound webhook "GT06" (replaces the former n8n webhooks). Empty = disabled.
+GHL_WEBHOOK_GT06_URL = os.environ.get('GHL_WEBHOOK_GT06_URL', '')
 
 # MongoDB connection
 mongo_url = os.environ['MONGO_URL']
@@ -1214,46 +1213,6 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         roadmap=analysis.get('roadmap')
     )
     
-    # Send data to webhook
-    try:
-        webhook_data = {
-            "firstName": request.userInfo.firstName,
-            "lastName": request.userInfo.lastName,
-            "email": request.userInfo.email,
-            "phone": request.userInfo.phone,
-            "city": request.userInfo.city,
-            "units": request.userInfo.units,
-            "segment": analysis['segment'],
-            "score": request.scores.get('total', 0),
-            "structureScore": request.scores.get('structure', 0),
-            "acquisitionScore": request.scores.get('acquisition', 0),
-            "valueScore": request.scores.get('value', 0),
-            "diagSummary": analysis['diagSummary'],
-            "mainBlocker": analysis['mainBlocker'],
-            "priority": analysis['priority'],
-            "goodtimeRecommendation": analysis['goodtimeRecommendation'],
-            "structureAnalysis": analysis.get('structureAnalysis'),
-            "acquisitionAnalysis": analysis.get('acquisitionAnalysis'),
-            "valueAnalysis": analysis.get('valueAnalysis'),
-            "investmentLesson": analysis.get('investmentLesson'),
-            "roadmap": analysis.get('roadmap'),
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "source": "backend_api"
-        }
-        
-        async with httpx.AsyncClient() as client_http:
-            webhook_response = await client_http.post(
-                WEBHOOK_AUDIT_URL,
-                json=webhook_data,
-                timeout=10.0
-            )
-            if webhook_response.status_code == 200:
-                logger.info(f"Webhook sent successfully to {WEBHOOK_AUDIT_URL}")
-            else:
-                logger.warning(f"Webhook returned status {webhook_response.status_code}")
-    except Exception as e:
-        logger.warning(f"Failed to send webhook: {e}")
-    
     # Save to database
     try:
         doc = response.model_dump()
@@ -1264,6 +1223,24 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         logger.warning(f"Failed to save diagnostic to DB: {e}")
     
     return response
+
+
+@api_router.post("/diagnostic/lead")
+async def forward_lead(payload: Dict[str, Any] = Body(...)):
+    """Forward the full lead (sent by the frontend after the analysis) to the GHL GT06 webhook.
+    Done server-side so the webhook URL is never exposed in the browser."""
+    if not GHL_WEBHOOK_GT06_URL:
+        logger.warning("GT06 webhook skipped: GHL_WEBHOOK_GT06_URL is empty")
+        return {"success": False, "reason": "webhook not configured"}
+    try:
+        async with httpx.AsyncClient(timeout=20.0) as client_http:
+            r = await client_http.post(GHL_WEBHOOK_GT06_URL, json=payload)
+            r.raise_for_status()
+        logger.info(f"GT06 webhook sent for {payload.get('email')}")
+        return {"success": True}
+    except Exception as e:
+        logger.error(f"GT06 webhook failed: {e!r}")
+        raise HTTPException(status_code=502, detail="Webhook GT06 indisponible")
 
 
 @api_router.post("/status", response_model=StatusCheck)
