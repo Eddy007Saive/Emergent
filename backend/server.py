@@ -177,6 +177,8 @@ Génère une analyse personnalisée en français avec:
 4. "goodtimeRecommendation": 3-5 phrases expliquant comment Goodtime peut aider concrètement (structuration + moteur d'acquisition local)
 
 Ton: professionnel, direct, orienté business, pas "fun" ni enfantin. Sois franc et lucide.
+Vouvoie toujours le prospect (« vous », « votre »), jamais de tutoiement.
+Les scores sont sur 44 (total), 20, 18 et 6 : n'exprime jamais un score sur 100.
 
 Réponds UNIQUEMENT avec un JSON valide (sans markdown, sans ```json):
 {{
@@ -233,47 +235,47 @@ async def analyze_diagnostic(user_info: UserInfo, answers: Dict[str, int], score
         
         # INTRO personnalisée selon le profil - TOUJOURS VALORISANTE
         if structure_pct >= 70 and acquisition_pct >= 70:
-            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+            intro = f"""🎯 CE QUE GOODTIME VA VOUS APPORTER
 
-{first_name}, bravo pour le travail accompli. Avec {structure_score}/20 en structure et {acquisition_score}/18 en acquisition, tu fais partie des conciergeries les mieux organisées du marché.
+{first_name}, bravo pour le travail accompli. Avec {structure_score}/20 en structure et {acquisition_score}/18 en acquisition, vous faites partie des conciergeries les mieux organisées du marché.
 
-Tu as construit des bases solides. La question maintenant : comment aller encore plus loin ? Comment passer de "ça tourne bien" à "ça cartonne" ?
+Vous avez construit des bases solides. La question maintenant : comment aller encore plus loin ? Comment passer de "ça tourne bien" à "ça cartonne" ?
 
-On accompagne les conciergeries performantes comme la tienne pour maximiser leur potentiel et accélérer leur croissance."""
+On accompagne les conciergeries performantes comme la vôtre pour maximiser leur potentiel et accélérer leur croissance."""
         
         elif structure_pct >= 60 and acquisition_pct < 50:
-            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+            intro = f"""🎯 CE QUE GOODTIME VA VOUS APPORTER
 
-{first_name}, tu as fait un vrai travail de structuration ({structure_score}/20). C'est une base solide sur laquelle construire.
+{first_name}, vous avez fait un vrai travail de structuration ({structure_score}/20). C'est une base solide sur laquelle construire.
 
-Le prochain levier de croissance pour toi, c'est l'acquisition ({acquisition_score}/18). Les propriétaires cherchent des conciergeries comme la tienne - il s'agit maintenant de te rendre visible auprès d'eux.
+Le prochain levier de croissance pour vous, c'est l'acquisition ({acquisition_score}/18). Les propriétaires cherchent des conciergeries comme la vôtre - il s'agit maintenant de vous rendre visible auprès d'eux.
 
 C'est exactement notre spécialité : construire des systèmes d'acquisition qui génèrent des leads qualifiés de façon prévisible."""
         
         elif structure_pct < 50 and acquisition_pct >= 60:
-            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+            intro = f"""🎯 CE QUE GOODTIME VA VOUS APPORTER
 
-{first_name}, tu as une vraie force : tu sais attirer des propriétaires ({acquisition_score}/18 en acquisition). C'est un talent que beaucoup de conciergeries n'ont pas.
+{first_name}, vous avez une vraie force : vous savez attirer des propriétaires ({acquisition_score}/18 en acquisition). C'est un talent que beaucoup de conciergeries n'ont pas.
 
-Pour capitaliser sur cette force, l'étape suivante est de renforcer ton organisation ({structure_score}/20). Ça te permettra d'absorber plus de volume sereinement et de libérer du temps pour ce que tu fais de mieux.
+Pour capitaliser sur cette force, l'étape suivante est de renforcer votre organisation ({structure_score}/20). Ça vous permettra d'absorber plus de volume sereinement et de libérer du temps pour ce que vous faites de mieux.
 
-On va t'aider à consolider tes fondations pour que ta croissance soit fluide."""
+On va vous aider à consolider vos fondations pour que votre croissance soit fluide."""
         
         elif structure_pct < 40:
-            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+            intro = f"""🎯 CE QUE GOODTIME VA VOUS APPORTER
 
-{first_name}, comme beaucoup de gérants de conciergerie, tu portes beaucoup de casquettes au quotidien. C'est normal quand on construit son activité.
+{first_name}, comme beaucoup de gérants de conciergerie, vous portez beaucoup de casquettes au quotidien. C'est normal quand on construit son activité.
 
-La bonne nouvelle : il existe des méthodes éprouvées pour structurer ton organisation et te libérer du temps. C'est exactement ce qu'on fait chez Goodtime : on t'accompagne pour mettre en place des systèmes qui tournent, même quand tu n'es pas derrière.
+La bonne nouvelle : il existe des méthodes éprouvées pour structurer votre organisation et vous libérer du temps. C'est exactement ce qu'on fait chez Goodtime : on vous accompagne pour mettre en place des systèmes qui tournent, même quand vous n'êtes pas derrière.
 
-Tu as déjà l'essentiel : l'expertise terrain et la connaissance de tes clients. On t'apporte la méthode et les outils."""
+Vous avez déjà l'essentiel : l'expertise terrain et la connaissance de vos clients. On vous apporte la méthode et les outils."""
         
         else:
-            intro = f"""🎯 CE QUE GOODTIME VA T'APPORTER
+            intro = f"""🎯 CE QUE GOODTIME VA VOUS APPORTER
 
-{first_name}, ton diagnostic révèle un profil avec de vraies opportunités de développement : {structure_score}/20 en structure, {acquisition_score}/18 en acquisition, {value_score}/6 en valeur.
+{first_name}, votre diagnostic révèle un profil avec de vraies opportunités de développement : {structure_score}/20 en structure, {acquisition_score}/18 en acquisition, {value_score}/6 en valeur.
 
-On travaille avec des conciergeries à différents stades de maturité. Notre rôle : identifier les leviers de croissance les plus impactants pour TA situation et t'accompagner dans leur mise en place."""
+On travaille avec des conciergeries à différents stades de maturité. Notre rôle : identifier les leviers de croissance les plus impactants pour VOTRE situation et vous accompagner dans leur mise en place."""
         
         sections.append(intro)
         
@@ -283,12 +285,12 @@ On travaille avec des conciergeries à différents stades de maturité. Notre r�
 
 🔧 GAGNER DU TEMPS AU QUOTIDIEN
 
-Avec {structure_score}/20 en structure, il y a une belle marge de progression pour te simplifier la vie.
+Avec {structure_score}/20 en structure, il y a une belle marge de progression pour vous simplifier la vie.
 
-Ce qu'on met en place avec toi :
-• Des process clairs et simples que ton équipe/prestataires peuvent suivre facilement
-• Un système de gestion centralisé qui te fait gagner des heures chaque semaine
-• Une organisation où tu peux te concentrer sur ce qui compte vraiment
+Ce qu'on met en place avec vous :
+• Des process clairs et simples que votre équipe/prestataires peuvent suivre facilement
+• Un système de gestion centralisé qui vous fait gagner des heures chaque semaine
+• Une organisation où vous pouvez vous concentrer sur ce qui compte vraiment
 
 Notre équipe peut aussi prendre en charge certaines tâches (back-office, support) pour accélérer cette transition."""
             sections.append(structure_section)
@@ -298,12 +300,12 @@ Notre équipe peut aussi prendre en charge certaines tâches (back-office, suppo
 
 🔧 OPTIMISER CE QUI FONCTIONNE
 
-Ta structure est bien en place ({structure_score}/20). Il reste quelques ajustements pour la rendre encore plus efficace :
+Votre structure est bien en place ({structure_score}/20). Il reste quelques ajustements pour la rendre encore plus efficace :
 • Identifier et éliminer les derniers points de friction
 • Automatiser ce qui peut encore l'être
-• Préparer ton organisation à absorber plus de volume
+• Préparer votre organisation à absorber plus de volume
 
-On t'aide à passer de "ça fonctionne" à "c'est fluide et scalable"."""
+On vous aide à passer de "ça fonctionne" à "c'est fluide et scalable"."""
             sections.append(structure_section)
         
         elif structure_pct >= 80:
@@ -311,7 +313,7 @@ On t'aide à passer de "ça fonctionne" à "c'est fluide et scalable"."""
 
 ✅ UNE STRUCTURE SOLIDE
 
-Avec {structure_score}/20, tu as fait un excellent travail d'organisation. C'est une vraie force.
+Avec {structure_score}/20, vous avez fait un excellent travail d'organisation. C'est une vraie force.
 
 On va capitaliser sur cette base pour travailler les autres leviers de croissance."""
             sections.append(structure_section)
@@ -320,44 +322,44 @@ On va capitaliser sur cette base pour travailler les autres leviers de croissanc
         if acquisition_pct < 40:
             acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 DÉVELOPPER TON ACQUISITION
+🚀 DÉVELOPPER VOTRE ACQUISITION
 
-Avec {acquisition_score}/18 en acquisition, c'est LE levier qui peut transformer ton activité.
+Avec {acquisition_score}/18 en acquisition, c'est LE levier qui peut transformer votre activité.
 
-C'est notre spécialité. On va CONSTRUIRE avec toi :
-• Un site web optimisé qui te rend visible des propriétaires de {user_info.city}
+C'est notre spécialité. On va CONSTRUIRE avec vous :
+• Un site web optimisé qui vous rend visible des propriétaires de {user_info.city}
 • Une fiche Google Business qui génère des contacts réguliers
-• Une stratégie de contenu qui te positionne comme une référence locale
+• Une stratégie de contenu qui vous positionne comme une référence locale
 • Un process de conversion pour transformer les contacts en clients
 
-Ce système T'APPARTIENT. Et si tu préfères, on peut l'opérer pour toi."""
+Ce système VOUS APPARTIENT. Et si vous préférez, on peut l'opérer pour vous."""
             sections.append(acquisition_section)
         
         elif acquisition_pct < 60:
             acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 STRUCTURER TON ACQUISITION
+🚀 STRUCTURER VOTRE ACQUISITION
 
-Avec {acquisition_score}/18, tu génères déjà des contacts. L'objectif maintenant : rendre ça prévisible.
+Avec {acquisition_score}/18, vous générez déjà des contacts. L'objectif maintenant : rendre ça prévisible.
 
 On va structurer et amplifier ce qui fonctionne :
-• Optimiser tes canaux actuels (SEO, Google Business, réseaux)
+• Optimiser vos canaux actuels (SEO, Google Business, réseaux)
 • Mettre en place un vrai suivi des prospects
 • Activer de nouveaux canaux adaptés à {user_info.city}
-• Créer de la régularité dans ton flux de nouveaux propriétaires"""
+• Créer de la régularité dans votre flux de nouveaux propriétaires"""
             sections.append(acquisition_section)
         
         elif acquisition_pct < 80:
             acquisition_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 AMPLIFIER TON ACQUISITION
+🚀 AMPLIFIER VOTRE ACQUISITION
 
-Ton acquisition fonctionne bien ({acquisition_score}/18). L'opportunité : passer à l'échelle supérieure.
+Votre acquisition fonctionne bien ({acquisition_score}/18). L'opportunité : passer à l'échelle supérieure.
 
 On peut activer des leviers plus puissants :
 • Campagnes publicitaires ciblées propriétaires
 • Partenariats stratégiques (agents immobiliers, notaires)
-• Expansion géographique si tu veux sortir de {user_info.city}
+• Expansion géographique si vous voulez sortir de {user_info.city}
 • Automatisation pour convertir encore mieux"""
             sections.append(acquisition_section)
         
@@ -366,9 +368,9 @@ On peut activer des leviers plus puissants :
 
 ✅ UNE ACQUISITION PERFORMANTE
 
-Avec {acquisition_score}/18, ton système d'acquisition fonctionne très bien. Bravo !
+Avec {acquisition_score}/18, votre système d'acquisition fonctionne très bien. Bravo !
 
-On peut t'aider à l'optimiser (réduire le coût par contact, améliorer la conversion) ou à le dupliquer si tu veux t'étendre géographiquement."""
+On peut vous aider à l'optimiser (réduire le coût par contact, améliorer la conversion) ou à le dupliquer si vous voulez vous étendre géographiquement."""
             sections.append(acquisition_section)
         
         # SECTION VALEUR - si pertinent
@@ -377,12 +379,12 @@ On peut t'aider à l'optimiser (réduire le coût par contact, améliorer la con
 
 💎 CONSTRUIRE UN ACTIF DURABLE
 
-Avec {value_score}/6 en valeur, il y a une opportunité de renforcer la pérennité de ton activité.
+Avec {value_score}/6 en valeur, il y a une opportunité de renforcer la pérennité de votre activité.
 
 On travaille sur :
-• La formalisation de tes contrats propriétaires
+• La formalisation de vos contrats propriétaires
 • La création de process reproductibles
-• La documentation de ton modèle pour qu'il soit solide dans la durée"""
+• La documentation de votre modèle pour qu'il soit solide dans la durée"""
             sections.append(value_section)
         
         # SECTION OPTIMISATION DES COÛTS - adaptée au profil
@@ -390,29 +392,27 @@ On travaille sur :
             # Profil avancé - optimisation fine
             costs_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💰 OPTIMISATION DE TES COÛTS
+💰 OPTIMISATION DE VOS COÛTS
 
-Avec une structure déjà en place, on peut travailler sur l'optimisation de ta rentabilité :
-• Audit de tes coûts prestataires (ménage, linge, maintenance) et renégociation
+Avec une structure déjà en place, on peut travailler sur l'optimisation de votre rentabilité :
+• Audit de vos coûts prestataires (ménage, linge, maintenance) et renégociation
 • Mutualisation des ressources pour réduire le coût par logement
 • Automatisation des tâches répétitives pour gagner en efficacité
-• Accès à notre réseau de prestataires partenaires à tarifs négociés
-
-Nos clients constatent en moyenne 15-25% d'économies sur leurs coûts opérationnels."""
+• Accès à notre réseau de prestataires partenaires à tarifs négociés"""
             sections.append(costs_section)
         else:
             # Profil en développement - structurer pour économiser
             costs_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💰 OPTIMISER TES COÛTS DÈS LE DÉPART
+💰 OPTIMISER VOS COÛTS DÈS LE DÉPART
 
-Bonne nouvelle : en structurant ton activité, tu vas aussi réduire tes coûts.
+Bonne nouvelle : en structurant votre activité, vous allez aussi réduire vos coûts.
 
 Ce qu'on met en place :
 • Des process efficaces qui évitent les erreurs coûteuses
-• Une meilleure négociation avec tes prestataires grâce à notre expertise
+• Une meilleure négociation avec vos prestataires grâce à notre expertise
 • Accès à notre réseau de partenaires à tarifs préférentiels
-• Des outils qui te font gagner du temps (= de l'argent)
+• Des outils qui vous font gagner du temps (= de l'argent)
 
 Structurer ne coûte pas plus cher - ça permet de dépenser plus intelligemment."""
             sections.append(costs_section)
@@ -424,13 +424,13 @@ Structurer ne coûte pas plus cher - ça permet de dépenser plus intelligemment
 
 On n'est pas des consultants qui donnent des conseils et disparaissent. On est des partenaires opérationnels.
 
-Concrètement, on implémente chez toi :
+Concrètement, on implémente chez vous :
 • Nos outils éprouvés (process, templates, systèmes de gestion)
-• Notre équipe si tu veux déléguer certaines fonctions
+• Notre équipe si vous voulez déléguer certaines fonctions
 • Nos méthodes testées sur des dizaines de conciergeries
 • Notre réseau de prestataires partenaires à tarifs négociés
 
-Tu n'es plus seul. Tu as une équipe qui travaille AVEC toi."""
+Vous n'êtes plus seul. Vous avez une équipe qui travaille AVEC vous."""
         sections.append(systeme_section)
         
         # SECTION PROCESS
@@ -438,23 +438,23 @@ Tu n'es plus seul. Tu as une équipe qui travaille AVEC toi."""
 
 📅 COMMENT ÇA SE PASSE ?
 
-1️⃣ APPEL DÉCOUVERTE (30 min)
-On échange sur ta situation, tes objectifs, et on voit ensemble comment on peut t'aider.
+1️⃣ AUDIT STRATÉGIQUE (45 min)
+On échange sur votre situation, vos objectifs, et on voit ensemble comment on peut vous aider.
 
 2️⃣ AUDIT PERSONNALISÉ
-On analyse en détail ta conciergerie pour identifier les meilleures opportunités.
+On analyse en détail votre conciergerie pour identifier les meilleures opportunités.
 
 3️⃣ PLAN D'ACTION SUR MESURE
-Un plan adapté à TON profil avec des étapes claires sur 3 - 6 - 9 - 12 mois.
+Un plan adapté à VOTRE profil avec des étapes claires sur 3 - 6 - 9 - 12 mois.
 
 4️⃣ ACCOMPAGNEMENT
-On déploie les outils, on t'accompagne dans la mise en place, et on ajuste en continu."""
+On déploie les outils, on vous accompagne dans la mise en place, et on ajuste en continu."""
         sections.append(process_section)
         
         # SECTION RÉSULTATS - personnalisée et positive
         if structure_pct < 50:
             resultats = """✅ Une organisation qui tourne de façon fluide
-✅ Du temps libéré pour te concentrer sur le développement"""
+✅ Du temps libéré pour vous concentrer sur le développement"""
         else:
             resultats = """✅ Une organisation encore plus efficace et scalable
 ✅ Plus de temps pour les projets stratégiques"""
@@ -462,7 +462,7 @@ On déploie les outils, on t'accompagne dans la mise en place, et on ajuste en c
         if acquisition_pct < 60:
             resultats += """
 ✅ Un flux régulier de nouveaux propriétaires intéressés
-✅ Un système d'acquisition qui travaille pour toi"""
+✅ Un système d'acquisition qui travaille pour vous"""
         else:
             resultats += """
 ✅ Une acquisition amplifiée et optimisée
@@ -475,7 +475,7 @@ On déploie les outils, on t'accompagne dans la mise en place, et on ajuste en c
         
         resultats_section = f"""━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-💎 CE QUE TU PEUX ATTENDRE
+💎 CE QUE VOUS POUVEZ ATTENDRE
 
 En mettant en place les bonnes actions :
 {resultats}"""
@@ -488,13 +488,13 @@ En mettant en place les bonnes actions :
 
 Le marché de la location courte durée est en pleine croissance. Les propriétaires à {user_info.city} et ailleurs cherchent des conciergeries professionnelles sur qui compter.
 
-Tu as déjà l'expertise terrain. Avec les bons outils et le bon accompagnement, tu peux vraiment passer au niveau supérieur.
+Vous avez déjà l'expertise terrain. Avec les bons outils et le bon accompagnement, vous pouvez vraiment passer au niveau supérieur.
 
-👉 Si tu n'as pas encore réservé ton appel découverte, c'est le moment !
+👉 Si vous n'avez pas encore réservé votre audit stratégique de 45 min, c'est le moment !
 
-C'est gratuit, sans engagement, et tu repartiras avec :
-• Une analyse détaillée de ta situation
-• Des recommandations concrètes adaptées à ton profil
+C'est gratuit, sans engagement, et vous repartirez avec :
+• Une analyse détaillée de votre situation
+• Des recommandations concrètes adaptées à votre profil
 • Un plan d'action clair pour avancer"""
         sections.append(cta_section)
         
@@ -524,17 +524,17 @@ C'est gratuit, sans engagement, et tu repartiras avec :
             if acquisition_pct <= structure_pct and acquisition_pct <= value_pct:
                 return (
                     "Optimisation du système d'acquisition",
-                    "Amplifier et automatiser ton acquisition pour accélérer la croissance."
+                    "Amplifier et automatiser votre acquisition pour accélérer la croissance."
                 )
             elif structure_pct <= acquisition_pct and structure_pct <= value_pct:
                 return (
                     "Optimisation des process internes",
-                    "Affiner et automatiser tes process pour gagner en efficacité."
+                    "Affiner et automatiser vos process pour gagner en efficacité."
                 )
             else:
                 return (
                     "Renforcement de la valorisation",
-                    "Formaliser les éléments qui rendent ton entreprise autonome et valorisable."
+                    "Formaliser les éléments qui rendent votre entreprise autonome et valorisable."
                 )
         
         # Cas 3: Un ou plusieurs domaines à améliorer - identifier le plus faible
@@ -556,11 +556,11 @@ C'est gratuit, sans engagement, et tu repartiras avec :
                 "Réduire la dépendance au gérant et formaliser les contrats pour créer un actif pérenne."
             )
         
-        # Cas par défaut - prioriser l'acquisition (ton conseil)
+        # Cas par défaut - prioriser l'acquisition (votre conseil)
         if acquisition_pct < 70:
             return (
                 "Amplifier l'acquisition",
-                "Structurer et accélérer ton système d'acquisition pour une croissance prévisible."
+                "Structurer et accélérer votre système d'acquisition pour une croissance prévisible."
             )
         elif structure_pct < 70:
             return (
@@ -570,7 +570,7 @@ C'est gratuit, sans engagement, et tu repartiras avec :
         else:
             return (
                 "Préparer la valorisation",
-                "Formaliser les éléments qui rendent ton entreprise autonome et attractive."
+                "Formaliser les éléments qui rendent votre entreprise autonome et attractive."
             )
     
     # Calculer mainBlocker et priority de façon cohérente
@@ -585,46 +585,46 @@ C'est gratuit, sans engagement, et tu repartiras avec :
         
         # Cas 1: Excellence (>= 80% partout)
         if structure_pct >= 80 and acquisition_pct >= 80 and value_pct >= 80:
-            return f"""{first_name}, félicitations ! Avec {total_score}/44, tu fais partie des conciergeries les plus structurées du marché.
+            return f"""{first_name}, félicitations ! Avec {total_score}/44, vous faites partie des conciergeries les plus structurées du marché.
 
-Tu as mis en place une vraie organisation ({structure_score}/20), un système d'acquisition qui fonctionne ({acquisition_score}/18), et une entreprise qui peut tourner de façon autonome ({value_score}/6).
+Vous avez mis en place une vraie organisation ({structure_score}/20), un système d'acquisition qui fonctionne ({acquisition_score}/18), et une entreprise qui peut tourner de façon autonome ({value_score}/6).
 
-À ce stade, les opportunités sont l'optimisation des coûts, l'expansion géographique, ou la préparation d'une valorisation/revente si c'est dans tes projets."""
+À ce stade, les opportunités sont l'optimisation des coûts, l'expansion géographique, ou la préparation d'une valorisation/revente si c'est dans vos projets."""
         
         # Cas 2: Très bon niveau (>= 70% partout)
         if structure_pct >= 70 and acquisition_pct >= 70:
-            return f"""{first_name}, avec {total_score}/44, tu as construit une conciergerie solide.
+            return f"""{first_name}, avec {total_score}/44, vous avez construit une conciergerie solide.
 
-Ton organisation est en place ({structure_score}/20), ton acquisition fonctionne ({acquisition_score}/18). Tu fais clairement partie des conciergeries au-dessus de la moyenne.
+Votre organisation est en place ({structure_score}/20), votre acquisition fonctionne ({acquisition_score}/18). Vous faites clairement partie des conciergeries au-dessus de la moyenne.
 
-L'opportunité maintenant : optimiser ce qui existe et accélérer ta croissance sur des bases saines."""
+L'opportunité maintenant : optimiser ce qui existe et accélérer votre croissance sur des bases saines."""
         
         # Cas 3: Bon niveau structure, acquisition à développer
         if structure_pct >= 60 and acquisition_pct < 50:
-            return f"""{first_name}, avec {total_score}/44, tu as une base organisationnelle solide ({structure_score}/20).
+            return f"""{first_name}, avec {total_score}/44, vous avez une base organisationnelle solide ({structure_score}/20).
 
-Le principal levier de croissance pour toi est l'acquisition ({acquisition_score}/18). Tu as la structure pour absorber plus de volume - il s'agit maintenant de mettre en place un système pour attirer des propriétaires de façon régulière."""
+Le principal levier de croissance pour vous est l'acquisition ({acquisition_score}/18). Vous avez la structure pour absorber plus de volume - il s'agit maintenant de mettre en place un système pour attirer des propriétaires de façon régulière."""
         
         # Cas 4: Bonne acquisition, structure à renforcer
         if acquisition_pct >= 60 and structure_pct < 50:
-            return f"""{first_name}, avec {total_score}/44, tu as une vraie force : tu sais attirer des propriétaires ({acquisition_score}/18).
+            return f"""{first_name}, avec {total_score}/44, vous avez une vraie force : vous savez attirer des propriétaires ({acquisition_score}/18).
 
-Pour capitaliser sur cette force, l'étape suivante est de renforcer ton organisation ({structure_score}/20). Ça te permettra d'absorber ta croissance sereinement et de libérer du temps pour le développement."""
+Pour capitaliser sur cette force, l'étape suivante est de renforcer votre organisation ({structure_score}/20). Ça vous permettra d'absorber votre croissance sereinement et de libérer du temps pour le développement."""
         
         # Cas 5: Les deux à développer
         if structure_pct < 50 and acquisition_pct < 50:
-            return f"""{first_name}, avec {total_score}/44, tu es au début de la structuration de ta conciergerie.
+            return f"""{first_name}, avec {total_score}/44, vous êtes au début de la structuration de votre conciergerie.
 
-C'est une étape normale dans le développement d'une activité. Les deux leviers principaux pour toi sont l'organisation interne ({structure_score}/20) et l'acquisition ({acquisition_score}/18).
+C'est une étape normale dans le développement d'une activité. Les deux leviers principaux pour vous sont l'organisation interne ({structure_score}/20) et l'acquisition ({acquisition_score}/18).
 
-La bonne nouvelle : avec les bonnes méthodes, tu peux progresser rapidement sur ces deux axes."""
+La bonne nouvelle : avec les bonnes méthodes, vous pouvez progresser rapidement sur ces deux axes."""
         
         # Cas par défaut
-        return f"""{first_name}, avec {total_score}/44, ta conciergerie a des bases sur lesquelles construire.
+        return f"""{first_name}, avec {total_score}/44, votre conciergerie a des bases sur lesquelles construire.
 
 Structure : {structure_score}/20 | Acquisition : {acquisition_score}/18 | Valeur : {value_score}/6
 
-On va identifier ensemble les leviers les plus impactants pour ta situation."""
+On va identifier ensemble les leviers les plus impactants pour votre situation."""
     
     # ============================================
     # ANALYSE DÉTAILLÉE PAR SEGMENT
@@ -641,19 +641,19 @@ On va identifier ensemble les leviers les plus impactants pour ta situation."""
             "score": f"{structure_score}/20",
             "percentage": structure_pct,
             "status": "critique" if structure_pct < 40 else "fragile",
-            "diagnostic": f"""Ton organisation interne est ton plus gros frein. Tu passes probablement 80% de ton temps dans l'opérationnel : gérer les voyageurs, éteindre des feux, courir après le ménage, répondre aux propriétaires.
+            "diagnostic": f"""Votre organisation interne est votre plus gros frein. Vous passez probablement 80% de votre temps dans l'opérationnel : gérer les voyageurs, éteindre des feux, courir après le ménage, répondre aux propriétaires.
 
-Résultat : tu n'as jamais le temps de travailler SUR ton business au lieu de travailler DANS ton business.
+Résultat : vous n'avez jamais le temps de travailler SUR votre business au lieu de travailler DANS votre business.
 
-Ce que ça te coûte concrètement :
+Ce que ça vous coûte concrètement :
 • Des nuits et week-ends sacrifiés pour des urgences qui pourraient être évitées
-• Une croissance bridée : tu ne peux pas prendre plus de logements car tu es déjà au max
-• Un épuisement qui s'accumule et qui finira par te rattraper
-• Zéro valorisation : sans toi, ta conciergerie ne vaut rien""",
+• Une croissance bridée : vous ne pouvez pas prendre plus de logements car vous êtes déjà au max
+• Un épuisement qui s'accumule et qui finira par vous rattraper
+• Zéro valorisation : sans vous, votre conciergerie ne vaut rien""",
             "quickWins": [
-                "Documente ta checklist ménage en 1h - c'est la tâche qui te prend le plus de temps",
-                "Crée un message type pour les 5 questions voyageurs les plus fréquentes",
-                "Identifie LA personne qui pourrait te remplacer sur UNE tâche cette semaine"
+                "Documentez votre checklist ménage en 1h - c'est la tâche qui vous prend le plus de temps",
+                "Créez un message type pour les 5 questions voyageurs les plus fréquentes",
+                "Identifiez LA personne qui pourrait vous remplacer sur UNE tâche cette semaine"
             ]
         }
         
@@ -662,20 +662,20 @@ Ce que ça te coûte concrètement :
             "score": f"{acquisition_score}/18",
             "percentage": acquisition_pct,
             "status": "inexistant" if acquisition_pct < 30 else "aléatoire",
-            "diagnostic": f"""Tu vis au rythme du hasard. Tes nouveaux propriétaires arrivent par bouche-à-oreille, par chance, ou parce que tu as croisé quelqu'un au bon moment.
+            "diagnostic": f"""Vous vivez au rythme du hasard. Vos nouveaux propriétaires arrivent par bouche-à-oreille, par chance, ou parce que vous avez croisé quelqu'un au bon moment.
 
 Ce n'est pas un moteur d'acquisition, c'est de la loterie.
 
-Le problème : tu ne contrôles pas ta croissance. Un mois tu signes 3 propriétaires, le mois suivant zéro. Tu ne peux pas prévoir, pas planifier, pas investir sereinement.
+Le problème : vous ne contrôlez pas votre croissance. Un mois vous signez 3 propriétaires, le mois suivant zéro. Vous ne pouvez pas prévoir, pas planifier, pas investir sereinement.
 
 Ce que font les conciergeries structurées :
 • Elles ont un site web optimisé qui capte des leads locaux chaque semaine
 • Leur fiche Google Business génère des appels entrants réguliers
 • Elles ont un process de suivi des leads qui ne laisse personne filer""",
             "quickWins": [
-                "Crée ou optimise ta fiche Google Business cette semaine",
-                "Demande un avis Google à tes 3 meilleurs propriétaires",
-                "Note dans un tableau tous les leads reçus ce mois-ci et leur origine"
+                "Créez ou optimisez votre fiche Google Business cette semaine",
+                "Demandez un avis Google à vos 3 meilleurs propriétaires",
+                "Notez dans un tableau tous les leads reçus ce mois-ci et leur origine"
             ]
         }
         
@@ -684,25 +684,25 @@ Ce que font les conciergeries structurées :
             "score": f"{value_score}/6",
             "percentage": value_pct,
             "status": "nulle" if value_pct < 40 else "très faible",
-            "diagnostic": f"""Parlons cash : combien vaut ta conciergerie aujourd'hui si tu veux la vendre ?
+            "diagnostic": f"""Parlons cash : combien vaut votre conciergerie aujourd'hui si vous voulez la vendre ?
 
 La réponse honnête : presque rien. Peut-être quelques mois de chiffre d'affaires, au mieux.
 
 Pourquoi ? Parce qu'un acheteur potentiel voit :
-• Une activité qui dépend à 100% de toi
-• Des propriétaires qui sont "tes" clients, pas ceux de l'entreprise
+• Une activité qui dépend à 100% de vous
+• Des propriétaires qui sont "vos" clients, pas ceux de l'entreprise
 • Aucun process documenté, aucune organisation reproductible
 • Zéro prévisibilité sur l'acquisition de nouveaux logements
 
-Compare avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
+Comparez avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
 • Des process clairs que n'importe qui peut suivre
 • Des contrats propriétaires solides avec la structure, pas avec une personne
 • Un moteur d'acquisition qui génère des leads prévisibles
 • Un gérant qui pilote au lieu de tout faire lui-même""",
             "quickWins": [
-                "Fais signer des contrats en bonne et due forme à tous tes propriétaires",
-                "Crée une adresse email pro (contact@taconciergerie.fr) pour toutes les communications",
-                "Commence à parler de 'nous' et de 'l'équipe' même si tu es seul"
+                "Faites signer des contrats en bonne et due forme à tous vos propriétaires",
+                "Créez une adresse email pro (contact@votreconciergerie.fr) pour toutes les communications",
+                "Commencez à parler de 'nous' et de 'l'équipe' même si vous êtes seul"
             ]
         }
         
@@ -711,35 +711,35 @@ Compare avec une conciergerie structurée qui se vend 3 à 5x son CA annuel :
             "titre": "La vérité que 95% des conciergeries refusent d'entendre",
             "message": f"""{first_name}, il faut qu'on parle cash.
 
-Tu fais probablement partie des 95% de gérants de conciergerie qui considèrent l'investissement en communication et en acquisition comme une DÉPENSE. C'est l'erreur fatale qui condamne la majorité des conciergeries à rester des petites structures artisanales.
+Vous faites probablement partie des 95% de gérants de conciergerie qui considèrent l'investissement en communication et en acquisition comme une DÉPENSE. C'est l'erreur fatale qui condamne la majorité des conciergeries à rester des petites structures artisanales.
 
 Voici la réalité : l'investissement en acquisition n'est PAS une dépense. C'est un ACTIF.
 
-Pourquoi ? Parce que la conciergerie est un business de récurrent. Quand tu signes un propriétaire, tu ne le signes pas pour une prestation unique. Tu le signes pour des mois, voire des années de commissions récurrentes.
+Pourquoi ? Parce que la conciergerie est un business de récurrent. Quand vous signez un propriétaire, vous ne le signez pas pour une prestation unique. Vous le signez pour des mois, voire des années de commissions récurrentes.
 
-Fais le calcul :
-• Un propriétaire te rapporte en moyenne 200-400€/mois de commission
+Faites le calcul :
+• Un propriétaire vous rapporte en moyenne 200-400€/mois de commission
 • Sur 12 mois, c'est 2 400 à 4 800€ de revenus récurrents
 • Sur 3 ans, c'est 7 200 à 14 400€
 
 Maintenant, combien ça coûte d'acquérir ce propriétaire ? Avec un système d'acquisition bien structuré : 100 à 300€ maximum.
 
-Le ROI est ÉNORME. Chaque euro investi en acquisition peut te rapporter 10, 20, voire 50 euros sur la durée de vie du client.
+Le ROI est ÉNORME. Chaque euro investi en acquisition peut vous rapporter 10, 20, voire 50 euros sur la durée de vie du client.
 
-Pourtant, tu hésites à investir 500€/mois en communication ? C'est comme refuser de mettre de l'essence dans une voiture qui pourrait te rapporter des milliers d'euros.
+Pourtant, vous hésitez à investir 500€/mois en communication ? C'est comme refuser de mettre de l'essence dans une voiture qui pourrait vous rapporter des milliers d'euros.
 
-Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C'est non négociable. Ce n'est pas une option, c'est une obligation si tu veux sortir du bricolage.""",
+Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C'est non négociable. Ce n'est pas une option, c'est une obligation si vous voulez sortir du bricolage.""",
             "keyPoints": [
                 "L'acquisition n'est pas une dépense, c'est un actif qui génère du récurrent",
                 "Le ROI de l'acquisition en conciergerie est parmi les plus élevés du marché",
-                "Ton ambition définit ton budget : plus tu veux grandir, plus tu dois investir",
+                "Votre ambition définit votre budget : plus vous voulez grandir, plus vous devez investir",
                 "Pas de croissance saine et prévisible sans investissement structuré"
             ]
         }
         
         # Roadmap 12 mois
         roadmap = {
-            "titre": "Ton plan de transformation sur 12 mois",
+            "titre": "Votre plan de transformation sur 12 mois",
             "phases": [
                 {
                     "periode": "Mois 1-3 : Stabilisation",
@@ -755,16 +755,16 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
                     "objectif": "Créer une vraie organisation",
                     "actions": [
                         "Mettre en place un système centralisé de gestion des tâches",
-                        "Définir des rôles clairs (même si tu cumules plusieurs casquettes)",
-                        "Créer un tableau de bord avec tes KPIs clés (CA/logement, taux d'occupation, marge)"
+                        "Définir des rôles clairs (même si vous cumulez plusieurs casquettes)",
+                        "Créer un tableau de bord avec vos KPIs clés (CA/logement, taux d'occupation, marge)"
                     ]
                 },
                 {
                     "periode": "Mois 7-9 : Acquisition",
                     "objectif": "Installer un moteur de croissance",
                     "actions": [
-                        "Optimiser ton site web pour le SEO local",
-                        "Activer ta fiche Google Business et collecter 20+ avis",
+                        "Optimiser votre site web pour le SEO local",
+                        "Activer votre fiche Google Business et collecter 20+ avis",
                         "Créer un process de suivi des leads (CRM simple)"
                     ]
                 },
@@ -773,8 +773,8 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
                     "objectif": "Construire un actif",
                     "actions": [
                         "Formaliser tous les contrats propriétaires",
-                        "Préparer un dossier de présentation de ta conciergerie",
-                        "Calculer ta vraie rentabilité par logement"
+                        "Préparer un dossier de présentation de votre conciergerie",
+                        "Calculer votre vraie rentabilité par logement"
                     ]
                 }
             ]
@@ -792,23 +792,23 @@ Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. C
         # Analyse Structure
         if structure_pct >= 50:
             structure_status = "en place mais perfectible"
-            structure_diag = f"""Ta structure commence à tenir. Tu as des process, probablement un début d'équipe ou de prestataires fiables, et tu arrives à te dégager un peu de l'opérationnel.
+            structure_diag = f"""Votre structure commence à tenir. Vous avez des process, probablement un début d'équipe ou de prestataires fiables, et vous arrivez à vous dégager un peu de l'opérationnel.
 
-Mais attention : {100-structure_pct}% du chemin reste à faire. Les situations de crise te replongent encore dans l'opérationnel, et ta structure ne tiendrait probablement pas si tu t'absentais un mois.
+Mais attention : {100-structure_pct}% du chemin reste à faire. Les situations de crise vous replongent encore dans l'opérationnel, et votre structure ne tiendrait probablement pas si vous vous absentiez un mois.
 
-Ce qui te manque pour passer au niveau supérieur :
+Ce qui vous manque pour passer au niveau supérieur :
 • Des process vraiment documentés et utilisés par tous
 • Une vision claire de la performance de chaque logement
-• Un suivi régulier de tes indicateurs clés"""
+• Un suivi régulier de vos indicateurs clés"""
         else:
             structure_status = "encore fragile"
-            structure_diag = f"""Tu as posé des bases mais ta structure reste fragile. Au moindre imprévu, tu replonges dans l'opérationnel.
+            structure_diag = f"""Vous avez posé des bases mais votre structure reste fragile. Au moindre imprévu, vous replongez dans l'opérationnel.
 
-Le risque : tu t'épuises à vouloir faire grandir quelque chose qui n'a pas les fondations pour supporter la charge. C'est comme construire un étage supplémentaire sur une maison dont les murs ne sont pas solides.
+Le risque : vous vous épuisez à vouloir faire grandir quelque chose qui n'a pas les fondations pour supporter la charge. C'est comme construire un étage supplémentaire sur une maison dont les murs ne sont pas solides.
 
 Avant de penser croissance, il faut consolider :
-• Documenter et faire appliquer tes process critiques
-• Clarifier les rôles (même si tu portes plusieurs casquettes)
+• Documenter et faire appliquer vos process critiques
+• Clarifier les rôles (même si vous portez plusieurs casquettes)
 • Mettre en place un vrai pilotage par les chiffres"""
         
         structure_analysis = {
@@ -817,33 +817,33 @@ Avant de penser croissance, il faut consolider :
             "status": structure_status,
             "diagnostic": structure_diag,
             "quickWins": [
-                "Audite tes 5 process critiques : sont-ils vraiment documentés ET utilisés ?",
-                "Crée un rituel hebdo de 30min pour suivre tes KPIs",
-                "Identifie les 2-3 tâches qui te replongent encore dans l'opérationnel"
+                "Auditez vos 5 process critiques : sont-ils vraiment documentés ET utilisés ?",
+                "Créez un rituel hebdo de 30min pour suivre vos KPIs",
+                "Identifiez les 2-3 tâches qui vous replongent encore dans l'opérationnel"
             ]
         }
         
         # Analyse Acquisition
         if acquisition_pct >= 50:
             acquisition_status = "des bases existent"
-            acquisition_diag = f"""Tu as quelques canaux d'acquisition qui fonctionnent. C'est mieux que la majorité des conciergeries qui vivent uniquement du bouche-à-oreille.
+            acquisition_diag = f"""Vous avez quelques canaux d'acquisition qui fonctionnent. C'est mieux que la majorité des conciergeries qui vivent uniquement du bouche-à-oreille.
 
-Mais avec {acquisition_score}/18, ton moteur d'acquisition n'est pas encore prévisible. Tu ne sais probablement pas combien de leads tu vas recevoir le mois prochain, ni quel sera ton taux de conversion.
+Mais avec {acquisition_score}/18, votre moteur d'acquisition n'est pas encore prévisible. Vous ne savez probablement pas combien de leads vous allez recevoir le mois prochain, ni quel sera votre taux de conversion.
 
 Pour passer au niveau supérieur :
 • Identifier et doubler ce qui fonctionne déjà
 • Créer un vrai pipeline de suivi des leads
-• Calculer ton coût d'acquisition par propriétaire signé"""
+• Calculer votre coût d'acquisition par propriétaire signé"""
         else:
             acquisition_status = "sous-exploité"
-            acquisition_diag = f"""Ton acquisition est ton point faible. Tu as peut-être un site web, une fiche Google, mais ça ne génère pas de leads réguliers.
+            acquisition_diag = f"""Votre acquisition est votre point faible. Vous avez peut-être un site web, une fiche Google, mais ça ne génère pas de leads réguliers.
 
-C'est frustrant : tu sais que des propriétaires cherchent des conciergeries dans ta zone, mais ils ne te trouvent pas. Ils vont chez la concurrence ou ils restent sur Airbnb en direct.
+C'est frustrant : vous savez que des propriétaires cherchent des conciergeries dans votre zone, mais ils ne vous trouvent pas. Ils vont chez la concurrence ou ils restent sur Airbnb en direct.
 
-Ce que ça te coûte :
+Ce que ça vous coûte :
 • Une croissance au ralenti alors que le marché est là
 • Une dépendance au bouche-à-oreille qui peut s'arrêter du jour au lendemain
-• Des concurrents qui prennent les leads que tu devrais capter"""
+• Des concurrents qui prennent les leads que vous devriez capter"""
         
         acquisition_analysis = {
             "score": f"{acquisition_score}/18",
@@ -851,31 +851,31 @@ Ce que ça te coûte :
             "status": acquisition_status,
             "diagnostic": acquisition_diag,
             "quickWins": [
-                "Calcule combien de leads tu as reçus les 3 derniers mois et leur origine",
-                "Optimise ta fiche Google Business (photos, description, posts réguliers)",
-                "Mets en place un tableau de suivi des leads avec étapes de conversion"
+                "Calculez combien de leads vous avez reçus les 3 derniers mois et leur origine",
+                "Optimisez votre fiche Google Business (photos, description, posts réguliers)",
+                "Mettez en place un tableau de suivi des leads avec étapes de conversion"
             ]
         }
         
         # Analyse Valeur
         if value_pct >= 50:
             value_status = "potentiel existant"
-            value_diag = f"""Tu as commencé à construire quelque chose qui a de la valeur. Des contrats existent, une certaine indépendance vis-à-vis de ta personne commence à se dessiner.
+            value_diag = f"""Vous avez commencé à construire quelque chose qui a de la valeur. Des contrats existent, une certaine indépendance vis-à-vis de votre personne commence à se dessiner.
 
-Mais avec {value_score}/6, tu n'es pas encore dans la zone où un investisseur ou un acheteur dirait "je veux ça".
+Mais avec {value_score}/6, vous n'êtes pas encore dans la zone où un investisseur ou un acheteur dirait "je veux ça".
 
-Pour augmenter ta valorisation :
-• Formaliser tous tes contrats avec des engagements clairs
-• Réduire encore ta présence dans les relations propriétaires
-• Documenter ton modèle pour qu'il soit reproductible"""
+Pour augmenter votre valorisation :
+• Formaliser tous vos contrats avec des engagements clairs
+• Réduire encore votre présence dans les relations propriétaires
+• Documenter votre modèle pour qu'il soit reproductible"""
         else:
             value_status = "à construire"
-            value_diag = f"""Aujourd'hui, ta conciergerie repose encore beaucoup sur toi. Un acheteur potentiel verrait :
+            value_diag = f"""Aujourd'hui, votre conciergerie repose encore beaucoup sur vous. Un acheteur potentiel verrait :
 • Une activité qui tourne, mais avec des dépendances
-• Des propriétaires attachés à toi plus qu'à la structure
+• Des propriétaires attachés à vous plus qu'à la structure
 • Un potentiel, mais du travail à faire pour le débloquer
 
-La bonne nouvelle : tu as les bases. En 6-12 mois de travail ciblé, tu peux multiplier ta valorisation par 2 ou 3."""
+La bonne nouvelle : vous avez les bases. En 6-12 mois de travail ciblé, vous pouvez multiplier votre valorisation par 2 ou 3."""
         
         value_analysis = {
             "score": f"{value_score}/6",
@@ -883,35 +883,35 @@ La bonne nouvelle : tu as les bases. En 6-12 mois de travail ciblé, tu peux mul
             "status": value_status,
             "diagnostic": value_diag,
             "quickWins": [
-                "Revois tous tes contrats propriétaires : sont-ils au nom de ta structure ?",
-                "Crée une présentation de ta conciergerie comme si tu devais la vendre",
-                "Calcule ta vraie marge par logement (pas juste le CA)"
+                "Revoyez tous vos contrats propriétaires : sont-ils au nom de votre structure ?",
+                "Créez une présentation de votre conciergerie comme si vous deviez la vendre",
+                "Calculez votre vraie marge par logement (pas juste le CA)"
             ]
         }
         
         # Leçon business sur l'investissement
         investment_lesson = {
             "titre": "Ce qui sépare les conciergeries qui stagnent de celles qui explosent",
-            "message": f"""{first_name}, tu es à un tournant.
+            "message": f"""{first_name}, vous êtes à un tournant.
 
-Tu as posé des bases, tu as une activité qui fonctionne. Mais tu ressens ce plafond de verre. Et je vais te dire pourquoi tu n'arrives pas à le franchir.
+Vous avez posé des bases, vous avez une activité qui fonctionne. Mais vous ressentez ce plafond de verre. Et je vais vous dire pourquoi vous n'arrivez pas à le franchir.
 
 95% des gérants de conciergerie font la même erreur : ils considèrent l'investissement en acquisition comme une dépense optionnelle. "Quand j'aurai plus de trésorerie, j'investirai dans la com." C'est exactement l'inverse qu'il faut faire.
 
-La conciergerie est un business de RÉCURRENT. Chaque propriétaire signé te rapporte des commissions pendant des mois, voire des années. Un propriétaire acquis pour 200€ peut te rapporter 5 000€, 10 000€ ou plus sur sa durée de vie.
+La conciergerie est un business de RÉCURRENT. Chaque propriétaire signé vous rapporte des commissions pendant des mois, voire des années. Un propriétaire acquis pour 200€ peut vous rapporter 5 000€, 10 000€ ou plus sur sa durée de vie.
 
-Le ROI de l'acquisition en conciergerie est parmi les plus élevés de tous les secteurs. Mais tu hésites à investir 1 000€/mois pour construire un moteur qui te rapportera 10x, 20x plus ?
+Le ROI de l'acquisition en conciergerie est parmi les plus élevés de tous les secteurs. Mais vous hésitez à investir 1 000€/mois pour construire un moteur qui vous rapportera 10x, 20x plus ?
 
-Voici la vérité : ton ambition définit ton budget.
-• Tu veux rester à ton niveau actuel ? Continue comme ça.
-• Tu veux doubler, tripler ? Il faut investir proportionnellement.
+Voici la vérité : votre ambition définit votre budget.
+• Vous voulez rester à votre niveau actuel ? Continuez comme ça.
+• Vous voulez doubler, tripler ? Il faut investir proportionnellement.
 
 Aucune entreprise sérieuse ne se développe sans investir dans sa croissance. Ce n'est pas un choix, c'est une loi du business.
 
-La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris que l'investissement en acquisition est un ACTIF, pas une charge. Plus tu construis un moteur d'acquisition puissant, plus tu vas chercher de nouveaux leads, plus ton entreprise prend de la valeur.""",
+La différence entre vous et les conciergeries qui cartonnent ? Elles ont compris que l'investissement en acquisition est un ACTIF, pas une charge. Plus vous construisez un moteur d'acquisition puissant, plus vous allez chercher de nouveaux leads, plus votre entreprise prend de la valeur.""",
             "keyPoints": [
                 "L'acquisition est un actif qui s'apprécie, pas une dépense qui disparaît",
-                "Ton ambition définit ton budget d'investissement",
+                "Votre ambition définit votre budget d'investissement",
                 "Le récurrent de la conciergerie rend le ROI de l'acquisition exceptionnel",
                 "Pas de franchissement du plafond de verre sans investissement structuré"
             ]
@@ -919,23 +919,23 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
         
         # Roadmap 12 mois
         roadmap = {
-            "titre": "Ton plan d'accélération sur 12 mois",
+            "titre": "Votre plan d'accélération sur 12 mois",
             "phases": [
                 {
                     "periode": "Mois 1-3 : Consolidation",
-                    "objectif": f"Renforcer ton point faible : {weakest}",
+                    "objectif": f"Renforcer votre point faible : {weakest}",
                     "actions": [
-                        f"Audit complet de ta {weakest} actuelle",
+                        f"Audit complet de votre {weakest} actuelle",
                         "Plan d'action ciblé sur les 3 quick wins prioritaires",
                         "Mise en place d'un système opérationnel structuré"
                     ]
                 },
                 {
                     "periode": "Mois 4-6 : Systématisation",
-                    "objectif": "Créer des systèmes qui tournent sans toi",
+                    "objectif": "Créer des systèmes qui tournent sans vous",
                     "actions": [
                         "Automatiser tout ce qui peut l'être",
-                        "Former ton équipe/prestataires sur les process",
+                        "Former votre équipe/prestataires sur les process",
                         "Installer un rituel de pilotage hebdomadaire"
                     ]
                 },
@@ -943,9 +943,9 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
                     "periode": "Mois 7-9 : Croissance maîtrisée",
                     "objectif": "Scaler sur des bases solides",
                     "actions": [
-                        "Activer ton moteur d'acquisition à plein régime",
+                        "Activer votre moteur d'acquisition à plein régime",
                         "Recruter ou structurer pour absorber la croissance",
-                        "Optimiser ta marge par logement"
+                        "Optimiser votre marge par logement"
                     ]
                 },
                 {
@@ -954,7 +954,7 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
                     "actions": [
                         "Affiner tous les process pour l'excellence opérationnelle",
                         "Préparer un dossier de valorisation complet",
-                        "Définir ta stratégie long terme (scale, revente, levée)"
+                        "Définir votre stratégie long terme (scale, revente, levée)"
                     ]
                 }
             ]
@@ -973,18 +973,18 @@ La différence entre toi et les conciergeries qui cartonnent ? Elles ont compris
             "score": f"{structure_score}/20",
             "percentage": structure_pct,
             "status": "solide" if structure_pct >= 70 else "mature",
-            "diagnostic": f"""Ta structure est clairement au-dessus de la moyenne. Tu as des process, une équipe ou des prestataires qui fonctionnent, et tu peux t'absenter sans que tout s'écroule.
+            "diagnostic": f"""Votre structure est clairement au-dessus de la moyenne. Vous avez des process, une équipe ou des prestataires qui fonctionnent, et vous pouvez vous absenter sans que tout s'écroule.
 
 Les axes d'optimisation pour aller encore plus loin :
 • Industrialiser ce qui peut encore l'être
 • Créer des indicateurs avancés (pas juste du reporting, du prédictif)
-• Préparer ta structure à absorber un doublement de volume
+• Préparer votre structure à absorber un doublement de volume
 
-À ton niveau, chaque point d'optimisation a un impact direct sur ta valorisation.""",
+À votre niveau, chaque point d'optimisation a un impact direct sur votre valorisation.""",
             "quickWins": [
-                "Identifie les 2-3 process qui ne sont pas encore au niveau industriel",
-                "Mets en place un dashboard temps réel de tes KPIs clés",
-                "Crée un plan de capacité : combien de logements tu peux absorber sans recrutement ?"
+                "Identifiez les 2-3 process qui ne sont pas encore au niveau industriel",
+                "Mettez en place un dashboard temps réel de vos KPIs clés",
+                "Créez un plan de capacité : combien de logements vous pouvez absorber sans recrutement ?"
             ]
         }
         
@@ -993,19 +993,19 @@ Les axes d'optimisation pour aller encore plus loin :
             "score": f"{acquisition_score}/18",
             "percentage": acquisition_pct,
             "status": "performant" if acquisition_pct >= 70 else "établi",
-            "diagnostic": f"""Tu as un moteur d'acquisition qui fonctionne. Des leads arrivent, tu convertis, tu grandis.
+            "diagnostic": f"""Vous avez un moteur d'acquisition qui fonctionne. Des leads arrivent, vous convertissez, vous grandissez.
 
 La question maintenant : comment passer à l'échelle supérieure ?
 
 Options pour accélérer :
 • Acquisition payante (Google Ads, Facebook Ads ciblé propriétaires)
 • Partenariats stratégiques (agents immobiliers, notaires, promoteurs)
-• Expansion géographique avec réplication de ton modèle
+• Expansion géographique avec réplication de votre modèle
 • Rachat de portefeuilles de conciergeries moins structurées""",
             "quickWins": [
-                "Calcule ton CAC (coût d'acquisition client) précis par canal",
-                "Teste un budget pub de 500€ sur 30 jours pour valider le canal payant",
-                "Identifie 5 partenaires potentiels à contacter ce mois-ci"
+                "Calculez votre CAC (coût d'acquisition client) précis par canal",
+                "Testez un budget pub de 500€ sur 30 jours pour valider le canal payant",
+                "Identifiez 5 partenaires potentiels à contacter ce mois-ci"
             ]
         }
         
@@ -1014,7 +1014,7 @@ Options pour accélérer :
             "score": f"{value_score}/6",
             "percentage": value_pct,
             "status": "élevé" if value_pct >= 70 else "bon",
-            "diagnostic": f"""Ta conciergerie a une vraie valeur patrimoniale. Ce n'est plus un job, c'est un actif.
+            "diagnostic": f"""Votre conciergerie a une vraie valeur patrimoniale. Ce n'est plus un job, c'est un actif.
 
 Un acheteur ou investisseur verrait :
 • Une structure qui tourne de façon autonome
@@ -1022,49 +1022,49 @@ Un acheteur ou investisseur verrait :
 • Un moteur d'acquisition prévisible
 • Des contrats solides avec les propriétaires
 
-Pour maximiser ta valorisation :
-• Documenter tout ce qui rend ton modèle unique et réplicable
-• Optimiser ta marge nette (c'est sur ça qu'on te valorise)
+Pour maximiser votre valorisation :
+• Documenter tout ce qui rend votre modèle unique et réplicable
+• Optimiser votre marge nette (c'est sur ça qu'on vous valorise)
 • Préparer un data room complet pour les due diligences""",
             "quickWins": [
-                "Crée un mémo de présentation de ta conciergerie (10 pages max)",
-                "Calcule ton EBITDA réel (en te versant un salaire de marché)",
-                "Liste ce qui te différencie de la concurrence en 5 points"
+                "Créez un mémo de présentation de votre conciergerie (10 pages max)",
+                "Calculez votre EBITDA réel (en vous versant un salaire de marché)",
+                "Listez ce qui vous différencie de la concurrence en 5 points"
             ]
         }
         
         # Leçon business sur l'investissement
         investment_lesson = {
             "titre": "Le levier que même les meilleurs sous-exploitent",
-            "message": f"""{first_name}, tu fais partie de l'élite. Mais même à ton niveau, il y a un levier que tu sous-exploites probablement.
+            "message": f"""{first_name}, vous faites partie de l'élite. Mais même à votre niveau, il y a un levier que vous sous-exploitez probablement.
 
-Tu as structuré, tu as délégué, tu as des process. Mais est-ce que ton moteur d'acquisition est vraiment à la hauteur de tes ambitions ?
+Vous avez structuré, vous avez délégué, vous avez des process. Mais est-ce que votre moteur d'acquisition est vraiment à la hauteur de vos ambitions ?
 
-La plupart des conciergeries matures comme la tienne font une erreur : elles se reposent sur leur réputation et leur bouche-à-oreille. Ça fonctionne, mais ça ne scale pas.
+La plupart des conciergeries matures comme la vôtre font une erreur : elles se reposent sur leur réputation et leur bouche-à-oreille. Ça fonctionne, mais ça ne scale pas.
 
 Voici ce que font les conciergeries qui doublent ou triplent leur nombre de logements en 18 mois : elles investissent MASSIVEMENT dans l'acquisition. Pas 500€/mois. Un budget cohérent avec leur ambition.
 
-Ton ambition définit ton budget. Tu veux doubler ? Investis en conséquence. Tu veux tripler ? Investis proportionnellement. C'est mathématique.
+Votre ambition définit votre budget. Vous voulez doubler ? Investissez en conséquence. Vous voulez tripler ? Investissez proportionnellement. C'est mathématique.
 
-À ton niveau, chaque euro investi en acquisition a un effet de levier considérable. Tu as la structure pour absorber la croissance. Tu as les process. Ce qui te manque peut-être, c'est un moteur d'acquisition qui tourne à plein régime et une équipe dédiée pour l'opérer.""",
+À votre niveau, chaque euro investi en acquisition a un effet de levier considérable. Vous avez la structure pour absorber la croissance. Vous avez les process. Ce qui vous manque peut-être, c'est un moteur d'acquisition qui tourne à plein régime et une équipe dédiée pour l'opérer.""",
             "keyPoints": [
-                "À ton niveau, l'acquisition est le principal levier de croissance",
+                "À votre niveau, l'acquisition est le principal levier de croissance",
                 "Les conciergeries qui explosent investissent massivement et structurellement",
-                "Ton ambition définit ton budget : viser haut implique d'investir en conséquence",
-                "Déléguer l'acquisition permet de te concentrer sur ta zone de génie"
+                "Votre ambition définit votre budget : viser haut implique d'investir en conséquence",
+                "Déléguer l'acquisition permet de vous concentrer sur votre zone de génie"
             ]
         }
         
         # Roadmap 12 mois
         roadmap = {
-            "titre": "Ton plan d'optimisation et de scale sur 12 mois",
+            "titre": "Votre plan d'optimisation et de scale sur 12 mois",
             "phases": [
                 {
                     "periode": "Mois 1-3 : Clarification stratégique",
-                    "objectif": "Définir ta vision et ton plan",
+                    "objectif": "Définir votre vision et votre plan",
                     "actions": [
-                        "Clarifier ton objectif : scale, revente, ou optimisation ?",
-                        "Faire une valorisation précise de ta conciergerie",
+                        "Clarifier votre objectif : scale, revente, ou optimisation ?",
+                        "Faire une valorisation précise de votre conciergerie",
                         "Identifier les leviers à activer en priorité"
                     ]
                 },
@@ -1072,8 +1072,8 @@ Ton ambition définit ton budget. Tu veux doubler ? Investis en conséquence. Tu
                     "periode": "Mois 4-6 : Optimisation",
                     "objectif": "Maximiser marge et efficacité",
                     "actions": [
-                        "Renégocier tes contrats prestataires",
-                        "Optimiser ta tarification et tes commissions",
+                        "Renégocier vos contrats prestataires",
+                        "Optimiser votre tarification et vos commissions",
                         "Automatiser les derniers process manuels"
                     ]
                 },
@@ -1081,7 +1081,7 @@ Ton ambition définit ton budget. Tu veux doubler ? Investis en conséquence. Tu
                     "periode": "Mois 7-9 : Accélération",
                     "objectif": "Activer les leviers de croissance",
                     "actions": [
-                        "Lancer ton moteur d'acquisition payante",
+                        "Lancer votre moteur d'acquisition payante",
                         "Développer les partenariats stratégiques",
                         "Préparer la structure pour absorber la croissance"
                     ]
@@ -1137,7 +1137,7 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
         completion = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
-                {"role": "system", "content": "Tu es un expert en structuration de conciergeries Airbnb. Tu fournis des analyses business directes et professionnelles en français."},
+                {"role": "system", "content": "Tu es un expert en structuration de conciergeries Airbnb. Tu fournis des analyses business directes et professionnelles en français, en vouvoyant toujours le prospect."},
                 {"role": "user", "content": prompt}
             ],
             temperature=0.7,
@@ -1225,6 +1225,31 @@ async def analyze_diagnostic_endpoint(request: DiagnosticRequest):
     return response
 
 
+def to_international_phone(raw: Any) -> str:
+    """French numbers to E.164 (+33...) so GHL does not read them as foreign numbers.
+    06 12 34 56 78 / 0612345678 / 0033612345678 / 612345678 -> +33612345678; other formats kept as typed."""
+    s = str(raw or "").strip()
+    digits = "".join(ch for ch in s if ch.isdigit())
+    if s.startswith("+"):
+        return "+" + digits
+    if digits.startswith("00"):
+        return "+" + digits[2:]
+    if len(digits) == 10 and digits.startswith("0"):
+        return "+33" + digits[1:]
+    if len(digits) == 9 and digits[0] in "123456789":
+        return "+33" + digits
+    return s
+
+
+def answers_as_text(questions_and_answers: Any) -> str:
+    """'Question : réponse' lines, for GHL fields that only accept plain text."""
+    lines = []
+    for i, qa in enumerate(questions_and_answers or [], 1):
+        if isinstance(qa, dict):
+            lines.append(f"{i}. {qa.get('question', '')} : {qa.get('selectedAnswer') or qa.get('selectedValue') or ''}")
+    return "\n".join(lines)
+
+
 @api_router.post("/diagnostic/lead")
 async def forward_lead(payload: Dict[str, Any] = Body(...)):
     """Forward the full lead (sent by the frontend after the analysis) to the GHL GT06 webhook.
@@ -1232,6 +1257,12 @@ async def forward_lead(payload: Dict[str, Any] = Body(...)):
     if not GHL_WEBHOOK_GT06_URL:
         logger.warning("GT06 webhook skipped: GHL_WEBHOOK_GT06_URL is empty")
         return {"success": False, "reason": "webhook not configured"}
+    payload = {
+        **payload,
+        "phone": to_international_phone(payload.get("phone")),
+        "scoreMax": 44,
+        "answersText": answers_as_text(payload.get("questionsAndAnswers")),
+    }
     try:
         async with httpx.AsyncClient(timeout=20.0) as client_http:
             r = await client_http.post(GHL_WEBHOOK_GT06_URL, json=payload)

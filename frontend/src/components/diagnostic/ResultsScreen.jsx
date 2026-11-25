@@ -27,7 +27,7 @@ import { BLOCKS } from '../../data/questions';
 import { cn } from '../../lib/utils';
 import { toast } from 'sonner';
 
-const CALENDAR_LINK = '{{LIEN_CALENDRIER}}';
+const CALENDAR_LINK = 'https://api.leadconnectorhq.com/widget/booking/lIoh1zNlVaHpGVFiQ9yO';
 
 export default function ResultsScreen({
   userInfo,
@@ -45,9 +45,7 @@ export default function ResultsScreen({
   };
 
   const handleBookCall = () => {
-    toast.info('Redirection vers le calendrier...', {
-      description: 'Le lien du calendrier sera configuré par le client.',
-    });
+    window.open(CALENDAR_LINK, '_blank', 'noopener');
   };
 
   // Use AI analysis if available
@@ -331,7 +329,7 @@ export default function ResultsScreen({
           <CardContent className="p-6 md:p-8">
             <h3 className="font-bold text-2xl text-foreground mb-4 flex items-center gap-2">
               <Lightbulb className="w-6 h-6 text-primary" />
-              Comment Goodtime peut t&apos;aider
+              Comment Goodtime peut vous aider
             </h3>
             <div className="prose prose-sm max-w-none text-muted-foreground mb-6">
               {goodtimeRecommendation.split('\n\n').map((paragraph, idx) => (
@@ -342,7 +340,7 @@ export default function ResultsScreen({
             </div>
             <Button size="lg" onClick={handleBookCall} className="w-full sm:w-auto">
               <Calendar className="w-5 h-5 mr-2" />
-              Réserver un appel stratégique
+              Réserver mon audit stratégique
               <ExternalLink className="w-4 h-4 ml-2" />
             </Button>
           </CardContent>
@@ -358,7 +356,7 @@ export default function ResultsScreen({
                   <h4 className="font-semibold text-foreground">Recevoir mon diagnostic complet par email</h4>
                 </div>
                 <p className="text-sm text-muted-foreground mb-4">
-                  Un récapitulatif détaillé avec toutes tes analyses et recommandations sera envoyé à {userInfo.email}.
+                  Un récapitulatif détaillé avec toutes vos analyses et recommandations sera envoyé à {userInfo.email}.
                 </p>
                 <div className="flex items-center gap-3">
                   <Checkbox
@@ -388,19 +386,19 @@ export default function ResultsScreen({
               Prêt à passer à l'action ?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-              Si tu n'as pas encore réservé ton appel découverte, c'est le moment ! 
-              30 minutes gratuites pour échanger sur ta situation et définir tes priorités.
+              Si vous n'avez pas encore réservé votre audit stratégique, c'est le moment ! 
+              45 minutes gratuites pour échanger sur votre situation et définir vos priorités.
             </p>
             <Button 
               size="lg" 
               className="bg-primary hover:bg-primary/90 text-white px-8"
-              onClick={() => window.open('https://calendly.com/goodtime', '_blank')}
+              onClick={handleBookCall}
             >
               <Calendar className="w-5 h-5 mr-2" />
-              Réserver mon appel découverte
+              Réserver mon audit stratégique
             </Button>
             <p className="text-xs text-muted-foreground mt-4">
-              Gratuit • Sans engagement • 30 minutes
+              Gratuit • Sans engagement • 45 minutes
             </p>
           </CardContent>
         </Card>

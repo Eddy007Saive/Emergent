@@ -14,14 +14,14 @@ export default function WelcomeScreen({ onStart }) {
           </div>
           
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
-            As-tu une vraie entreprise
+            Avez-vous une vraie entreprise
             <br />
             <span className="text-primary">ou juste un portefeuille de logements ?</span>
           </h1>
-          
+
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
-            15 minutes pour savoir si ta conciergerie est un actif revendable 
-            ou un job qui te bouffe ton temps.
+            15 minutes pour savoir si votre conciergerie est un actif revendable
+            ou un job qui vous prend tout votre temps.
           </p>
 
           <Button size="xl" onClick={onStart} className="group">
@@ -35,19 +35,19 @@ export default function WelcomeScreen({ onStart }) {
           <ValueProp
             icon={Building2}
             title="Structure interne"
-            description="Évalue ton organisation, tes process et ta capacité à te détacher de l'opérationnel."
+            description="Évaluez votre organisation, vos process et votre capacité à vous détacher de l'opérationnel."
             delay="0ms"
           />
           <ValueProp
             icon={TrendingUp}
             title="Moteur d'acquisition"
-            description="Mesure ta capacité à attirer des propriétaires de façon régulière et prévisible."
+            description="Mesurez votre capacité à attirer des propriétaires de façon régulière et prévisible."
             delay="100ms"
           />
           <ValueProp
             icon={Target}
             title="Valeur & revendabilité"
-            description="Détermine si tu as construit un actif vendable ou un job amélioré."
+            description="Déterminez si vous avez construit un actif vendable ou un job amélioré."
             delay="200ms"
           />
         </div>
